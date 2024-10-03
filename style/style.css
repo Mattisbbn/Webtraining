@@ -1,7 +1,119 @@
-header{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px;
-    
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+  --primary-color: #00bdaa;
+  --secondary-color: #edf9ed;
 }
+* {
+  font-family:"Poppins",
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+#login_form {
+  display: flex;
+  background-color: var(--primary-color);
+  flex-direction: column;
+  width: 40vw;
+  padding: 35px;
+  color: white;
+  border-radius: 15px;
+}
+
+button,
+input {
+    border: none;
+  padding: 10px;
+  background-color: #ffffffc1;
+  
+}
+
+label{
+    margin-bottom: 3px;
+    margin-left: 3px;
+}
+
+input:focus {
+  outline: none;
+}
+
+#login_section {
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#login_choice {
+  width: 100%;
+  height: 50px;
+  display: flex;
+}
+
+#login_choice button:first-of-type {
+  border-radius: 15px 0 0 15px;
+  border-right: 0px;
+}
+
+#login_choice button:last-of-type {
+  border-radius: 0 15px 15px 0;
+  border-left: 0px;
+}
+
+#login_choice button {
+  width: 50%;
+  height: 100%;
+  background-color: #ffffffc1;
+  transition:background-color 0.5s;
+}
+
+#login_title {
+  font-weight: 800;
+
+}
+
+#submit_login {
+  border-radius: 25px;
+  padding: 15px 20px;
+  margin:  15px 0 ;
+  border: white 3px solid;
+  background-color: #00bdaa;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  transition:background-color 0.5s;
+}
+
+#submit_login:hover,#login_choice button:hover {
+    background-color: #ffffff45;
+    cursor: pointer;
+   
+}
+
+#login_container{
+    margin: 22px 0;
+    display: flex;
+    flex-direction: column;
+}
+
+#login_container input{
+    border-radius: 15px;
+    padding: 13px 10px;
+}
+
+#login_separation{
+    width: 2px;
+}
+
+@media (max-width: 768px){
+#login_form{
+    width: 60vw;
+}
+}
+
+@media (min-width: 1024px){
+    #login_form{
+        width: 40vw;
+    }
+    }
+    
