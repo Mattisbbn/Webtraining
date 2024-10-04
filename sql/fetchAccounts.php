@@ -1,6 +1,7 @@
 <?php
+require_once("sql/connectToDB.php");
 require_once('class.php');
-require_once("sql/fetchAccounts.php");
+
 if (isset($_POST["user_type"]) && isset($_POST["email"]) && isset($_POST["password"])) {
 
     $user_type = $_POST["user_type"];
@@ -22,9 +23,8 @@ if (isset($_POST["user_type"]) && isset($_POST["email"]) && isset($_POST["passwo
                 session_start();
                 $_SESSION['currentUser'] = $currentUser;
 
-
-
-                header('Location: ?home'); //Redirection vers l'accueil
+                header('Location: ' . $_SERVER['PHP_SELF'] . '?home');//Redirection vers l'accueil
+                exit; 
             } else {
                 $isUserLogged = false;
                 echo ("Non connecté");
@@ -33,5 +33,3 @@ if (isset($_POST["user_type"]) && isset($_POST["email"]) && isset($_POST["passwo
         // elseif($user_type === "student"){}
     }
 }
-
-

@@ -1,20 +1,4 @@
-<?php 
-
-
-require_once("sql/fetchAccounts.php");
-
-
-
-
-
-
-?>
-
-
-
 <section id="login_section" class="d-flex justify-content-center align-items-center">
-
-   
 
     <div id="login_form_header"><h1 id="login_title">Webtraining</h1> </div>
     <div id="login_form_container">

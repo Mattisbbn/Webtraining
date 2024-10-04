@@ -8,6 +8,7 @@
 * {
   font-family:"Poppins",
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    margin: 0;
 }
 
 #login_form_container,#login_form_header {
@@ -157,4 +158,51 @@ input:focus {
   padding:  0 25px;
 }
 
+}
+
+
+
+
+/* header */
+
+header{
+display: flex;
+align-items: center;
+justify-content: space-between;
+background-color: var(--primary-color);
+}
+
+#header,#user_info{
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  height: 50px;
+  
+}
+
+#header{
+  width: 100%;
+  color: white;
+  justify-content: center;
+}
+
+
+#user_info{
+  width: 18px;
+  border-radius: 10px  0 0 10px;
+  background-color: var(--third-color);
+  transition: width 1s ease-in-out;
+  overflow: hidden;
+  position: absolute; /* Ajoute cette ligne */
+  right: 0;
+  color: white;
+
+}
+#user_info:hover{
+  
+width: 100px;
+}
+
+#username{
+  padding-left: 18px;
 }
