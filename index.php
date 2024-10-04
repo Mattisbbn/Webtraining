@@ -6,7 +6,21 @@ require_once("sql/connectToDB.php");
 <body>
     <main>
 <?php
-require_once("pages/login_page/login_page.php");
+
+
+
+if(!empty($_GET)) {
+    foreach($_GET as $key => $value){
+        echo($key);
+        if(file_exists("pages/{$key}/{$key}.php")){
+            require_once("pages/{$key}/{$key}.php");
+        } else {
+            require_once("pages/home/home.php");
+        }
+    }
+} else {
+    require_once("pages/home/home.php");
+}
 
 ?>
     </main>
