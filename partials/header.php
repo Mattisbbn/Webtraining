@@ -4,7 +4,7 @@
 if(isset($_SESSION["currentUser"])){
     $currentUser = $_SESSION["currentUser"];
 }else{
-    echo("Not logged in");
+    header('Location: ?login_page');
 }
 
 
