@@ -1,28 +1,37 @@
 <?php
+require_once('class.php');
 require_once("sql/fetchAccounts.php");
+if (isset($_POST["user_type"]) && isset($_POST["email"]) && isset($_POST["password"])) {
+
+    $user_type = $_POST["user_type"];
+    $email = $_POST["email"];
+    $password = $_POST["password"];
+
+    if ($user_type === "teacher") {
+        $results = fetchAllDb($pdo, "teacher_accounts");
+        foreach ($results as $row) {
+
+            if ($row[1] === $email && $row[2] === $password) {
+                $currentUser = new user();
+                $currentUser->setId($row[0]);
+                $currentUser->setEmail($row[1]);
+                $currentUser->setUsername($row[3]);
+
+                $isUserLogged = true;
+
+                session_start();
+                $_SESSION['currentUser'] = $currentUser;
 
 
-if(isset($_POST["user_type"]) && isset($_POST["email"]) && isset($_POST["password"])){
 
-
-$user_type = $_POST["user_type"];
-$email = $_POST["email"];
-$password = $_POST["password"];
-
-
-
-if($user_type === "teacher"){
-
-    $results = fetchAllDb($pdo, "teacher_accounts");
-
-    foreach($results as $row){
-        echo($row[0].$row[1].$row[2]);
+                header('Location: ?home'); //Redirection vers l'accueil
+            } else {
+                $isUserLogged = false;
+                echo ("Non connecté");
+            }
+        }
+        // elseif($user_type === "student"){}
     }
-
-
-
-}elseif($user_type === "student"){}
-
-
-
 }
+
+

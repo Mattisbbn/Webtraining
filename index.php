@@ -7,21 +7,17 @@ require_once("sql/connectToDB.php");
     <main>
 <?php
 
-
-
 if(!empty($_GET)) {
     foreach($_GET as $key => $value){
-        echo($key);
         if(file_exists("pages/{$key}/{$key}.php")){
             require_once("pages/{$key}/{$key}.php");
-        } else {
+        }else {
             require_once("pages/home/home.php");
         }
     }
-} else {
+}else{
     require_once("pages/home/home.php");
 }
-
 ?>
     </main>
 </body>

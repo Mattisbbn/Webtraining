@@ -5,4 +5,5 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Webtraining</title>
     <link rel="stylesheet" href="style/style.css">
+
 </head>
