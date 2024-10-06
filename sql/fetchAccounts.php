@@ -23,7 +23,7 @@ if (isset($_POST["user_type"]) && isset($_POST["email"]) && isset($_POST["passwo
                 session_start();
                 $_SESSION['currentUser'] = $currentUser;
 
-                header('Location: ' . $_SERVER['PHP_SELF'] . '?home');//Redirection vers l'accueil
+                header('Location: ?home');
                 exit; 
             } else {
                 $isUserLogged = false;

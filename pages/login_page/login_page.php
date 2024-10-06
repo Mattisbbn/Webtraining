@@ -8,7 +8,7 @@
                 <button>Étudiant</button>
             </div>
         <form method="post" action="">
-         <input name="user_type" id="choice_input" type="text" value="" style="display: none;">
+         <input name="user_type" id="choice_input" type="text" required style="display: none;">
             <div id="login_container">
                 <label for="email_input">Email</label>
                 <input name="email" id="email_input" type="email" placeholder="Email" required>
@@ -23,3 +23,5 @@
     </div>
    
 </section>
+
+<script src="pages/login_page/login_page.js"></script>

@@ -7,7 +7,6 @@ if(isset($_SESSION["currentUser"])){
 }
 ?>
 
-
 <section id="home_section">
 <div id="first_home_row">
 <div id="home_schedule">
@@ -17,8 +16,9 @@ if(isset($_SESSION["currentUser"])){
     <div class="schedule_container"></div>
 </div>
 
-<div id="home_hour"><?php echo(time()) ?></div>
+<div id="home_hour"><p class="hour"></p></div>
 
 </div>
 
 </section>
+
