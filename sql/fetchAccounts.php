@@ -24,7 +24,7 @@ if (isset($_POST["user_type"]) && isset($_POST["email"]) && isset($_POST["passwo
                 $_SESSION['currentUser'] = $currentUser;
 
                 header('Location: ?home');
-                exit; 
+                exit;
             } else {
                 $isUserLogged = false;
                 echo ("Non connecté");
