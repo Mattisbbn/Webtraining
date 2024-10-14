@@ -17,7 +17,7 @@
                 <label for="password_input"><p>Mot de passe</p></label>
                 <input name="password" id="password_input" type="password" placeholder="Mot de passe" required>
 
-                <button id="submit_login" type="submit"><h4 class="mb-0">Se connecter</h4></button>
+                <button class="rounded-4" id="submit_login" type="submit"><h4 class="mb-0">Se connecter</h4></button>
             </div>
         </form>
     </div>

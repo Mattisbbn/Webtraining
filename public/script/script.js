@@ -1,5 +1,3 @@
-
-
 function showTime() {
     const now = new Date();
     const hours = String(now.getHours()).padStart(2, '0');
@@ -11,5 +9,4 @@ function showTime() {
 }
 setInterval(showTime, 1000);
 window.onload = showTime;
-
 

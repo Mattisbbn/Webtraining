@@ -11,6 +11,11 @@
     margin: 0;
 }
 
+a{
+  text-decoration: none;
+  color: unset;
+}
+
 #login_form_container,#login_form_header {
   display: flex;
   background-color: var(--primary-color);
@@ -83,8 +88,10 @@ p{
   margin: 15px;
 }
 
+
+/* border-radius: 25px; */
 #submit_login {
-  border-radius: 25px;
+
   padding: 15px 20px;
   margin:  15px 0 ;
   border: white 3px solid;
@@ -138,6 +145,7 @@ display: flex;
 align-items: center;
 justify-content: space-between;
 background-color: var(--primary-color);
+position: relative;
 }
 
 #header,#user_info{
@@ -161,10 +169,7 @@ background-color: var(--primary-color);
 }
 
 
-header {
-  position: relative;
-  
-}
+
 
 
 
@@ -221,4 +226,10 @@ header {
 }
 #home_section{
   max-width: 100vw;
+}
+
+
+#sign_canvas{
+  border: 1px solid black;
+
 }
