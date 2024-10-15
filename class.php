@@ -4,6 +4,15 @@ class user{
     private int $id;
     private string $email;
     private string $username;
+    private string $userType;
+
+    public function setUserType(){
+        $this->userType;
+    }
+
+    public function getUserType(){
+        return $this->userType;
+    }
    
     public function getId(){
         return $this->id;

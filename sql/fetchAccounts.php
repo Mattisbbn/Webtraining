@@ -17,16 +17,28 @@ if (isset($_POST["user_type"]) && isset($_POST["email"]) && isset($_POST["passwo
                 $currentUser->setId($row[0]);
                 $currentUser->setEmail($row[1]);
                 $currentUser->setUsername($row[3]);
-
-                $isUserLogged = true;
-
+                $currentUser->setUserType($row[4]);
                 session_start();
                 $_SESSION['currentUser'] = $currentUser;
-
                 header('Location: ?home');
                 exit;
-            } else {
-                $isUserLogged = false;
+            } else if($user_type === "admin"){
+
+                $results = fetchAllDb($pdo, "admin_accounts");
+                foreach ($results as $row) {
+                    
+                    if ($row[1] === $email && $row[2] === $password) 
+                    $currentUser = new user();
+                    $currentUser->setId($row[0]);
+                    $currentUser->setEmail($row[1]);
+                    $currentUser->setUsername($row[3]);
+                    $currentUser->setUserType($row[4]);
+                    session_start();
+                    $_SESSION['currentUser'] = $currentUser;
+                    header('Location: ?home');}
+        
+            } else{
+
                 echo ("Non connecté");
             }
         }

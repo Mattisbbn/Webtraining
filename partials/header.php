@@ -12,7 +12,8 @@ if (isset($_SESSION["currentUser"])) {
        <a href="?"> <h1 class="mb-0 fw-bold">Webtraining</h1></a>
     </div>
     <div class="h-100" id="user_info">
+        <a href="?user_settings">
         <?php echo ("<h4 class='mb-0' id='username'>". '<i id="user_icon" class="me-2 uil uil-user"   "></i>' . $currentUser->getUsername() . "</h4>") ?>
-
+        </a>
     </div>
 </header>
