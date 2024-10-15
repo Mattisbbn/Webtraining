@@ -11,9 +11,9 @@ if (isset($_SESSION["currentUser"])) {
     <div class=" text-white text-center col-12">
        <a href="?"> <h1 class="mb-0 fw-bold">Webtraining</h1></a>
     </div>
-    <div class="h-100" id="user_info">
-        <a href="?user_settings">
-        <?php echo ("<h4 class='mb-0' id='username'>". '<i id="user_icon" class="me-2 uil uil-user"   "></i>' . $currentUser->getUsername() . "</h4>") ?>
-        </a>
-    </div>
+  
 </header>
+<div class="ps-2 pe-2  d-flex justify-content-between" id="sub_header">
+    <a href="?admin_panel"><p>Pannel admin</p></a>
+    <a href=""><p><?php echo($currentUser->getUsername()) ?></p></a>
+</div>

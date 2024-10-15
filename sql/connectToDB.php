@@ -16,3 +16,8 @@ function fetchAllDb($pdo, $table){
     return $results;
 }
 
+function deleteDbRow($pdo,$table,$rowId){
+    $sql = "DELETE FROM $table WHERE id = $rowId";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
+}

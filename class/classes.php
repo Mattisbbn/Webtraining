@@ -1,7 +1,7 @@
 <?php 
 class classes{
     private int $id;
-    private string $className;
+    private string $name;
     private int $studentsNumber;
     // private string $user;
 
@@ -14,12 +14,12 @@ class classes{
     return $this->id;
     }
 
-    public function setClassName($className){
-      $this->className = $className;
+    public function setname($name){
+      $this->name = $name;
     }
 
-    public function getClassName(){
-        return $this->className;
+    public function getname(){
+        return $this->name;
     }
 
     public function setStudentsNumber($studentsNumber){

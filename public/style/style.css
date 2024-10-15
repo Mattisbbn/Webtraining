@@ -30,12 +30,17 @@ a {
   color: white;
 }
 
-button,
+
+button{
+  border: none;
+  background-color: unset;
+}
+/* button,
 input {
   border: none;
   padding: 10px;
   background-color: #ffffffc1;
-}
+} */
 
 label {
   margin-bottom: 3px;
@@ -202,11 +207,56 @@ header {
   border: 1px solid black;
 }
 
-#settings_container {
+#panel_container {
   background-color: var(--primary-color);
 }
 
-#settings_section h1,
-#settings_section {
+#panel_section h1{
   background-color: var(--secondary-color);
+}
+
+
+#sub_header{
+  background-color: var(--secondary-color);
+  color: white;
+}
+
+#panel_section p,a{
+  color: white;
+}
+
+.panel_buttons{
+  background-color: var(--secondary-color);
+  transition: background-color 0.4s ;
+
+}
+/* #sub_header p{
+  margin-right: 20px;
+} */
+
+.panel_buttons:hover{
+   background-color: #ffffff45;
+
+}
+
+#classes_table{
+  background-color: var(--secondary-color);
+  
+}
+
+#classes_table th,td{
+  padding: 10px;
+}
+
+#classes_table th{
+  margin:50px ;
+}
+
+.class_icons i{
+  padding: 5px;
+}
+
+
+.class_icons i:hover{
+  cursor: pointer;
 }
