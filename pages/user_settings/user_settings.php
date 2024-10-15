@@ -4,7 +4,6 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-
 if (isset($_SESSION["currentUser"])) {
     $currentUser = $_SESSION["currentUser"];
 } else {
@@ -12,7 +11,6 @@ if (isset($_SESSION["currentUser"])) {
 }
 
 ?>
-
 
 <section id="settings_section">
 

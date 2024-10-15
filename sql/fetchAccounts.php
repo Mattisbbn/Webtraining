@@ -1,6 +1,6 @@
 <?php
 require_once("sql/connectToDB.php");
-require_once('class.php');
+require_once('class/user.php');
 
 function logUser($typeOfUser,$results, $email, $password)
 {
@@ -27,7 +27,6 @@ if (isset($_POST["user_type"]) && isset($_POST["email"]) && isset($_POST["passwo
     $password = $_POST["password"];
     echo ($user_type);
 
-
     if ($user_type === "admin") {
         $results = fetchAllDb($pdo, "admin_accounts");
         logUser(0,$results, $email, $password);
@@ -38,8 +37,4 @@ if (isset($_POST["user_type"]) && isset($_POST["email"]) && isset($_POST["passwo
         $results = fetchAllDb($pdo, "teacher_accounts");
         logUser(2,$results, $email, $password);
     }
-    
-    
-    
-    
 }
