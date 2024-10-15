@@ -28,7 +28,6 @@ a {
   flex-direction: column;
   padding: 35px;
   color: white;
-  border-radius: 0 0 15px 15px;
 }
 
 button,
@@ -63,17 +62,8 @@ p {
   width: 100%;
   display: flex;
 }
-#animator_button {
-  border-radius: 15px 0 0 15px;
-}
 
-#admin_button {
-  border-radius: 0 15px 15px 0;
-}
 
-#student_button {
-  border-radius: 15px 15px 15px 15px;
-}
 
 #login_choice button {
   width: 100%;
@@ -112,7 +102,6 @@ p {
 }
 
 #login_container input {
-  border-radius: 15px;
   padding: 13px 10px;
 }
 
@@ -130,7 +119,6 @@ p {
   align-items: center;
   justify-content: center;
   padding: 0 35px;
-  border-radius: 15px 15px 0 0;
 }
 
 header {
@@ -222,7 +210,3 @@ header {
 #settings_section {
   background-color: var(--secondary-color);
 }
-
-/* .settings_line span{
-background-color: var(--primary-color);
-} */

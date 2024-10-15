@@ -6,8 +6,8 @@ class user{
     private string $username;
     private string $userType;
 
-    public function setUserType(){
-        $this->userType;
+    public function setUserType($userType){
+        $this->userType = $userType;
     }
 
     public function getUserType(){

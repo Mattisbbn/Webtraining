@@ -17,7 +17,7 @@ loginChoiceButtons[0].addEventListener("click", function(){
 loginChoiceButtons[1].addEventListener("click", function(){
     resetColor();
     loginChoiceButtons[1].style.backgroundColor ='#45cfc1';
-      choiceInput.value = "student"
+      choiceInput.value = "admin"
   
 })
 
@@ -25,7 +25,7 @@ loginChoiceButtons[1].addEventListener("click", function(){
 loginChoiceButtons[2].addEventListener("click", function(){
     resetColor();
     loginChoiceButtons[2].style.backgroundColor ='#45cfc1';
-    choiceInput.value = "admin"
+    choiceInput.value = "student"
   
 })
 
