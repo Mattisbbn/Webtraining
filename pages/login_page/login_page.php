@@ -29,15 +29,15 @@
                 <label for="email_input">
                     <p>Email</p>
                 </label>
-                <input class="rounded-4" name="email" id="email_input" type="email" placeholder="Email" required>
+                <input class="rounded-4 p-3" name="email" id="email_input" type="email" placeholder="Email" required>
 
 
                 <label for="password_input">
                     <p>Mot de passe</p>
                 </label>
-                <input class="rounded-4" name="password" id="password_input" type="password" placeholder="Mot de passe" required>
+                <input class="rounded-4 p-3" name="password" id="password_input" type="password" placeholder="Mot de passe" required>
 
-                <button class="rounded-4" id="submit_login" type="submit">
+                <button class="rounded-4 p-3" id="submit_login" type="submit">
                     <h4 class="mb-0">Se connecter</h4>
                 </button>
             </div>

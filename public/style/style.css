@@ -1,8 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 :root {
   --primary-color: #00bdaa;
   --secondary-color: #45cfc1;
+  --third-color: #00ad9b;
 }
 * {
   font-family: "Poppins", Oxygen, Ubuntu, Cantarell, "Open Sans",
@@ -30,17 +37,14 @@ a {
   color: white;
 }
 
-
-button{
+button {
   border: none;
   background-color: unset;
 }
-/* button,
+button,
 input {
   border: none;
-  padding: 10px;
-  background-color: #ffffffc1;
-} */
+}
 
 label {
   margin-bottom: 3px;
@@ -68,8 +72,6 @@ p {
   display: flex;
 }
 
-
-
 #login_choice button {
   width: 100%;
   height: 100%;
@@ -82,7 +84,6 @@ p {
   font-weight: 800;
   margin: 15px;
 }
-
 
 #submit_login {
   padding: 15px 20px;
@@ -211,52 +212,89 @@ header {
   background-color: var(--primary-color);
 }
 
-#panel_section h1{
+#panel_section h1 {
   background-color: var(--secondary-color);
 }
 
-
-#sub_header{
+#sub_header {
   background-color: var(--secondary-color);
   color: white;
 }
 
-#panel_section p,a{
+#panel_section p,
+a {
   color: white;
 }
 
-.panel_buttons{
+.panel_buttons {
   background-color: var(--secondary-color);
-  transition: background-color 0.4s ;
-
+  transition: background-color 0.4s;
 }
 /* #sub_header p{
   margin-right: 20px;
 } */
 
-.panel_buttons:hover{
-   background-color: #ffffff45;
-
+.panel_buttons:hover {
+  background-color: #ffffff45;
 }
 
-#classes_table{
-  background-color: var(--secondary-color);
-  
-}
-
-#classes_table th,td{
+#classes_table th,
+td {
   padding: 10px;
 }
 
-#classes_table th{
-  margin:50px ;
+#classes_table th {
+  margin: 50px;
 }
 
-.class_icons i{
+.class_icons i {
   padding: 5px;
 }
 
-
-.class_icons i:hover{
+.class_icons i:hover {
   cursor: pointer;
+}
+
+th {
+  background-color: var(--third-color);
+}
+
+td:first-child {
+  background-color: var(--third-color);
+}
+
+table tr:first-child th:first-child {
+  border-top-left-radius: 8px;
+}
+table tr:first-child th:last-child {
+  border-top-right-radius: 8px;
+}
+table tr:last-child td:first-child {
+  border-bottom-left-radius: 8px;
+}
+table tr:last-child td:last-child {
+  border-bottom-right-radius: 8px;
+}
+
+table {
+  border-collapse: separate;
+  border-spacing: 2px;
+}
+td {
+  background-color: var(--secondary-color);
+}
+
+#classPopup {
+  position: absolute;
+  display: none;
+  background-color: var(--primary-color);
+  border: 5px solid white;
+}
+#classPopup h1 {
+  background-color: unset;
+  color: white;
+}
+
+#class_icons {
+  display: flex;
 }
