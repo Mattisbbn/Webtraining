@@ -10,6 +10,7 @@ input::-webkit-inner-spin-button {
   --primary-color: #00bdaa;
   --secondary-color: #45cfc1;
   --third-color: #00ad9b;
+  --hover-color:#84848445;
 }
 * {
   font-family: "Poppins", Oxygen, Ubuntu, Cantarell, "Open Sans",
@@ -230,9 +231,6 @@ a {
   background-color: var(--secondary-color);
   transition: background-color 0.4s;
 }
-/* #sub_header p{
-  margin-right: 20px;
-} */
 
 .panel_buttons:hover {
   background-color: #ffffff45;
@@ -247,6 +245,16 @@ td {
   margin: 50px;
 }
 
+@media screen and (max-width: 425px) {
+  #classes_table th {
+    margin: 30px;
+  }
+
+  #classes_table th,
+  td {
+    padding: 5px;
+  }
+}
 .class_icons i {
   padding: 5px;
 }
@@ -288,13 +296,19 @@ td {
   position: absolute;
   display: none;
   background-color: var(--primary-color);
-  border: 5px solid white;
 }
 #classPopup h1 {
   background-color: unset;
   color: white;
 }
 
-#class_icons {
-  display: flex;
+.panel_header h3 {
+  color: white;
+}
+
+.panel_buttons:hover {
+  background-color: var(--hover-color);
+}
+.class_edit_buttons {
+  width: 400px;
 }
