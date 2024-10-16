@@ -50,23 +50,25 @@ if (isset($_POST["className"]) && isset($_POST["classNumber"])) {
             <tbody>
                 <?php
                 $classes = fetchAllDb($pdo, "classes");
-                foreach ($classes as $class) {
-                    echo ("<tr>");
-                    echo ("<td>{$class[0]}</td>");
-                    echo ("<td>{$class[1]}</td>");
-                    echo ("<td>{$class[2]}</td>");
-                    echo "<td>";
-                    echo "<div class='d-flex justify-content-center'>";
-                    echo '<form class="m-0" method="post">';
-                    echo '<input type="hidden" name="rowID" value="' . $class[0] . '">';
-                    echo '<button class="p-0" name="delete" type="submit"><i class="uil uil-trash-alt"></i></button>';
-                    echo '</form>';
-                    echo '<i class="uil uil-file-edit-alt"></i>';
-                    echo "</div>";
-                    echo "</td>";
-                    echo "</tr>";
-                }
-                ?>
+                foreach ($classes as $class): ?>
+                    <tr>
+                        <td><?php echo $class[0] ?></td>
+                        <td><?php echo $class[1] ?></td>
+                        <td><?php echo $class[2] ?></td>
+                        <td>
+                            <div class='d-flex justify-content-center'>
+                                <form class='m-0' method='post'>
+                                    <input type='hidden' name='rowID' value='{$class[0]}'>
+                                    <button class='p-0' name='delete' type='submit'>
+                                        <i class='uil uil-trash-alt'></i>
+                                    </button>
+                                </form>
+                                <i class='uil uil-file-edit-alt'></i>
+                            </div>
+                        </td>
+                    </tr>
+                    <?php endforeach; ?>
+                
             </tbody>
         </table>
     </div>
