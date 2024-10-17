@@ -25,11 +25,22 @@ if (isset($_POST["className"]) && isset($_POST["classNumber"])) {
     <div class=" flex-column d-flex justify-content-center align-items-center ">
 
         <div class="class_edit_buttons">
-            <button id="addClassButton" class="addAccountButton mb-2 panel_buttons p-2 rounded-3" type="submit">Ajouter une classe</button>
-            <button id="editClassButton" class="mb-2 panel_buttons p-2 rounded-3">Sauvegarder</button>
+            <button class="addAccountButton mb-2 panel_buttons p-2 rounded-3" type="submit">Ajouter une classe</button>
+            <button class="mb-2 panel_buttons p-2 rounded-3">Sauvegarder</button>
         </div>
             
-        <?php require_once("pages/admin_panel/partials/popups.php") ?>
+        <div class="d-none pannelDiv" id="classPopup">
+            
+    <form class="d-flex justify-content-center " method="post">
+        <input name="className" class="panel_buttons m-1 p-2 rounded-3" placeholder="Nom de la classe" type="text">
+        <input name="classNumber" placeholder="Nombre d'éleves" class="panel_buttons m-1 p-2 rounded-3" type="number" id="class_number">
+        <button class="panel_buttons m-1 p-2 rounded-3" type="submit"><i class="uil uil-check"></i></button>
+        <button class="panel_buttons closePannelButton m-1 p-2 rounded-3"><i id="closeClass" class="uil uil-times color-white"></i></button>
+    </form>
+</div>
+
+
+
 
         
         <table class="tables">

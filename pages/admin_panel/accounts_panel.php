@@ -34,7 +34,16 @@ if (isset($_POST["deleteAdmin"])) {
             <button id="editStudentButton" class="mb-2 panel_buttons p-2 rounded-3">Sauvegarder</button>
     </div>
 
-    <?php require_once("pages/admin_panel/partials/popups.php") ?>
+    <div class="d-none pannelDiv" id="studentPopup">
+    <form class="d-flex justify-content-center " method="post">
+        <input name="className" class="panel_buttons m-1 p-2 rounded-3" placeholder="Nom de la classe" type="text">
+        <input name="classNumber" placeholder="Nombre d'éleves" class="panel_buttons m-1 p-2 rounded-3" type="number" id="class_number">
+        <button class="panel_buttons m-1 p-2 rounded-3" type="submit"><i class="uil uil-check"></i></button>
+        <button class="panel_buttons closePannelButton m-1 p-2 rounded-3"><i id="closeClass" class="uil uil-times color-white"></i></button>
+    </form>
+</div>
+
+
 
     <div class="tables_container flex-column justify-content-center align-items-center ">
         <table class="tables">
@@ -82,9 +91,19 @@ if (isset($_POST["deleteAdmin"])) {
 
 
     <div class="class_edit_buttons m-auto">
-            <button id="addClassButton" class=" addAccountButton mb-2 panel_buttons p-2 rounded-3" type="submit">Ajouter un professeur</button>
-            <button id="editClassButton" class="mb-2 panel_buttons p-2 rounded-3">Sauvegarder</button>
+            <button class=" addAccountButton mb-2 panel_buttons p-2 rounded-3" type="submit">Ajouter un professeur</button>
+            <button class="mb-2 panel_buttons p-2 rounded-3">Sauvegarder</button>
     </div>
+
+    <div class="d-none pannelDiv" id="teacherPopup">
+    <form class="d-flex justify-content-center " method="post">
+        <input name="className" class="panel_buttons m-1 p-2 rounded-3" placeholder="Nom de la classe" type="text">
+        <input name="classNumber" placeholder="Nombre d'éleves" class="panel_buttons m-1 p-2 rounded-3" type="number" id="class_number">
+        <button class="panel_buttons m-1 p-2 rounded-3" type="submit"><i class="uil uil-check"></i></button>
+        <button class="panel_buttons closePannelButton m-1 p-2 rounded-3"><i id="closeClass" class="uil uil-times color-white"></i></button>
+    </form>
+</div>
+
 
     <div  class="tables_container flex-column justify-content-center align-items-center ">
         <table class="tables">
@@ -133,9 +152,19 @@ if (isset($_POST["deleteAdmin"])) {
     <h4 class="text-center text-white">Administrateurs</h4>
 
     <div class="class_edit_buttons m-auto">
-            <button id="addClassButton" class="addAccountButton mb-2 panel_buttons p-2 rounded-3" type="submit">Ajouter un admin</button>
-            <button id="editClassButton" class="mb-2 panel_buttons p-2 rounded-3">Sauvegarder</button>
+            <button class="addAccountButton mb-2 panel_buttons p-2 rounded-3" type="submit">Ajouter un admin</button>
+            <button class="mb-2 panel_buttons p-2 rounded-3">Sauvegarder</button>
     </div>
+
+
+    <div class="d-none pannelDiv" id="adminPopup">
+    <form class="d-flex justify-content-center " method="post">
+        <input name="className" class="panel_buttons m-1 p-2 rounded-3" placeholder="Nom de la classe" type="text">
+        <input name="classNumber" placeholder="Nombre d'éleves" class="panel_buttons m-1 p-2 rounded-3" type="number" id="class_number">
+        <button class="panel_buttons m-1 p-2 rounded-3" type="submit"><i class="uil uil-check"></i></button>
+        <button class="panel_buttons closePannelButton m-1 p-2 rounded-3"><i id="closeClass" class="uil uil-times color-white"></i></button>
+    </form>
+</div>
 
     <div  class="tables_container flex-column justify-content-center align-items-center ">
         <table class="tables">
