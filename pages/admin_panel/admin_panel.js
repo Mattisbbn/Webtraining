@@ -1,20 +1,39 @@
-const addClassButton = document.querySelector("#addClassButton")
-const classPopupDiv = document.querySelector("#classPopup")
-const closeClassButton = document.querySelector("#closeClass")
-addClassButton.addEventListener("click", function() {
-    classPopup("open");
-  })
-closeClassButton.addEventListener("click",function(){
-    classPopup("close")
-})
 
-function classPopup($action){
 
-if($action === "open"){
-classPopupDiv.style.display="block"
-}else{
-    classPopupDiv.style.display="none"
-}
+const closePannelButton = document.querySelectorAll(".closePannelButton");
+const closePannelButtonArray = Array.from(closePannelButton);
 
-    
-}
+const addAccountButton = document.querySelectorAll(".addAccountButton")
+const addAccountButtonArray = Array.from(addAccountButton);
+
+const pannelDiv = document.querySelectorAll(".pannelDiv");
+
+function Popup(action, div) {
+    if (action === "open") {
+      div.classList.remove("d-none");
+      div.classList.add("d-block");
+    } else {
+      div.classList.remove("d-block");
+      div.classList.add("d-none");
+    }
+  }
+
+closePannelButton.forEach((button) => {
+    button.addEventListener("click", (event) => {
+    event.preventDefault();
+    let index = closePannelButtonArray.indexOf(button)
+      Popup("close", pannelDiv[index]);  
+  });
+});
+
+addAccountButton.forEach((button) => {
+    button.addEventListener("click", (event) => {
+    let index = addAccountButtonArray.indexOf(button)
+      Popup("open", pannelDiv[index]);  
+  });
+});
+
+
+
+
+

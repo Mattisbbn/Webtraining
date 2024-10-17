@@ -236,21 +236,21 @@ a {
   background-color: #ffffff45;
 }
 
-#classes_table th,
+.tables th,
 td {
   padding: 10px;
 }
 
-#classes_table th {
+.tables th {
   margin: 50px;
 }
 
 @media screen and (max-width: 425px) {
-  #classes_table th {
-    margin: 30px;
+  .tables th {
+    margin: 10px;
   }
 
-  #classes_table th,
+  .tables th,
   td {
     padding: 5px;
   }
@@ -287,20 +287,15 @@ table tr:last-child td:last-child {
 table {
   border-collapse: separate;
   border-spacing: 2px;
+  max-width: 100%;
+  overflow-x: auto !important;
 }
 td {
   background-color: var(--secondary-color);
 }
 
-#classPopup {
-  position: absolute;
-  display: none;
-  background-color: var(--primary-color);
-}
-#classPopup h1 {
-  background-color: unset;
-  color: white;
-}
+
+
 
 .panel_header h3 {
   color: white;
@@ -309,6 +304,19 @@ td {
 .panel_buttons:hover {
   background-color: var(--hover-color);
 }
-.class_edit_buttons {
-  width: 390px;
+
+.text-white{
+  color: white;
 }
+
+.tables_container { 
+  overflow-x: auto; 
+  overflow-y: auto; 
+}
+
+
+.tables{
+  margin: auto;
+  
+}
+
