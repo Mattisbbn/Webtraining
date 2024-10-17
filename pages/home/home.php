@@ -22,3 +22,4 @@ if(isset($_SESSION["currentUser"])){
 
 </section>
 
+<script src="pages/home/home.js"></script>

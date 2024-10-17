@@ -29,3 +29,14 @@ function addDbRowClasse($pdo, $class, $numberofStudents) {
     $stmt->bindParam(':numberofStudents', $numberofStudents);
     $stmt->execute();
 }
+
+
+function addNewUser($pdo,$table,$email,$password,$username){
+$sql = "INSERT INTO $table (`id`, `email`, `password`, `username`) VALUES (NULL, :email, :password,:username)";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':email', $email);
+    $stmt->bindParam(':password', $password);
+    $stmt->bindParam(':username', $username);
+    $stmt->execute();
+}
+
