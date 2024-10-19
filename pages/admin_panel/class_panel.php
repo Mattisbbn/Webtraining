@@ -5,8 +5,8 @@ if (isset($_POST["deleteClass"])) {
     exit();
 }
 
-if (isset($_POST["className"]) && isset($_POST["classNumber"])) {
-    addDbRowClasse($pdo, $_POST["className"], $_POST["classNumber"]);
+if (isset($_POST["className"])) {
+    addDbRowClasse($pdo, $_POST["className"]);
     header("Refresh:0");
     exit();
 }
@@ -27,7 +27,6 @@ if (isset($_POST["className"]) && isset($_POST["classNumber"])) {
             <div class="d-none pannelDiv">
             <form class="d-flex flex-column justify-content-center " method="post">
                 <input name="className" class="panel_buttons m-1 p-2 rounded-3" placeholder="Nom de la classe" type="text">
-                <input name="classNumber" placeholder="Nombre d'éleves" class="panel_buttons m-1 p-2 rounded-3" type="number" id="class_number">
                 <div class="d-flex">
                 <button class=" w-50 panel_buttons closePannelButton m-1 p-2 rounded-3"><i id="closeClass" class="uil uil-times color-white"></i></button>
                 <button class=" w-50 panel_buttons m-1 p-2 rounded-3" type="submit"><i class="uil uil-check"></i></button>
@@ -54,7 +53,7 @@ if (isset($_POST["className"]) && isset($_POST["classNumber"])) {
                     <tr>
                         <td><?php echo $class[0] ?></td>
                         <td><?php echo $class[1] ?></td>
-                        <td><?php echo $class[2] ?></td>
+                        <td>0</td>
                         <td>
                             <div class='d-flex justify-content-center'>
                                 <form class='m-0' method='post'>

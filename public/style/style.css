@@ -231,9 +231,8 @@ a {
   background-color: var(--secondary-color);
   transition: background-color 0.4s;
 }
-
 .panel_buttons:hover {
-  background-color: #ffffff45;
+  background-color: var(--hover-color);
 }
 
 .tables th,
@@ -285,10 +284,10 @@ table tr:last-child td:last-child {
 }
 
 table {
-  border-collapse: separate;
   border-spacing: 2px;
   max-width: 100%;
   overflow-x: auto !important;
+  table-layout: auto;
 }
 td {
   background-color: var(--secondary-color);
@@ -301,9 +300,7 @@ td {
   color: white;
 }
 
-.panel_buttons:hover {
-  background-color: var(--hover-color);
-}
+
 
 .text-white{
   color: white;
@@ -312,9 +309,17 @@ td {
 .tables_container { 
   overflow-x: auto; 
   overflow-y: auto; 
+  max-width: 100%;
 }
+
 
 
 .tables{
   margin: auto;
 }
+.uil-angle-down{
+  font-size: 2.2rem;
+}
+
+
+

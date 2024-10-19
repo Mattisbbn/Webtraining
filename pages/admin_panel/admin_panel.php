@@ -1,30 +1,14 @@
 <?php
-fetchAllDb($pdo, "classes");
+
 require_once("sql/fetchAccounts.php");
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-
-
-if(isset($_POST["studentName"]) || isset($_POST["studentEmail"]) || isset($_POST["studentPassword"]) ){
-    addNewUser($pdo,"student_accounts",$_POST["studentEmail"],$_POST["studentPassword"],$_POST["studentName"]);
+if(isset($_POST['userName']) && isset($_POST['userEmail']) && isset($_POST['userPassword'])){
+    addNewUser($pdo,$_POST['userEmail'],$_POST['userPassword'],$_POST['userName'],$_POST['userRole']);
     header("Refresh:0");
     exit();
 }
-
-if(isset($_POST["teacherName"]) || isset($_POST["teacherEmail"]) || isset($_POST["teacherPassword"]) ){
-    addNewUser($pdo,"teacher_accounts",$_POST["teacherEmail"],$_POST["teacherPassword"],$_POST["teacherName"]);
-    header("Refresh:0");
-    exit();
-}
-
-if(isset($_POST["adminName"]) || isset($_POST["adminEmail"]) || isset($_POST["adminPassword"]) ){
-    addNewUser($pdo,"admin_accounts",$_POST["adminEmail"],$_POST["adminPassword"],$_POST["adminName"]);
-    header("Refresh:0");
-    exit();
-}
-
-
 
 
 function deleteRowFromPost($pdo,$rowToAffect,$postID){
@@ -52,7 +36,7 @@ if (isset($_POST["deleteAdmin"])) {
         <div id="panel_container" class="mt-2 p-2 col-10 rounded-4">
             <h1 class="text-center mb-2 mt-2 rounded-4">Panel </h1>
         <?php 
-            require_once("pages/admin_panel/class_panel.php"); 
+            // require_once("pages/admin_panel/class_panel.php"); 
             require_once("pages/admin_panel/accounts_panel.php");
         ?>
         </div>

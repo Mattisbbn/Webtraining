@@ -11,12 +11,13 @@ const pannelDiv = document.querySelectorAll(".pannelDiv");
 function Popup(action, div) {
     if (action === "open") {
       div.classList.remove("d-none");
-      div.classList.add("d-block");
+      div.classList.add("d-flex");
     } else {
-      div.classList.remove("d-block");
+      div.classList.remove("d-flex");
       div.classList.add("d-none");
     }
   }
+
 
 closePannelButton.forEach((button) => {
     button.addEventListener("click", (event) => {

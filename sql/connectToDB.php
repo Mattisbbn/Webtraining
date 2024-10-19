@@ -22,21 +22,31 @@ function deleteDbRow($pdo,$table,$rowId){
     $stmt->execute();
 }
 
-function addDbRowClasse($pdo, $class, $numberofStudents) {
-    $sql = "INSERT INTO `classes` (`id`, `name`, `studentsNumber`) VALUES (NULL, :class, :numberofStudents);";
+function addDbRowClasse($pdo, $class) {
+    $sql = "INSERT INTO `classes` (`id`, `name`) VALUES (NULL, :class,);";
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':class', $class);
-    $stmt->bindParam(':numberofStudents', $numberofStudents);
     $stmt->execute();
 }
 
 
-function addNewUser($pdo,$table,$email,$password,$username){
+function addNewUserOld($pdo,$table,$email,$password,$username){
 $sql = "INSERT INTO $table (`id`, `email`, `password`, `username`) VALUES (NULL, :email, :password,:username)";
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':email', $email);
     $stmt->bindParam(':password', $password);
     $stmt->bindParam(':username', $username);
     $stmt->execute();
+}
+
+function addNewUser($pdo,$email,$password,$username,$role){
+    $sql = "INSERT INTO `users` (`id`, `username`, `email`, `password`, `class_id`, `role`) VALUES (NULL, :username, :email, :password,NULL,:role)";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':username', $username);
+    $stmt->bindParam(':email', $email);
+    $stmt->bindParam(':password', $password);
+    $stmt->bindParam(':role', $role);
+    $stmt->execute();
+
 }
 
