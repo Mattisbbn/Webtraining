@@ -60,22 +60,8 @@ p {
   margin: 0;
 }
 
-#login_section {
-  height: 90vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-
-#login_choice div {
-  width: 100%;
-  display: flex;
-}
 
 #login_choice button {
-  width: 100%;
-  height: 100%;
   background-color: #ffffffc1;
   transition: background-color 0.5s;
   margin: 2px;
@@ -122,9 +108,7 @@ p {
 
 #login_form_header {
   background-color: var(--secondary-color);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+
   padding: 0 35px;
 }
 
@@ -311,8 +295,6 @@ td {
   overflow-y: auto; 
   max-width: 100%;
 }
-
-
 
 .tables{
   margin: auto;

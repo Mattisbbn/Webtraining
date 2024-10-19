@@ -22,15 +22,12 @@ function deleteDbRow($pdo,$table,$rowId){
     $stmt->execute();
 }
 
-function addDbRowClasse($pdo, $class) {
-    $sql = "INSERT INTO `classes` (`id`, `name`) VALUES (NULL, :class,);";
+function addNewClass($pdo, $class) {
+    $sql = "INSERT INTO `classes` (`id`, `name`) VALUES (NULL, :class)";
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':class', $class);
     $stmt->execute();
 }
-
-
-
 
 function addNewUser($pdo,$email,$password,$username,$role){
     $sql = "INSERT INTO `users` (`id`, `username`, `email`, `password`, `class_id`, `role`) VALUES (NULL, :username, :email, :password,NULL,:role)";
@@ -40,6 +37,13 @@ function addNewUser($pdo,$email,$password,$username,$role){
     $stmt->bindParam(':password', $password);
     $stmt->bindParam(':role', $role);
     $stmt->execute();
-
 }
 
+function fetchUser($pdo,$userType){
+    $sql = "SELECT * FROM users WHERE role = :userType";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':userType', $userType);
+    $stmt->execute();
+    $results = $stmt->fetchAll();
+    return $results;
+}
