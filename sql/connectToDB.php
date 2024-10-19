@@ -30,14 +30,7 @@ function addDbRowClasse($pdo, $class) {
 }
 
 
-function addNewUserOld($pdo,$table,$email,$password,$username){
-$sql = "INSERT INTO $table (`id`, `email`, `password`, `username`) VALUES (NULL, :email, :password,:username)";
-    $stmt = $pdo->prepare($sql);
-    $stmt->bindParam(':email', $email);
-    $stmt->bindParam(':password', $password);
-    $stmt->bindParam(':username', $username);
-    $stmt->execute();
-}
+
 
 function addNewUser($pdo,$email,$password,$username,$role){
     $sql = "INSERT INTO `users` (`id`, `username`, `email`, `password`, `class_id`, `role`) VALUES (NULL, :username, :email, :password,NULL,:role)";

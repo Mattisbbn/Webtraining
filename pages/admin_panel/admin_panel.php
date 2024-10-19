@@ -10,24 +10,11 @@ if(isset($_POST['userName']) && isset($_POST['userEmail']) && isset($_POST['user
     exit();
 }
 
-
-function deleteRowFromPost($pdo,$rowToAffect,$postID){
-    deleteDbRow($pdo, $rowToAffect, $postID);
-    header("Refresh:0");
-    exit();
+if(isset($_POST["idToDelete"])){
+    $rowId = $_POST["idToDelete"];
+    deleteDbRow($pdo,"users",$rowId);
 }
 
-if (isset($_POST["deleteStudent"])) {
-    deleteRowFromPost($pdo,"student_accounts",$_POST["studentID"]);
-}
-
-if (isset($_POST["deleteTeacher"])) {
-    deleteRowFromPost($pdo,"teacher_accounts",$_POST["teacherID"]);
-}
-
-if (isset($_POST["deleteAdmin"])) {
-    deleteRowFromPost($pdo,"admin_accounts",$_POST["adminID"]);
-}
 ?>
 
 <section id="panel_section">

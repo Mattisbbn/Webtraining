@@ -73,8 +73,8 @@
                         <td>
                             <div class='d-flex justify-content-center'>
                                 <form class='m-0' method='post'>
-                                    <input type='hidden' name='studentID' value='<?php echo $student[0] ?>'>
-                                    <button class='p-0' name='deleteStudent' type='submit'>
+                                    <input type='hidden' name='idToDelete' value='<?php echo $account[0] ?>'>
+                                    <button class='p-0' type='submit'>
                                         <i class='uil uil-trash-alt'></i>
                                     </button>
                                 </form>
