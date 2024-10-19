@@ -4,18 +4,8 @@ require_once("sql/fetchAccounts.php");
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-if(isset($_POST['userName']) && isset($_POST['userEmail']) && isset($_POST['userPassword']) && isset($_POST['userRole'])) {
-    $hashedPassword = password_hash($_POST['userPassword'], PASSWORD_DEFAULT);
-    addNewUser($pdo,$_POST['userEmail'],$hashedPassword,$_POST['userName'],$_POST['userRole']);
-    header("Refresh:0");
-    exit();
-}
 
-if(isset($_POST["UserIdToDelete"])){
-    $rowId = $_POST["UserIdToDelete"];
-    deleteDbRow($pdo,"users",$rowId);
-}
-
+require_once("pages/admin_panel/partials/checkPost.php")
 ?>
 
 <section id="panel_section">
@@ -25,6 +15,8 @@ if(isset($_POST["UserIdToDelete"])){
         <?php 
             require_once("pages/admin_panel/partials/class_panel.php"); 
             require_once("pages/admin_panel/partials/accounts_panel.php");
+            require_once("pages/admin_panel/partials/accounts_panel.php");
+            require_once("pages/admin_panel/partials/subject_panel.php");
         ?>
         </div>
        
