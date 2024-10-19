@@ -2,10 +2,6 @@
 require_once("sql/connectToDB.php");
 require_once('class/user.php');
 
-
-
-
-
 function logUser($pdo,$user_type,$email,$password){
    
     if($user_type == "student"){
@@ -17,8 +13,8 @@ function logUser($pdo,$user_type,$email,$password){
     }
 
     foreach ($results as $row) {
-
-        if ($row[2] === $email && $row[3] === $password) {
+        
+        if ($row[2] === $email && password_verify($password, $row[3])) {
             $currentUser = new user();
             $currentUser->setId($row[0]);
             $currentUser->setEmail($row[2]);

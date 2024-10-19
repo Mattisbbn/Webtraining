@@ -4,8 +4,9 @@ require_once("sql/fetchAccounts.php");
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-if(isset($_POST['userName']) && isset($_POST['userEmail']) && isset($_POST['userPassword'])){
-    addNewUser($pdo,$_POST['userEmail'],$_POST['userPassword'],$_POST['userName'],$_POST['userRole']);
+if(isset($_POST['userName']) && isset($_POST['userEmail']) && isset($_POST['userPassword']) && isset($_POST['userRole'])) {
+    $hashedPassword = password_hash($_POST['userPassword'], PASSWORD_DEFAULT);
+    addNewUser($pdo,$_POST['userEmail'],$hashedPassword,$_POST['userName'],$_POST['userRole']);
     header("Refresh:0");
     exit();
 }
