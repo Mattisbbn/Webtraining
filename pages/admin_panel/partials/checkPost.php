@@ -34,3 +34,11 @@ if(isset($_POST["UserIdToDelete"])){
     $rowId = $_POST["UserIdToDelete"];
     deleteDbRow($pdo,"users",$rowId);
 }
+
+if (isset($_POST["editClass"])) {
+    $class_id = $_POST["editClass"];
+    $user_id = $_POST["user_id"]; // Obtenir l'ID de l'utilisateur depuis le formulaire
+    if ($class_id) {
+        changeClass($pdo, $user_id, $class_id);
+    }
+}

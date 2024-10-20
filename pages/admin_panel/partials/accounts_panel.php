@@ -26,44 +26,69 @@
 
         </form>
     </div>
-<div class="tables_container">
-    <table class="tables mt-2 ">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nom</th>
-                <th>Email</th>
-                <th>Classe</th>
-                <th>Rôle</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-            $accounts = fetchAllDb($pdo, "users");
-            foreach ($accounts as $account):
-            ?>
+    <div class="tables_container">
+        <table class="tables mt-2 ">
+            <thead>
                 <tr>
-                    <td><?php echo $account[0] ?></td>
-                    <td><?php echo $account[1] ?></td>
-                    <td><?php echo $account[2] ?></td>
-                    <td>Classe</td>
-                    <td><?php echo $account[5] ?></td>
-
-                    <td>
-                        <div class='d-flex justify-content-center'>
-                            <form class='m-0' method='post'>
-                                <input type='hidden' name='UserIdToDelete' value='<?php echo $account[0] ?>'>
-                                <button class='p-0' type='submit'>
-                                    <i class='uil uil-trash-alt'></i>
-                                </button>
-                            </form>
-                            <i class='uil uil-file-edit-alt'></i>
-                        </div>
-                    </td>
+                    <th>ID</th>
+                    <th>Nom</th>
+                    <th>Email</th>
+                    <th>Classe</th>
+                    <th>Rôle</th>
+                    <th>Action</th>
                 </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                <?php
+                $users = fetchUsers($pdo);
+                foreach ($users as $user):
+                ?>
+                    <tr>
+                        <td><?php echo $user["id"] ?></td>
+                        <td><?php echo $user["username"] ?></td>
+                        <td><?php echo $user["email"] ?></td>
+                        <td>
+                            <form method="post" id="editClass_<?php echo $user['id']; ?>">
+                                <select class="panel_buttons rounded-3 border-0 m-1 p-2" name="editClass" onchange="this.form.submit();">
+                               
+                                    <?php
+                                    $classes = fetchAllDb($pdo, "classes");
+                                    if ($user["class_name"] == null) {
+                                        echo "<option selected value=''>Sélectionner une classe</option>";
+                                    } else {
+                                        // Si une classe est sélectionnée, ne pas l'afficher ici
+                                        echo "<option value='null'>Sélectionner une classe</option>";
+                                        echo "<option value='{$user["class_id"]}' selected>{$user["class_name"]}</option>"; // Option pour la classe actuelle
+                                    }
+                        
+                                    // Afficher les autres classes disponibles
+                                    foreach ($classes as $class) {
+                                        // Vérifier si ce n'est pas la classe actuelle
+                                        if ($class["name"] != $user["class_name"]) {
+                                            echo "<option value='{$class["id"]}'>{$class["name"]}</option>";
+                                        }
+                                    }
+                                    ?>
+                                </select>
+                                <input type="hidden" name="user_id" value="<?php echo $user['id'];?>">
+                            </form>
+                        </td>
+                        <td><?php echo $user["role"] ?></td>
+
+                        <td>
+                            <div class='d-flex justify-content-center'>
+                                <form class='m-0' method='post'>
+                                    <input type='hidden' name='UserIdToDelete' value='<?php echo $user["id"] ?>'>
+                                    <button class='p-0' type='submit'>
+                                        <i class='uil uil-trash-alt'></i>
+                                    </button>
+                                </form>
+                                <i class='uil uil-file-edit-alt'></i>
+                            </div>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
     </div>
 </section>

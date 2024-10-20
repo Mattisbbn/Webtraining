@@ -1,18 +1,4 @@
-<?php
-if (isset($_POST["subjectIdToDelete"])) {
-    deleteDbRow($pdo, "subject", $_POST["subjectIdToDelete"]);
-    header("Refresh:0");
-    exit();
-}
-
-if (isset($_POST["subjectName"])) {
-    addNewSubject($pdo, $_POST["subjectName"]);
-    header("Refresh:0");
-    exit();
-}
-?>
-
-<section class="d-flex flex-column">
+<section class="d-flex flex-column mt-2">
     <h3 class="text-center text-white">Matières</h3>
 
     <div class="d-flex flex-column   m-auto justify-content-center">
