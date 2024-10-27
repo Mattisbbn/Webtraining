@@ -5,7 +5,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-require_once("pages/admin_panel/partials/checkPost.php")
+require_once("view/admin_panel/partials/checkPost.php")
 ?>
 
 <section id="panel_section">
@@ -15,14 +15,14 @@ require_once("pages/admin_panel/partials/checkPost.php")
        
  
         <?php 
-        require_once("pages/admin_panel/partials/class_panel.php");
-        require_once("pages/admin_panel/partials/subject_panel.php");
-        require_once("pages/admin_panel/partials/accounts_panel.php");    
+        require_once("view/admin_panel/partials/class_panel.php");
+        require_once("view/admin_panel/partials/subject_panel.php");
+        require_once("view/admin_panel/partials/accounts_panel.php");    
         ?>
         </div>
        
     </div>
     <div class="col-1 container-fluid"></div>
 </section>
-<script src="pages/admin_panel/admin_panel.js"></script>
+<script src="view/admin_panel/admin_panel.js"></script>
 

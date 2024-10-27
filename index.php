@@ -1,10 +1,10 @@
 <?php
 include_once("sql/fetchAccounts.php");
 session_start();
-require_once("partials/head.php");
+require_once("view/partials/head.php");
 
 if(!isset($_GET['login_page'])){
-    require_once("partials/header.php");
+    require_once("view/partials/header.php");
 }
 ?>
 
