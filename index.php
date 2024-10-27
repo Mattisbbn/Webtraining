@@ -14,15 +14,15 @@ if(!isset($_GET['login_page'])){
         if (!empty($_GET)) {
             foreach ($_GET as $key => $value) {
                 if ($key == "login_page") {
-                    require_once("pages/{$key}/{$key}.php");
-                } elseif (file_exists("pages/{$key}/{$key}.php")) {
-                    require_once("pages/{$key}/{$key}.php");
+                    require_once("view/{$key}/{$key}.php");
+                } elseif (file_exists("view/{$key}/{$key}.php")) {
+                    require_once("view/{$key}/{$key}.php");
                 } else {
-                    require_once("pages/home/home.php");
+                    require_once("view/home/home.php");
                 }
             }
         } else {
-            require_once("pages/home/home.php");
+            require_once("view/home/home.php");
         }
         ?>
     </main>

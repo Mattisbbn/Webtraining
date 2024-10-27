@@ -2,17 +2,26 @@
 require_once("sql/connectToDB.php");
 require_once('class/user.php');
 
-function logUser($pdo,$user_type,$email,$password){
-   
-    if($user_type == "student"){
-        $results = fetchUser($pdo,"student");
-    }elseif($user_type == "teacher"){
-        $results = fetchUser($pdo,"teacher");
-    }elseif($user_type == "admin"){
-        $results = fetchUser($pdo,"admin");
-    }
 
-    foreach ($results as $row) {
+
+
+if(isset($_POST["user_type"]) && isset($_POST["email"]) && isset($_POST["password"])) {
+    $user_type = $_POST["user_type"];
+    $email = $_POST["email"];
+    $password = $_POST["password"];
+    
+    logUser($pdo,$user_type,$email,$password);
+}
+
+if(isset($_POST["log-out"])){
+    logout();
+}
+
+
+
+function logUser($pdo,$user_type,$email,$password){
+
+    foreach (getUserType($user_type,$pdo) as $row) {
         
         if ($row[2] === $email && password_verify($password, $row[3])) {
             $currentUser = new user();
@@ -28,10 +37,25 @@ function logUser($pdo,$user_type,$email,$password){
     }
 }
 
-if (isset($_POST["user_type"]) && isset($_POST["email"]) && isset($_POST["password"])) {
-$user_type = $_POST["user_type"];
-$email = $_POST["email"];
-$password = $_POST["password"];
 
-logUser($pdo,$user_type,$email,$password);
+
+
+
+function logout() {
+    session_start();
+    session_unset();
+    session_destroy(); 
+    header("Location: ?login_page");
+    exit;
+}
+
+function getUserType($user_type,$pdo){
+    if($user_type == "student"){
+        $results = fetchUserType($pdo,"student");
+    }elseif($user_type == "teacher"){
+        $results = fetchUserType($pdo,"teacher");
+    }elseif($user_type == "admin"){
+        $results = fetchUserType($pdo,"admin");
+    }
+    return $results;
 }
