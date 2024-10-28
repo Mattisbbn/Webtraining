@@ -3,8 +3,6 @@ require_once("sql/connectToDB.php");
 require_once('class/user.php');
 
 
-
-
 if(isset($_POST["user_type"]) && isset($_POST["email"]) && isset($_POST["password"])) {
     $user_type = $_POST["user_type"];
     $email = $_POST["email"];

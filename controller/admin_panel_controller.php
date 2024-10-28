@@ -1,4 +1,7 @@
 <?php
+require_once("model/admin_actions.php");
+
+
 if (isset($_POST["classIdToDelete"])) {
     deleteDbRow($pdo, "classes", $_POST["classIdToDelete"]);
     header("Refresh:0");
@@ -37,7 +40,7 @@ if(isset($_POST["UserIdToDelete"])){
 
 if (isset($_POST["editClass"])) {
     $class_id = $_POST["editClass"];
-    $user_id = $_POST["user_id"]; // Obtenir l'ID de l'utilisateur depuis le formulaire
+    $user_id = $_POST["user_id"];
     if ($class_id) {
         changeClass($pdo, $user_id, $class_id);
     }

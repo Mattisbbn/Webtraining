@@ -5,7 +5,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-require_once("view/admin_panel/partials/checkPost.php")
+require_once("controller/admin_panel_controller.php");
 ?>
 
 <section id="panel_section">
