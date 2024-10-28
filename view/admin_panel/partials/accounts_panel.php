@@ -56,7 +56,6 @@
                                     if ($user["class_name"] == null) {
                                         echo "<option selected value=''>Sélectionner une classe</option>";
                                     } else {
-                                        // Si une classe est sélectionnée, ne pas l'afficher ici
                                         echo "<option value='null'>Sélectionner une classe</option>";
                                         echo "<option value='{$user["class_id"]}' selected>{$user["class_name"]}</option>"; // Option pour la classe actuelle
                                     }

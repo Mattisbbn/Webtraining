@@ -29,7 +29,6 @@ function deleteDbRow($pdo,$table,$rowId){
     $stmt->execute();
 }
 
-
 function fetchUsers($pdo) {
     $sql = "SELECT users.id, users.username, users.email, classes.name AS class_name, users.role FROM users
             LEFT JOIN classes ON users.class_id = classes.id"; 
@@ -39,6 +38,14 @@ function fetchUsers($pdo) {
     return $results;
 }
 
+function fetchLessons($pdo){
+    $sql = "SELECT schedule.id, subject.name
+    FROM schedule LEFT JOIN subject on subject.id  = schedule.subject_id";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
+    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+return $results;
+}
 function changeClass($pdo,$user_id,$class_id){
     if ($class_id == "null") {
         $sql = "UPDATE `users` SET `class_id` = NULL WHERE `id` = :userId"; 

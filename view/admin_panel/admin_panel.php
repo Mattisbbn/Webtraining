@@ -17,7 +17,8 @@ require_once("controller/admin_panel_controller.php");
         <?php 
         require_once("view/admin_panel/partials/class_panel.php");
         require_once("view/admin_panel/partials/subject_panel.php");
-        require_once("view/admin_panel/partials/accounts_panel.php");    
+        require_once("view/admin_panel/partials/accounts_panel.php");  
+        require_once("view/admin_panel/partials/lessons_panel.php");  
         ?>
         </div>
        

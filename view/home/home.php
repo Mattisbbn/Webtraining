@@ -2,23 +2,28 @@
 
 <h1 class="text-center">Calendrier</h1>
 
-<table class="m-auto">
-    <thead class="text-center">
-        <tr>
-            <th><h4>Lundi</h4></th>
-            <th><h4>Mardi</h4></th>
-            <th><h4>Mercredi</h4></th>
-            <th><h4>Jeudi</h4></th>
-            <th><h4>Vendredi</h4></th>
-        </tr>
-    </thead>
-    <tbody>
-        
-    </tbody>
 
 
+<table>
+<thead>
+    <th class='third-color'>Heure</th>
+    <th></th>
+</thead>
+<thead>
+    <?php 
+   for ($i = 8; $i <= 17; $i++) {
+    echo("<tr><td class='third-color'><h4>" . sprintf("%02d:00", $i)."</h4></td>
+    <td>ff <td>
+    </tr>");
+    if($i < 24){
+        echo("<tr><td class='third-color'><h4>" . sprintf("%02d:30", $i)."</h4></td>");
+    }
+ 
+}
+    ?>
+  
+</thead>
 </table>
-
 
 </section>
 <div class="d-flex" id="home_hour"><p class=" d-flex hour"></p></div>

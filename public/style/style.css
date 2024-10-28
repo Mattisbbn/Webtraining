@@ -180,7 +180,7 @@ a {
 }
 
 .tables th,
-td {
+.tables td {
   padding: 10px;
 }
 
@@ -267,4 +267,20 @@ table tr:last-child td:last-child {
 
 #home_hour{
   background-color: var(--secondary-color);
+}
+
+
+
+
+
+.primary-color{
+  background-color: var(--primary-color);
+}
+
+.secondary-color{
+  background-color: var(--secondary-color);
+}
+
+.third-color{
+  background-color: var(--third-color);
 }
