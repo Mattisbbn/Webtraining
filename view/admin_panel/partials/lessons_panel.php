@@ -9,7 +9,34 @@
 
 
         <form class=" d-none pannelDiv flex-column  " method="post">
-            <input name="lesson_name" placeholder="Nom de la classe" class="panel_buttons m-1 p-2 rounded-3" type="text" required>
+        <select class="panel_buttons rounded-3 border-0 m-1 p-2" name="subjectOfLesson"> 
+            <?php
+                $subjects = fetchAllDb($pdo,"subject");
+                foreach($subjects as $subject){
+                    echo "<option value='{$subject['id']}'>{$subject["name"]}</option>";
+                }
+            ?>
+        </select>
+
+        <select class="panel_buttons rounded-3 border-0 m-1 p-2" name="subjectOfLesson"> 
+            <?php
+                $classes = fetchAllDb($pdo,"classes");
+                foreach($classes as $class){
+                    echo "<option value='{$class['id']}'>{$class["name"]}</option>";
+                }
+            ?>
+        </select>
+
+        <select class="panel_buttons rounded-3 border-0 m-1 p-2" name="subjectOfLesson"> 
+            <?php
+                $teachers = fetchUserType($pdo,"teacher");
+                foreach($teachers as $teacher){
+                    echo "<option value='{$teacher['id']}'>{$teacher["username"]}</option>";
+                }
+            ?>
+        </select>
+
+            <input name="lesson_subject" placeholder="Matière" class="panel_buttons m-1 p-2 rounded-3" type="text" required>
             <div class="d-flex">
                 <button class=" w-50 panel_buttons closePannelButton m-1 p-2 rounded-3"><i id="closeClass" class="uil uil-times color-white"></i></button>
                 <button class=" w-50 panel_buttons m-1 p-2 rounded-3" type="submit"><i class="uil uil-check"></i></button>
@@ -38,10 +65,10 @@
                 <tr>
                     <td><?php echo $shedule["id"] ?></td>
                     <td><?php echo $shedule["name"] ?></td>
-                    <td><?php echo $shedule["id"] ?></td>
-                    <td><?php echo $shedule["id"] ?></td>
-                    <td><?php echo $shedule["id"] ?></td>
-                    <td><?php echo $shedule["id"] ?></td>
+                    <td><?php echo $shedule["class_name"] ?></td>
+                    <td><?php echo $shedule["teacher_name"] ?></td>
+                    <td><?php echo $shedule["start_datetime"] ?></td>
+                    <td><?php echo $shedule["end_datetime"] ?></td>
            
 
                     <td>
