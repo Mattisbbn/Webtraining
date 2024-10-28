@@ -1,5 +1,6 @@
 <?php
-$pdo = connectToDb('localhost', 'webtraining', 'mattis', '49610');
+require_once("config.php");
+$pdo = connectToDb('localhost', 'webtraining', DB_USER, DB_PASS);
 
 function connectToDb($host, $db, $user, $pass){
     $pdo = new PDO('mysql:host=' . $host . '; port=3306; dbname=' . $db, $user, $pass);
