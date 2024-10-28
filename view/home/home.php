@@ -1,25 +1,25 @@
-<?php 
-require_once("sql/fetchAccounts.php");
-if(isset($_SESSION["currentUser"])){
-    $currentUser = $_SESSION["currentUser"];
-}else{
-    echo("Not logged in");
-}
-?>
+<section d-flex>
 
-<section id="home_section">
-<div id="first_home_row">
-<div id="home_schedule">
-    <div class="schedule_container"></div>
-    <div class="schedule_container"></div>
-    <div class="schedule_container"></div>
-    <div class="schedule_container"></div>
-</div>
+<h1 class="text-center">Calendrier</h1>
 
-<div id="home_hour"><p class="hour"></p></div>
+<table class="m-auto">
+    <thead class="text-center">
+        <tr>
+            <th><h4>Lundi</h4></th>
+            <th><h4>Mardi</h4></th>
+            <th><h4>Mercredi</h4></th>
+            <th><h4>Jeudi</h4></th>
+            <th><h4>Vendredi</h4></th>
+        </tr>
+    </thead>
+    <tbody>
+        
+    </tbody>
 
-</div>
+
+</table>
+
 
 </section>
-
-<script src="pages/home/home.js"></script>
+<div class="d-flex" id="home_hour"><p class=" d-flex hour"></p></div>
+<script src="view/home/home.js"></script>

@@ -143,50 +143,10 @@ header {
   padding: 10px;
 }
 
-/* home */
-
-#home_schedule {
-  width: calc(95% - 100px);
-  display: flex;
-  justify-content: space-around;
-}
-
-#home_hour,
-#home_schedule {
-  height: 100px;
-  margin: 10px auto;
-  border-radius: 15px;
-  background-color: var(--primary-color);
-  align-items: center;
-}
-
-.schedule_container {
-  background-color: var(--secondary-color);
-  height: 80px;
-  width: 80px;
-  border-radius: 15px;
-}
-
-#first_home_row {
-  display: flex;
-  width: 100vw;
-}
-
-#home_hour {
-  width: 100px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .hour {
   color: white;
   font-weight: 600;
   font-size: 1.2rem;
-}
-#home_section {
-  max-width: 100vw;
 }
 
 #sign_canvas {
@@ -246,11 +206,11 @@ td {
   cursor: pointer;
 }
 
-th {
+.tables th {
   background-color: var(--third-color);
 }
 
-td:first-child {
+.tables td:first-child {
   background-color: var(--third-color);
 }
 
@@ -267,13 +227,13 @@ table tr:last-child td:last-child {
   border-bottom-right-radius: 8px;
 }
 
-table {
+.tables table {
   border-spacing: 2px;
   max-width: 100%;
   overflow-x: auto !important;
   table-layout: auto;
 }
-td {
+.tables td {
   background-color: var(--secondary-color);
 }
 
@@ -305,3 +265,6 @@ td {
 
 
 
+#home_hour{
+  background-color: var(--secondary-color);
+}
