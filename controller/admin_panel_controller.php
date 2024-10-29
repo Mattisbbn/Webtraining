@@ -45,3 +45,12 @@ if (isset($_POST["editClass"])) {
         changeClass($pdo, $user_id, $class_id);
     }
 }
+
+if(isset($_POST["subjectOfLesson"]) && isset($_POST["classOfLesson"]) && isset($_POST["teacherOfLesson"]) && isset($_POST["lessonStartDate"]) && isset($_POST["lessonDuration"])){
+    $subjectOfLesson = $_POST["subjectOfLesson"];
+    $classOfLesson = $_POST["classOfLesson"];
+    $teacherOfLesson = $_POST["teacherOfLesson"];
+    $lessonStartDate = $_POST["lessonStartDate"];
+    $lessonDuration = $_POST["lessonDuration"];
+    addNewlesson($pdo,$subjectOfLesson,$classOfLesson,$teacherOfLesson,$lessonStartDate,$lessonDuration);
+}

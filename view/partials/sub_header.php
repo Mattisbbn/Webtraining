@@ -8,10 +8,10 @@
 
 <?php 
 
-if($_SESSION["currentUser"]->getUserType() === "admin"){
-    echo("admin");
-}elseif($_SESSION["currentUser"]->getUserType() === "teacher"){
-    echo("teacher");
-}elseif($_SESSION["currentUser"]->getUserType() === "student"){
-    echo("student");
-}
+// if($_SESSION["currentUser"]->getUserType() === "admin"){
+//     echo("admin");
+// }elseif($_SESSION["currentUser"]->getUserType() === "teacher"){
+//     echo("teacher");
+// }elseif($_SESSION["currentUser"]->getUserType() === "student"){
+//     echo("student");
+// }

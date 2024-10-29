@@ -63,3 +63,17 @@ function changeClass($pdo,$user_id,$class_id){
     }
     $stmt->execute();
 }
+
+function addNewlesson($pdo,$subjectOfLesson,$classOfLesson,$teacherOfLesson,$lessonStartDate,$lessonDuration){
+
+    $sql = "INSERT INTO schedule (`subject_id`, `class_id`, `teacher_id`, `start_datetime`, `end_datetime`)
+    VALUES (:subjectOfLesson, :classOfLesson, :teacherOfLesson, :lessonStartDate, DATE_ADD(:lessonStartDate, INTERVAL :lessonDuration HOUR))";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':subjectOfLesson', $subjectOfLesson);
+    $stmt->bindParam(':classOfLesson', $classOfLesson);
+    $stmt->bindParam(':teacherOfLesson', $teacherOfLesson);
+    $stmt->bindParam(':lessonStartDate', $lessonStartDate);
+    $stmt->bindParam(':lessonDuration', $lessonDuration);
+    $stmt->execute();
+
+}

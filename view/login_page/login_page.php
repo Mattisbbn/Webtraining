@@ -57,4 +57,4 @@
   </div>
 </section>
 
-<script src="pages/login_page/login_page.js"></script>
+<script src="view/login_page/login_page.js"></script>

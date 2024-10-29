@@ -8,7 +8,7 @@
         </div>
 
 
-        <form class=" d-none pannelDiv flex-column  " method="post">
+        <form class=" d-none pannelDiv flex-column" method="post">
         <select class="panel_buttons rounded-3 border-0 m-1 p-2" name="subjectOfLesson"> 
             <?php
                 $subjects = fetchAllDb($pdo,"subject");
@@ -18,7 +18,7 @@
             ?>
         </select>
 
-        <select class="panel_buttons rounded-3 border-0 m-1 p-2" name="subjectOfLesson"> 
+        <select class="panel_buttons rounded-3 border-0 m-1 p-2" name="classOfLesson"> 
             <?php
                 $classes = fetchAllDb($pdo,"classes");
                 foreach($classes as $class){
@@ -27,7 +27,7 @@
             ?>
         </select>
 
-        <select class="panel_buttons rounded-3 border-0 m-1 p-2" name="subjectOfLesson"> 
+        <select class="panel_buttons rounded-3 border-0 m-1 p-2" name="teacherOfLesson"> 
             <?php
                 $teachers = fetchUserType($pdo,"teacher");
                 foreach($teachers as $teacher){
@@ -35,8 +35,10 @@
                 }
             ?>
         </select>
+        <input class="panel_buttons rounded-3 border-0 m-1 p-2" type="datetime-local" name="lessonStartDate">
+        <input class="panel_buttons rounded-3 border-0 m-1 p-2" placeholder="Durée" type="time" value="00:30" name="lessonDuration">
 
-            <input name="lesson_subject" placeholder="Matière" class="panel_buttons m-1 p-2 rounded-3" type="text" required>
+            
             <div class="d-flex">
                 <button class=" w-50 panel_buttons closePannelButton m-1 p-2 rounded-3"><i id="closeClass" class="uil uil-times color-white"></i></button>
                 <button class=" w-50 panel_buttons m-1 p-2 rounded-3" type="submit"><i class="uil uil-check"></i></button>
@@ -88,3 +90,4 @@
     </table>
 
 </section>
+

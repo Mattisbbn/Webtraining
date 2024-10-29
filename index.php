@@ -15,6 +15,6 @@ if(!isset($_GET['login_page'])){
         ?>
     </main>
 </body>
-<script src="public/script/script.js"></script>
+
 
 </html>
