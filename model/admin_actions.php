@@ -1,5 +1,4 @@
 <?php
-
 function addNewClass($pdo, $class) {
     $sql = "INSERT INTO `classes` (`id`, `name`) VALUES (NULL, :class)";
     $stmt = $pdo->prepare($sql);
@@ -28,7 +27,6 @@ function deleteDbRow($pdo,$table,$rowId){
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
 }
-
 function fetchUsers($pdo) {
     $sql = "SELECT users.id, users.username, users.email, classes.name AS class_name, users.role FROM users
             LEFT JOIN classes ON users.class_id = classes.id"; 
@@ -37,7 +35,6 @@ function fetchUsers($pdo) {
     $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
     return $results;
 }
-
 function fetchLessons($pdo){
     $sql = "SELECT schedule.id, subject.name, classes.name as class_name, users.username as teacher_name, schedule.start_datetime, schedule.end_datetime
     FROM schedule

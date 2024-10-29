@@ -1,0 +1,27 @@
+<label for="timeSelect">Choisissez une heure :</label>
+<select id="timeSelect">
+    <!-- Les options seront ajoutées par JavaScript -->
+</select>
+
+<script>
+    // Fonction pour générer les options du sélecteur à intervalles de 30 minutes
+    function populateTimeSelect() {
+        const select = document.getElementById('timeSelect');
+        const startTime = 60; // 00:00
+        const endTime = 8.5 * 60; // 24 heures en minutes
+        
+        for (let minutes = startTime; minutes < endTime; minutes += 30) {
+            const hours = Math.floor(minutes / 60);
+            const mins = minutes % 60;
+            const timeString = String(hours).padStart(2, '0') + ':' + String(mins).padStart(2, '0');
+            
+            const option = document.createElement('option');
+            option.value = timeString;
+            option.textContent = timeString;
+            select.appendChild(option);
+        }
+    }
+
+    // Appeler la fonction pour remplir le sélecteur
+    populateTimeSelect();
+</script>

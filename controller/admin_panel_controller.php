@@ -53,4 +53,6 @@ if(isset($_POST["subjectOfLesson"]) && isset($_POST["classOfLesson"]) && isset($
     $lessonStartDate = $_POST["lessonStartDate"];
     $lessonDuration = $_POST["lessonDuration"];
     addNewlesson($pdo,$subjectOfLesson,$classOfLesson,$teacherOfLesson,$lessonStartDate,$lessonDuration);
+    header("Refresh:0");
+    exit();
 }

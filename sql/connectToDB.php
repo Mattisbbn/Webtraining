@@ -7,8 +7,6 @@ function connectToDb($host, $db, $user, $pass){
     return $pdo;
 }
 
-
-
 function fetchAllDb($pdo, $table){ 
     $sql = "SELECT * FROM {$table}";
     $stmt = $pdo->prepare($sql);

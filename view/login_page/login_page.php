@@ -1,9 +1,9 @@
 <section id="login_section" class="d-flex justify-content-center align-items-center vh-100 flex-column">
-  <div class="col-lg-4 col-md-8 col-10 rounded-top-4 d-flex align-center justify-content-center" id="login_form_header">
-    <h1 id="login_title">Webtraining</h1>
+  <div class="col-lg-4 col-md-8 col-10 rounded-top-4 d-flex align-center justify-content-center primary-color" id="login_form_header">
+    <h1 class="text-white" id="login_title">Webtraining</h1>
   </div>
   <div
-    class="col-lg-4 col-md-8 col-10 rounded-bottom-4"
+    class="col-lg-4 col-md-8 col-10 rounded-bottom-4 d-flex primary-color flex-column text-white"
     id="login_form_container"
   >
     <div id="login_choice">
@@ -23,7 +23,7 @@
       </div>
     </div>
     <form method="post" action="">
-      <div id="login_container">
+      <div class="d-flex flex-column" id="login_container">
         <label for="email_input">
           <p>Email</p>
         </label>
