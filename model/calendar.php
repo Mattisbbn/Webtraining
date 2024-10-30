@@ -1,4 +1,6 @@
 <?php
+
+require_once("sql/connectToDB.php");
 function fetchCalendar($pdo) {
     $sql = "SELECT subject.name, schedule.start_datetime, schedule.end_datetime
     FROM schedule

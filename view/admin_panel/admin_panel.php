@@ -1,6 +1,6 @@
 <?php
+require_once("sql/connectToDB.php");
 
-require_once("sql/fetchAccounts.php");
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
