@@ -1,3 +1,16 @@
+<?php
+require_once("class/user.php");
+require_once("controller/log_out.php");
+if (isset($_SESSION["currentUser"])) {
+    $currentUser = unserialize($_SESSION["currentUser"]);
+} else {
+    header('Location: ?login_page');
+    exit();
+}
+
+
+?>
+
 <div class="ps-2 pe-2  d-flex justify-content-between" id="sub_header">
     <a href="?admin_panel"><p>Pannel admin</p></a>
     <div class="d-flex">
@@ -7,11 +20,3 @@
 </div>
 
 <?php 
-
-// if($_SESSION["currentUser"]->getUserType() === "admin"){
-//     echo("admin");
-// }elseif($_SESSION["currentUser"]->getUserType() === "teacher"){
-//     echo("teacher");
-// }elseif($_SESSION["currentUser"]->getUserType() === "student"){
-//     echo("student");
-// }

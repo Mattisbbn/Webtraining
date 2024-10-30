@@ -1,8 +1,4 @@
 <?php
-require_once("sql/connectToDB.php");
-require_once('class/user.php');
-
-
 
 if(isset($_POST["log-out"])){
     logout();

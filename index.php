@@ -1,5 +1,4 @@
 <?php
-include_once("sql/fetchAccounts.php");
 session_start();
 require_once("view/partials/head.php");
 

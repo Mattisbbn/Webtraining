@@ -3,7 +3,6 @@ class classes{
     private int $id;
     private string $name;
     private int $studentsNumber;
-    // private string $user;
 
 
     public function setId($id){

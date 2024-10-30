@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
         initialView: 'timeGridWeek',
         slotMinTime: '07:00:00',
         slotMaxTime: '19:00:00',
-        
+        themeSystem: 'bootstrap5',
         headerToolbar: {
             left: 'prev,next today',
             center: 'title',

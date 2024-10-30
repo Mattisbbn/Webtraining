@@ -1,7 +1,6 @@
 <?php 
 
 class user{
-    private int $id;
     private string $email;
     private string $username;
     private string $userType;
@@ -14,13 +13,6 @@ class user{
         return $this->userType;
     }
    
-    public function getId(){
-        return $this->id;
-    }
-
-    public function setId($id){
-        $this->id = $id;
-    }
 
     public function getEmail(){
         return $this->email;
