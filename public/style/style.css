@@ -91,39 +91,7 @@ p {
 
 #login_form_header {
   background-color: var(--secondary-color);
-
   padding: 0 35px;
-}
-
-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: var(--primary-color);
-  position: relative;
-}
-
-#header,
-#user_info {
-  display: flex;
-  align-items: center;
-}
-
-#user_info {
-  width: auto;
-  border-radius: 10px 0 0 10px;
-  background-color: var(--secondary-color);
-  transition: width 0.6s ease-in-out;
-  display: flex;
-  position: absolute;
-  right: 0;
-  color: white;
-  justify-content: center;
-  align-items: center;
-}
-
-#username {
-  padding: 10px;
 }
 
 .hour {

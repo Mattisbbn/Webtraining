@@ -56,3 +56,8 @@ if(isset($_POST["subjectOfLesson"]) && isset($_POST["classOfLesson"]) && isset($
     header("Refresh:0");
     exit();
 }
+
+if(isset($_POST["eventToDelete"])){
+    $rowId = $_POST["eventToDelete"];
+    deleteDbRow($pdo,"schedule",$rowId);
+}

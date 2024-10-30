@@ -57,7 +57,7 @@
                                         echo "<option selected value=''>Sélectionner une classe</option>";
                                     } else {
                                         echo "<option value='null'>Sélectionner une classe</option>";
-                                        echo "<option value='{$user["class_id"]}' selected>{$user["class_name"]}</option>"; // Option pour la classe actuelle
+                                        echo "<option value='{$user["class_id"]}' selected>{$user["class_name"]}</option>";
                                     }
                         
                                     // Afficher les autres classes disponibles

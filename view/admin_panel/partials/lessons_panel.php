@@ -76,7 +76,7 @@
                     <td>
                         <div class='d-flex justify-content-center'>
                             <form class='m-0' method='post'>
-                                <input type='hidden' name='subjectIdToDelete' value='<?php echo $subject[0] ?>'>
+                                <input type='hidden' name='eventToDelete' value='<?php echo $shedule["id"] ?>'>
                                 <button class='p-0' type='submit'>
                                     <i class='uil uil-trash-alt'></i>
                                 </button>
