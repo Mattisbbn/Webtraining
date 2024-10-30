@@ -13,7 +13,7 @@ function fetchCalendar($pdo) {
     $events = [];
     foreach ($results as $row) {
         $events[] = [
-            'title' => $row['name'], // Vous pouvez personnaliser le titre ici
+            'title' =>  $row['name'],
             'start' => $row['start_datetime'],
             'end' => $row['end_datetime']
         ];

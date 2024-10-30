@@ -1,10 +1,13 @@
 <?php
+
+
 function addNewClass($pdo, $class) {
-    $sql = "INSERT INTO `classes` (`id`, `name`) VALUES (NULL, :class)";
-    $stmt = $pdo->prepare($sql);
-    $stmt->bindParam(':class', $class);
-    $stmt->execute();
+        $sql = "INSERT INTO `classes` (`id`, `name`) VALUES (NULL, :class)";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(':class', $class);
+        $stmt->execute();
 }
+
 
 function addNewSubject($pdo, $subject) {
     $sql = "INSERT INTO `subject` (`id`, `name`) VALUES (NULL, :subject)";
@@ -73,20 +76,3 @@ function addNewlesson($pdo,$subjectOfLesson,$classOfLesson,$teacherOfLesson,$les
     $stmt->execute();
 }
 
-function fetchCalendar($pdo) {
-    $sql = "SELECT id, start_datetime, end_datetime FROM schedule";
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute();
-    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    
-    $events = [];
-    foreach ($results as $row) {
-        $events[] = [
-            'title' => 'Événement ' . $row['id'], // Vous pouvez personnaliser le titre ici
-            'start' => $row['start_datetime'],
-            'end' => $row['end_datetime']
-        ];
-    }
-    
-    return json_encode($events); // Encode les événements en JSON
-}
