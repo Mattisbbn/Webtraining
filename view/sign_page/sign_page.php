@@ -16,4 +16,4 @@
 
 
 
-<script src="view/sign_page/sign_page.js"></script>
+<script src="public/script/sign_page.js"></script>

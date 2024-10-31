@@ -17,10 +17,8 @@ require_once("controller/admin_panel_controller.php");
         require_once("view/admin_panel/partials/lessons_panel.php");  
         ?>
         <div class="d-flex justify-content-center">
-        
-<div><?php require_once("view/admin_panel/partials/class_panel.php");  ?></div>
-<div><?php require_once("view/admin_panel/partials/subject_panel.php");  ?></div>
-  
+            <div><?php require_once("view/admin_panel/partials/class_panel.php");  ?></div>
+            <div><?php require_once("view/admin_panel/partials/subject_panel.php");  ?></div>
         </div>
    
         </div>
@@ -28,5 +26,5 @@ require_once("controller/admin_panel_controller.php");
     </div>
     <div class="col-1 container-fluid"></div>
 </section>
-<script src="view/admin_panel/admin_panel.js"></script>
+<script src="public/script/admin_panel.js"></script>
 

@@ -2,11 +2,10 @@
 
 <section class="d-flex justify-content-center align-items-center vh-100 flex-column">
   <div class="col-lg-6 col-xl-4 col-md-8 col-10 rounded-top-4 d-flex align-center justify-content-center secondary-color">
-    <h1 class="text-white m-3 fw-bold '" >Webtraining</h1>
+    <h1 class="text-white m-3 fw-bold">Webtraining</h1>
   </div>
   <div
-    class="col-lg-6 col-xl-4 col-md-8 col-10 rounded-bottom-4 d-flex primary-color flex-column text-white p-5"
-  >
+    class="col-lg-6 col-xl-4 col-md-8 col-10 rounded-bottom-4 d-flex primary-color flex-column text-white p-5">
     <div id="login_choice">
       <div class="w-100 d-flex">
         <button class="p-3 text-white m-2px w-100 h-100 login_buttons rounded-start-4 transparent-color" id="animator_button">
@@ -34,10 +33,9 @@
           id="email_input"
           type="email"
           placeholder="Email"
-          required
-        />
+          required />
 
-        <label  class="mb-1 ms-1" for="password_input">
+        <label class="mb-1 ms-1" for="password_input">
           <p>Mot de passe</p>
         </label>
         <input
@@ -46,8 +44,7 @@
           id="password_input"
           type="password"
           placeholder="Mot de passe"
-          required
-        />
+          required />
 
         <button class="rounded-4 p-3 fw-bold text-white primary-color" id="submit_login" type="submit">
           <h4 class="mb-0">Se connecter</h4>
@@ -58,4 +55,4 @@
   </div>
 </section>
 
-<script src="view/login/login.js"></script>
+<script src="public/script/login.js"></script>
