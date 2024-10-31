@@ -46,21 +46,23 @@
                         <td><?php echo $user["username"] ?></td>
                         <td><?php echo $user["email"] ?></td>
                         <td>
+
+                        
                             <form method="post" id="editClass_<?php echo $user['id']; ?>">
-                                <select class="panel_buttons rounded-3 border-0 m-1 p-2" name="editClass" onchange="this.form.submit();">
+                                <select <?php if($user["role"] == "admin" || $user["role"] == "teacher"){echo("disabled");}   ?> class="panel_buttons rounded-3 border-0 m-1 p-2" name="editClass" onchange="this.form.submit();">
                                
                                     <?php
                                     $classes = fetchAllDb($pdo, "classes");
                                     if ($user["class_name"] == null) {
+
+                                       
                                         echo "<option selected value=''>Sélectionner une classe</option>";
                                     } else {
                                         echo "<option value='null'>Sélectionner une classe</option>";
                                         echo "<option value='{$user["class_id"]}' selected>{$user["class_name"]}</option>";
                                     }
                         
-                                    // Afficher les autres classes disponibles
                                     foreach ($classes as $class) {
-                                        // Vérifier si ce n'est pas la classe actuelle
                                         if ($class["name"] != $user["class_name"]) {
                                             echo "<option value='{$class["id"]}'>{$class["name"]}</option>";
                                         }

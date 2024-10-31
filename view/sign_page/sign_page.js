@@ -5,13 +5,9 @@ function updateCanvasSize() {
     const width = signCanva.clientWidth;
     const height = signCanva.clientHeight;
     
-    
-    // Ajuster le canvas avec ces dimensions (si nécessaire)
     signCanva.width = width;
     signCanva.height = height;
 }
-
-// Appeler cette fonction lorsque la taille du canvas est modifiée
 
 window.onload = updateCanvasSize
 

@@ -16,4 +16,4 @@
 
 
 
-<script src="pages/sign_page/sign_page.js"></script>
+<script src="view/sign_page/sign_page.js"></script>

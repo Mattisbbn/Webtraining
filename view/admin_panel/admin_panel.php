@@ -16,18 +16,13 @@ require_once("controller/admin_panel_controller.php");
         require_once("view/admin_panel/partials/accounts_panel.php"); 
         require_once("view/admin_panel/partials/lessons_panel.php");  
         ?>
-        <div class="d-flex  justify-content-center">
+        <div class="d-flex justify-content-center">
         
 <div><?php require_once("view/admin_panel/partials/class_panel.php");  ?></div>
-<div>  <?php require_once("view/admin_panel/partials/subject_panel.php");  ?></div>
-        
-      
-      
-        
-      
+<div><?php require_once("view/admin_panel/partials/subject_panel.php");  ?></div>
+  
         </div>
-        
-       
+   
         </div>
        
     </div>
