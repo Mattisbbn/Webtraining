@@ -22,7 +22,6 @@
     <table class="tables mt-2 mb-2">
         <thead>
             <tr>
-                <th>ID</th>
                 <th>Nom</th>
                 <th>Action</th>
             </tr>
@@ -33,7 +32,6 @@
             foreach ($classes as $class):
             ?>
                 <tr>
-                    <td><?php echo $class[0] ?></td>
                     <td><?php echo $class[1] ?></td>
            
 

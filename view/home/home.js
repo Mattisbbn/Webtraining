@@ -21,9 +21,10 @@ document.addEventListener('DOMContentLoaded', function() {
         headerToolbar: {
             left: 'prev,next today',
             center: 'title',
-            right: ''
+            right: false
         },
         locale: 'fr',
+        allDaySlot: false,
         nowIndicator: true,
         views: {
             timeGrid: {

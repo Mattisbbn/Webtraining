@@ -30,7 +30,6 @@
         <table class="tables mt-2 ">
             <thead>
                 <tr>
-                    <th>ID</th>
                     <th>Nom</th>
                     <th>Email</th>
                     <th>Classe</th>
@@ -44,7 +43,6 @@
                 foreach ($users as $user):
                 ?>
                     <tr>
-                        <td><?php echo $user["id"] ?></td>
                         <td><?php echo $user["username"] ?></td>
                         <td><?php echo $user["email"] ?></td>
                         <td>

@@ -50,7 +50,6 @@
     <table class="tables mt-2 mb-2">
         <thead>
             <tr>
-                <th>ID</th>
                 <th>Matière</th>
                 <th>Classe</th>
                 <th>Professeur</th>
@@ -65,14 +64,11 @@
             foreach ($shedules as $shedule):
             ?>
                 <tr>
-                    <td><?php echo $shedule["id"] ?></td>
                     <td><?php echo $shedule["name"] ?></td>
                     <td><?php echo $shedule["class_name"] ?></td>
                     <td><?php echo $shedule["teacher_name"] ?></td>
                     <td><?php echo $shedule["start_datetime"] ?></td>
-                    <td><?php echo $shedule["end_datetime"] ?></td>
-           
-
+                    <td><?php echo $shedule["lesson_duration"] . " h"?></td>
                     <td>
                         <div class='d-flex justify-content-center'>
                             <form class='m-0' method='post'>

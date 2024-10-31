@@ -39,7 +39,8 @@ function fetchUsers($pdo) {
     return $results;
 }
 function fetchLessons($pdo){
-    $sql = "SELECT schedule.id, subject.name, classes.name as class_name, users.username as teacher_name, schedule.start_datetime, schedule.end_datetime
+    $sql = "SELECT schedule.id, subject.name, classes.name as class_name, users.username as teacher_name, schedule.start_datetime, schedule.end_datetime, TIMESTAMPDIFF(HOUR, schedule.start_datetime, schedule.end_datetime) as lesson_duration
+       
     FROM schedule
         LEFT JOIN subject on subject.id  = schedule.subject_id
         LEFT JOIN classes on classes.id  = schedule.class_id

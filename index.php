@@ -9,11 +9,8 @@ if(!isset($_GET['login_page'])){
 
 <body>
     <main>
-        <?php
-    require_once("controller/router.php");
-        ?>
+        <?php require_once("controller/router.php")?>
     </main>
 </body>
-
 
 </html>

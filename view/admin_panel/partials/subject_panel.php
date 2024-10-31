@@ -22,7 +22,6 @@
     <table class="tables mt-2 mb-2">
         <thead>
             <tr>
-                <th>ID</th>
                 <th>Nom</th>
                 <th>Action</th>
             </tr>
@@ -33,7 +32,6 @@
             foreach ($subjects as $subject):
             ?>
                 <tr>
-                    <td><?php echo $subject[0] ?></td>
                     <td><?php echo $subject[1] ?></td>
            
 

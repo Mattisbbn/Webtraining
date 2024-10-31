@@ -38,6 +38,9 @@ input::-webkit-inner-spin-button {
 .m-2px {
   margin: 2px;
 }
+.text-white {
+  color: white;
+}
 
 a {
   text-decoration: none;
@@ -137,10 +140,6 @@ a {
   background-color: var(--third-color);
 }
 
-.tables td:first-child {
-  background-color: var(--third-color);
-}
-
 table tr:first-child th:first-child {
   border-top-left-radius: 8px;
 }
@@ -168,9 +167,7 @@ table tr:last-child td:last-child {
   color: white;
 }
 
-.text-white {
-  color: white;
-}
+
 
 .tables_container {
   overflow-x: auto;
