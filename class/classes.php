@@ -3,6 +3,7 @@ class classes{
     private int $id;
     private string $name;
     private int $studentsNumber;
+    private int $classID;
 
 
     public function setId($id){
@@ -11,6 +12,14 @@ class classes{
 
     public function getId(){
     return $this->id;
+    }
+
+    public function classID($classID){
+        $this->classID = $classID;
+    }
+
+    public function setClassID($classID){
+    return $this->classID;
     }
 
     public function setname($name){

@@ -20,13 +20,15 @@ function getUserType($user_type,$pdo){
     return $results;
 }
 
+
+
 function logUser($pdo,$user_type,$email,$password){
-    foreach (getUserType($user_type,$pdo) as $row) {
-        if ($row[2] === $email && password_verify($password, $row[3])) {
+    foreach (getUserType($user_type,$pdo) as $user) {
+        if ($user[2] === $email && password_verify($password, $user["password"])) {
             $currentUser = new user();
-         
-            $currentUser->setEmail($row[2]);
-            $currentUser->setUsername($row[1]);
+            $currentUser->setuserID($user["id"]);
+            $currentUser->setEmail($user["email"]);
+            $currentUser->setUsername($user["username"]);
             $currentUser->setUserType($user_type); 
             session_start();
             $_SESSION['currentUser'] = serialize($currentUser) ;

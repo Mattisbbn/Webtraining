@@ -8,7 +8,7 @@ function logout() {
     session_start();
     session_unset();
     session_destroy(); 
-    header("Location: ?login_page");
+    header("Location: ?login");
     exit;
 }
 

@@ -4,8 +4,5 @@
        <a href="?"> <h1 class="mb-0 fw-bold">Webtraining</h1></a>
     </div>
 </header>
-
-
-<?php 
-require_once("view/partials/sub_header.php");
+<?php require_once("view/partials/sub_header.php");
 

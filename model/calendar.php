@@ -1,6 +1,7 @@
 <?php
-
 require_once("sql/connectToDB.php");
+
+
 function fetchCalendar($pdo,$classID) {
     $sql = "SELECT 
             subject.name, 
@@ -10,8 +11,6 @@ function fetchCalendar($pdo,$classID) {
             LEFT JOIN subject ON subject.id = schedule.subject_id
         WHERE schedule.class_id = :class";
 
-    
-  
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':class', $classID);
     $stmt->execute();

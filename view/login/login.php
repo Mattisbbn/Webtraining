@@ -58,4 +58,4 @@
   </div>
 </section>
 
-<script src="view/login_page/login_page.js"></script>
+<script src="view/login/login.js"></script>

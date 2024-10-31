@@ -2,7 +2,7 @@
 session_start();
 require_once("view/partials/head.php");
 
-if(!isset($_GET['login_page'])){
+if(!isset($_GET['login'])){
     require_once("view/partials/header.php");
 }
 ?>
