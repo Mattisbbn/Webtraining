@@ -56,10 +56,10 @@
                                     if ($user["class_name"] == null) {
 
                                        
-                                        echo "<option selected value=''>Sélectionner une classe</option>";
+                                        echo "<option selected value='null'>Sélectionner une classe</option>";
                                     } else {
                                         echo "<option value='null'>Sélectionner une classe</option>";
-                                        echo "<option value='{$user["class_id"]}' selected>{$user["class_name"]}</option>";
+                                        echo "<option value='' selected>{$user["class_name"]}</option>";
                                     }
                         
                                     foreach ($classes as $class) {

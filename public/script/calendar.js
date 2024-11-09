@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', function() {
         slotMinTime: '07:00:00',
         slotMaxTime: '19:00:00',
         themeSystem: 'bootstrap5',
-        columnHeader: false,
         headerToolbar: {
             left: 'prev,next today',
             center: 'title',
