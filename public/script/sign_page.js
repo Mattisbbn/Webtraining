@@ -55,3 +55,19 @@ signCanva.addEventListener("mouseleave", function() {
 function clearCanvas(){
     ctx.clearRect(0, 0, signCanva.width, signCanva.height); 
 }
+
+function saveCanvas() {
+    const imageData = signCanva.toDataURL('image/png'); // Convertir le canvas en base64
+
+    // Envoyer les données au serveur avec fetch
+    fetch('save_canvas.php', {
+        method: 'POST',
+        body: JSON.stringify({ imageData: imageData }),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => response.json())
+    .then(data => console.log(data)) // Afficher la réponse du serveur
+    .catch(error => console.error('Erreur:', error));
+}

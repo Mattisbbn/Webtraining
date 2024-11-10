@@ -7,6 +7,8 @@ input::-webkit-inner-spin-button {
 }
 
 :root {
+
+  --gray: #f5f5f5;
   --primary-color: #00bdaa;
   --secondary-color: #45cfc1;
   --third-color: #00ad9b;
@@ -35,16 +37,21 @@ input::-webkit-inner-spin-button {
   background-color: var(--transparent-color);
 }
 
+.gray{
+  background-color: var(--gray);
+}
+
 .m-2px {
   margin: 2px;
 }
 .text-white {
   color: white;
 }
-
+.text-black{
+  color: #212529;
+}
 a {
   text-decoration: none;
-  color: unset;
 }
 
 p {
@@ -184,4 +191,22 @@ table tr:last-child td:last-child {
 
 #home_hour {
   background-color: var(--secondary-color);
+}
+li{
+  list-style-type: none;
+}
+
+
+
+.navbuttons:hover{
+  background-color: var(--gray);
+}
+
+.navbuttons.active{
+  background-color: var(--gray);
+
+}
+
+.fw-500{
+  font-weight: 500;
 }
