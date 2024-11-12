@@ -7,12 +7,9 @@ require_once("class/user.php");
 if ($userType == "student") {
     require_once("view/home/userViews/student.php");
 }elseif($userType == "teacher"){
-    require_once("view/home/userViews/teacher.php");
+    require_once("view/home/userViews/teacher/teacher.php");
 }elseif($userType == "admin"){
     require_once("view/home/userViews/admin/admin.php");
 }
 ?>
 
-<div class="d-flex" id="home_hour">
-    <p class=" text-white d-flex hour"></p>
-</div>

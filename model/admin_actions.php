@@ -51,6 +51,7 @@ function fetchLessons($pdo){
     $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 return $results;
 }
+
 function changeClass($pdo,$user_id,$class_id){
     if ($class_id == "null") {
         $sql = "UPDATE `users` SET `class_id` = NULL WHERE `id` = :userId"; 
