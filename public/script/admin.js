@@ -16,7 +16,6 @@ function Popup(action, div) {
     }
   }
 
-
 closePannelButton.forEach((button) => {
     button.addEventListener("click", (event) => {
     event.preventDefault();
@@ -32,14 +31,9 @@ addAccountButton.forEach((button) => {
   });
 });
 
-
-
-
 const navbuttons = document.querySelectorAll('.navbuttons');
 const adminSections = document.querySelectorAll(".admin-section")
 const navbuttonsArray = Array.from(navbuttons);
-
-
 
 navbuttons.forEach(button=>{
   button.addEventListener("click" ,()=>{
@@ -71,7 +65,6 @@ const hashlist = [
   "#subjects",
   "#lessons"
 ]
-
 
 hashlist.forEach(hashname=>{
   if(hashname == hash){

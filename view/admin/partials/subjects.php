@@ -33,7 +33,7 @@
     <div class="d-flex flex-column m-auto justify-content-center">
         <div>
             <button class="m-1 p-2 secondary-color rounded-3 addAccountButton openPanelPopup">Ajouter une matière</button>
-            <button class="m-1 ms-0  p-2 secondary-color rounded-3">Sauvegarder</button>
+            <button class="m-1 p-2 secondary-color rounded-3 ms-0">Sauvegarder</button>
         </div>
 
 

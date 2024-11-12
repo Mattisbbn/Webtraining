@@ -5,6 +5,8 @@ require_once("view/partials/head.php");
 if(!isset($_GET['login'])){
     require_once("view/partials/header.php");
 }
+
+
 ?>
 
 <body>

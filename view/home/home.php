@@ -1,6 +1,7 @@
 <?php
 $currentUser = unserialize($_SESSION["currentUser"]);
 $userType = $currentUser->getUserType();
+$userID = $currentUser->getUserId();
 require_once("class/user.php");
 
 if ($userType == "student") {
