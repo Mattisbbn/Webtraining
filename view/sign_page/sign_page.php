@@ -9,11 +9,5 @@
         <button onclick="clearCanvas()">Effacer</button>
         <button onclick="saveCanvas()">Envoyer</button>
     </div>
-
-
-
 </section>
-
-
-
 <script src="public/script/sign_page.js"></script>

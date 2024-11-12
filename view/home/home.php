@@ -9,7 +9,7 @@ if ($userType == "student") {
 }elseif($userType == "teacher"){
     require_once("view/home/userViews/teacher.php");
 }elseif($userType == "admin"){
-    require_once("view/home/userViews/admin.php");
+    require_once("view/home/userViews/admin/admin.php");
 }
 ?>
 
