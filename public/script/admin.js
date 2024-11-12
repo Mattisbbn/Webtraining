@@ -33,20 +33,19 @@ addAccountButton.forEach((button) => {
 });
 
 
-//Nav admin
+
 
 const navbuttons = document.querySelectorAll('.navbuttons');
 const adminSections = document.querySelectorAll(".admin-section")
 const navbuttonsArray = Array.from(navbuttons);
 
+
+
 navbuttons.forEach(button=>{
   button.addEventListener("click" ,()=>{
-    navbuttons.forEach(button=>{
-      button.classList.remove("active")
-    })
-  button.classList.add("active")
   let index = navbuttonsArray.indexOf(button)
-  
+
+  activateButton(index)
   showSection(index)
   })
 })
@@ -56,6 +55,28 @@ function showSection(sectionID){
     section.classList.add("d-none");
   })
   adminSections[sectionID].classList.remove("d-none");
-
 }
 
+function activateButton(index){
+  navbuttons.forEach(button=>{
+    button.classList.remove("active")
+  })
+  navbuttons[index].classList.add("active")
+}
+
+const hash = window.location.hash;
+const hashlist = [
+  "#accounts",
+  "#classes",
+  "#subjects",
+  "#lessons"
+]
+
+
+hashlist.forEach(hashname=>{
+  if(hashname == hash){
+    let hashIndex = hashlist.indexOf(hash)
+    showSection(hashIndex)
+    activateButton(hashIndex)
+  }
+})
