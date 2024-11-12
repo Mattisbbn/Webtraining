@@ -19,7 +19,7 @@
                 <td class=" p-3">
                     <form method="post">
                         <button
-                        <?php if($event["is_call_active"] == 0){
+                        <?php if($event["call_status"] == !null){
                             echo("disabled");
                         } ?>
                         name="start-call" value="<?php echo($event['id'])?>" type="submit">Lancer l'appel</button>
@@ -41,13 +41,9 @@
 
 <?php
 
-function startCall($pdo){
-
-}
-
-
 if(isset($_POST['start-call'])){
 $scheduleId = $_POST['start-call'];
-changeCallStatus($pdo,$scheduleId,true);
+changeCallStatus($pdo,$scheduleId,"start");
+header("Refresh:0");
 }
 
