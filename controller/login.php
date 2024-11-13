@@ -1,6 +1,7 @@
 <?php
 require_once("sql/connectToDB.php");
 require_once("class/user.php");
+
 if(isset($_POST["user_type"]) && isset($_POST["email"]) && isset($_POST["password"])) {
     $user_type = $_POST["user_type"];
     $email = $_POST["email"];
@@ -19,8 +20,6 @@ function getUserType($user_type,$pdo){
     }
     return $results;
 }
-
-
 
 function logUser($pdo,$user_type,$email,$password){
     foreach (getUserType($user_type,$pdo) as $user) {

@@ -4,23 +4,18 @@
 
 <table>
     <thead>
-    <tr class="rounded-3">
+        <tr class="rounded-3">
             <th class="p-3">Prénom</th>
             <th class="p-3">Action</th>
         </tr>
     </thead>
     <tbody>
-        <tr class="navbuttons">
+        <tr class="">
             <?php $students = fetchLessonsStudents($pdo,$event["class_id"]);
-            
             foreach($students as $student):?> 
-            
-            <td class=" p-3"><?php echo($student["username"]);?></td>
-            <td class=" p-3"></td>
-
-
+            <td class="p-3"><?php echo($student["username"]);?></td>
+            <td class="p-3"></td>
             <?php endforeach; ?>
-         
         </tr>
     </tbody>
 </table>
