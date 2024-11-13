@@ -8,6 +8,7 @@ $teacherCalendar = fetchTeacherCalendar($pdo,$userId);
 <?php require_once("view/partials/aside.php") ?> 
 
 
-<div class="white rounded-3 col-8 d-flex flex-column mt-4"><?php require_once("view/home/userViews/teacher/partials/signatures.php"); ?></div><div id="" class="
+<div class="white rounded-3 col-8 d-flex flex-column mt-4 m-auto "><?php require_once("view/home/userViews/teacher/partials/signatures.php"); ?></div>
 
 </section>
+

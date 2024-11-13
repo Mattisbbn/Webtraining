@@ -1,6 +1,6 @@
 <?php 
 require_once("sql/connectToDB.php");
-require_once("controller/admin_panel_controller.php"); 
+require_once("controller/admin.php"); 
 ?>
 <section class="d-flex">
     <?php require_once("view/partials/aside.php") ?> 

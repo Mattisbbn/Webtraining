@@ -35,6 +35,7 @@ function fetchTeacherCalendar($pdo,$teacherID){
             schedule.end_datetime,
             schedule.teacher_id,
             schedule.call_status,
+            schedule.class_id,
             TIMESTAMPDIFF(HOUR, schedule.start_datetime, schedule.end_datetime) as lesson_duration,
             classes.name as class_name
         FROM schedule
@@ -59,4 +60,13 @@ function fetchTeacherCalendar($pdo,$teacherID){
     // return $events;
 
     return $results;
+}
+
+function fetchLessonsStudents($pdo,$scheduleClassId){
+$sql = "SELECT users.username FROM users WHERE users.class_id = :scheduleClassId";
+$stmt = $pdo->prepare($sql);
+$stmt->bindParam(':scheduleClassId', $scheduleClassId, PDO::PARAM_INT);
+$stmt->execute();
+$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+return $results;
 }

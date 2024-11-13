@@ -1,7 +1,5 @@
-<aside class="col-2 d-flex">
-    <div class="d-flex flex-column ps-4"> 
-        
-    
+<aside class=" d-flex">
+    <div class="d-flex flex-column ps-4 pe-4"> 
         <?php
         
         $userType = $currentUser->getUserType();
