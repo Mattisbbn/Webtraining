@@ -2,9 +2,18 @@
 session_start();
 require_once("view/partials/head.php");
 
-if(!isset($_GET['login'])){
+
+require_once("controller/mainController.php");
+$page = getCurrentpage();
+
+if($page !== "login"){
     require_once("view/partials/header.php");
 }
+
+
+
+
+
 
 
 ?>

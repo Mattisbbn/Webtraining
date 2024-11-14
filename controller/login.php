@@ -31,7 +31,7 @@ function logUser($pdo,$user_type,$email,$password){
             $currentUser->setUserType($user_type); 
             session_start();
             $_SESSION['currentUser'] = serialize($currentUser) ;
-            header('Location: ?home');
+            header('Location: home');
             exit;
         }
     }
