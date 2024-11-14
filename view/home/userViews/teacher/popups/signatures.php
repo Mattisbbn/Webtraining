@@ -10,7 +10,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr class="">
+        <tr>
             <?php $students = fetchLessonsStudents($pdo,$event["class_id"]);
             foreach($students as $student):?> 
             <td class="p-3"><?php echo($student["username"]);?></td>

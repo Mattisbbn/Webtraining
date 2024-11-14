@@ -1,5 +1,5 @@
 <?php
-require_once("sql/connectToDB.php");
+require_once("controller/mainController.php");
 require_once("class/user.php");
 
 if(isset($_POST["user_type"]) && isset($_POST["email"]) && isset($_POST["password"])) {
@@ -10,7 +10,7 @@ if(isset($_POST["user_type"]) && isset($_POST["email"]) && isset($_POST["passwor
     logUser($pdo,$user_type,$email,$password);
 }
 
-function getUserType($user_type,$pdo){
+function FetchByUserType($user_type,$pdo){
     if($user_type == "student"){
         $results = fetchUserType($pdo,"student");
     }elseif($user_type == "teacher"){
@@ -22,8 +22,8 @@ function getUserType($user_type,$pdo){
 }
 
 function logUser($pdo,$user_type,$email,$password){
-    foreach (getUserType($user_type,$pdo) as $user) {
-        if ($user[2] === $email && password_verify($password, $user["password"])) {
+    foreach (fetchByUserType($user_type,$pdo) as $user) {
+        if ($user["email"] === $email && password_verify($password, $user["password"])) {
             $currentUser = new user();
             $currentUser->setuserID($user["id"]);
             $currentUser->setEmail($user["email"]);

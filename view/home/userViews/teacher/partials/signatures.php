@@ -11,19 +11,19 @@
 
     <tbody>
         <?php foreach($teacherCalendar as $event):  ?>
-            <tr class="navbuttons">
-                <td class=" p-3"><?php echo($event['name']) ?></td>
-                <td class=" p-3"><?php echo($event['class_name']) ?></td>
-                <td class=" p-3"><?php echo($event['start_datetime']) ?></td>
-                <td class=" p-3"><?php echo($event['lesson_duration']) ?> H</td>
-                <td class=" p-3">
+            <tr>
+                <td class="p-3"><?php echo($event['name']) ?></td>
+                <td class="p-3"><?php echo($event['class_name']) ?></td>
+                <td class="p-3"><?php echo($event['start_datetime']) ?></td>
+                <td class="p-3"><?php echo($event['lesson_duration']) ?> H</td>
+                <td class="p-3">
                     <form method="post">
                         <button <?php if($event["call_status"] == !null){ echo("disabled");} ?>
                             name="start-call" value="<?php echo($event['id'])?>" type="submit">Lancer l'appel</button>
-                        <form method="post">
+                    </form>
+                    <form method="post">
                             <button value="<?php echo($event['id'])?>" name="cancel-call">Annuler l'appel</button>
-                            <button name="confirm-call">Valider l'appel</button>
-                        </form>
+                            <button value="<?php echo($event['id'])?>" name="confirm-call">Valider l'appel</button>
                     </form>
                 </td>
             </tr>
@@ -32,10 +32,8 @@
        
     </tbody>
 </table>
+<?php require_once("view/home/userViews/teacher/popups/signatures.php");?>
 
-<div>
-  
-</div>
 
 <?php
 require_once("controller/signatures.php");

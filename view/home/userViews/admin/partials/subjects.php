@@ -13,11 +13,11 @@
             foreach ($subjects as $subject):
             ?>
                 <tr class="secondary-color">
-                    <td><?php echo $subject[1] ?></td>
+                    <td><?php echo $subject["name"] ?></td>
                     <td>
                         <div class='d-flex justify-content-center'>
                             <form class='m-0' method='post'>
-                                <input type='hidden' name='subjectIdToDelete' value='<?php echo $subject[0] ?>'>
+                                <input type='hidden' name='subjectIdToDelete' value='<?php echo $subject["id"] ?>'>
                                 <button class='p-0' type='submit'>
                                     <i class='uil uil-trash-alt'></i>
                                 </button>

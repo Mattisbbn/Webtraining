@@ -19,7 +19,8 @@
                         <td><?php echo $user["email"] ?></td>
                         <td>
                             <form method="post" id="editClass_<?php echo $user['id']; ?>">
-                                <select <?php if ($user["role"] == "admin" || $user["role"] == "teacher") {
+                                <select 
+                                <?php if ($user["role"] == "admin" || $user["role"] == "teacher") {
                                             echo ("disabled");
                                         }   ?> class="third-color rounded-3 border-0 m-1 p-2" name="editClass" onchange="this.form.submit();">
 
