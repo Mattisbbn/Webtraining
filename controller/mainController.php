@@ -34,11 +34,3 @@ function fetchAllDb($pdo, $table) {
 }
 
 
-function fetchUserType($pdo,$userType){
-    $sql = "SELECT * FROM users WHERE role = :userType";
-    $stmt = $pdo->prepare($sql);
-    $stmt->bindParam(':userType', $userType);
-    $stmt->execute();
-    $results = $stmt->fetchAll();
-    return $results;
-}

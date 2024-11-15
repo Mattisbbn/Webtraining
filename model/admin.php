@@ -69,8 +69,8 @@ return $results;
 }
 
 function  addNewlesson($pdo,$subjectOfLesson,$classOfLesson,$teacherOfLesson,$lessonStartDate,$lessonEndDate) {
-    $sql = "INSERT INTO schedule (`subject_id`, `class_id`, `teacher_id`, `start_datetime`, `end_datetime`)
-    VALUES (:subjectOfLesson, :classOfLesson, :teacherOfLesson, :lessonStartDate, :lessonEndDate)";
+    $sql = "INSERT INTO schedule (`subject_id`,`class_id`,`teacher_id`,`start_datetime`,`end_datetime`)
+            VALUES (:subjectOfLesson,:classOfLesson,:teacherOfLesson,:lessonStartDate,:lessonEndDate)";
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':subjectOfLesson', $subjectOfLesson);
     $stmt->bindParam(':classOfLesson', $classOfLesson);
@@ -78,4 +78,13 @@ function  addNewlesson($pdo,$subjectOfLesson,$classOfLesson,$teacherOfLesson,$le
     $stmt->bindParam(':lessonStartDate', $lessonStartDate);
     $stmt->bindParam(':lessonEndDate', $lessonEndDate);
     $stmt->execute();
+}
+
+function fetchUsersByRole($pdo,$role){
+    $sql = "SELECT id,username,email,role FROM users WHERE role = :role "; 
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':role', $role);
+    $stmt->execute();
+    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $results;
 }

@@ -1,30 +1,21 @@
 <?php
 require_once("controller/mainController.php");
 require_once("class/user.php");
+require_once("model/login.php");
 
 if(isset($_POST["user_type"]) && isset($_POST["email"]) && isset($_POST["password"])) {
     $user_type = $_POST["user_type"];
     $email = $_POST["email"];
-    $password = $_POST["password"];
-    
+    $password = $_POST["password"]; 
     logUser($pdo,$user_type,$email,$password);
 }
 
-function FetchByUserType($user_type,$pdo){
-    if($user_type == "student"){
-        $results = fetchUserType($pdo,"student");
-    }elseif($user_type == "teacher"){
-        $results = fetchUserType($pdo,"teacher");
-    }elseif($user_type == "admin"){
-        $results = fetchUserType($pdo,"admin");
-    }
-    return $results;
-}
-
 function logUser($pdo,$user_type,$email,$password){
-    foreach (fetchByUserType($user_type,$pdo) as $user) {
-        if ($user["email"] === $email && password_verify($password, $user["password"])) {
-            $currentUser = new user();
+    $user = fetchUser($pdo,$user_type,$email);
+        if($user){ 
+            $hashedPassword = $user["password"];
+            if(password_verify($password, $hashedPassword)){
+                $currentUser = new user();
             $currentUser->setuserID($user["id"]);
             $currentUser->setEmail($user["email"]);
             $currentUser->setUsername($user["username"]);
@@ -33,6 +24,10 @@ function logUser($pdo,$user_type,$email,$password){
             $_SESSION['currentUser'] = serialize($currentUser) ;
             header('Location: home');
             exit;
+            }else{
+                echo" Mot de passe incorrect.";
+            }
+        }else{
+            echo("Aucun utilisateur trouvé avec cette adresse email.");
         }
-    }
-}
+ }

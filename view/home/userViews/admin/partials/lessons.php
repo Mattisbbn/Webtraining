@@ -53,6 +53,7 @@
             foreach ($subjects as $subject) {
                 echo "<option value='{$subject['id']}'>{$subject["name"]}</option>";
             }
+           
             ?>
         </select>
 
@@ -67,7 +68,9 @@
 
         <select class="secondary-color rounded-3 border-0 m-1 p-2" name="teacherOfLesson">
             <?php
-            $teachers = fetchUserType($pdo, "teacher");
+            
+            $teachers = fetchUsersByRole($pdo, "teacher");
+         
             foreach ($teachers as $teacher) {
                 echo "<option value='{$teacher['id']}'>{$teacher["username"]}</option>";
             }

@@ -13,8 +13,6 @@ $UserClassID = fetchUserClass($pdo, $userId);
      ?>;
 </script>
 
-
-
 <div class="d-flex rounded-3 border-0">
     <div class="col-10 m-auto rounded-3 border-0 " id='calendar'></div>
 </div>
