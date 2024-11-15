@@ -5,7 +5,7 @@
             <th>Matière</th>
             <th>Classe</th>
             <th>Professeur</th>
-            <th>Heure de départ</th>
+            <th>Date de départ</th>
             <th>Durée</th>
             <th>Action</th>
         </tr>
@@ -74,9 +74,15 @@
             ?>
         </select>
         <input class="secondary-color rounded-3 border-0 m-1 p-2" type="datetime-local" name="lessonStartDate">
-        <input class="secondary-color rounded-3 border-0 m-1 p-2" placeholder="Durée" type="time" value="00:30" name="lessonDuration">
-
-
+        <select class="secondary-color  rounded-3 border-0 m-1 p-2" name="lessonDurationInMin">
+            <?php 
+            for ($minutes = 30; $minutes <= 270; $minutes += 30) {
+                $hours = intdiv($minutes, 60);
+                $mins = $minutes % 60;
+                $time = sprintf("%02d:%02d", $hours, $mins);
+                echo "<option value='{$minutes}'>{$time}</option>";
+            } ?>
+         </select>
 
         <div class="d-flex">
             <button class=" w-50 secondary-color closePannelButton m-1 p-2 rounded-3"><i id="closeClass" class="uil uil-times color-white"></i></button>

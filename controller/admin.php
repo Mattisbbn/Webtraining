@@ -1,7 +1,5 @@
 <?php
-require_once("model/admin_actions.php");
-
-
+require_once("model/admin.php");
 if (isset($_POST["classIdToDelete"])) {
     deleteDbRow($pdo, "classes", $_POST["classIdToDelete"]);
     header("Refresh:0");
@@ -46,13 +44,14 @@ if (isset($_POST["editClass"])) {
     }
 }
 
-if(isset($_POST["subjectOfLesson"]) && isset($_POST["classOfLesson"]) && isset($_POST["teacherOfLesson"]) && isset($_POST["lessonStartDate"]) && isset($_POST["lessonDuration"])){
+if(isset($_POST["subjectOfLesson"]) && isset($_POST["classOfLesson"]) && isset($_POST["teacherOfLesson"]) && isset($_POST["lessonStartDate"]) && isset($_POST["lessonDurationInMin"])){
     $subjectOfLesson = $_POST["subjectOfLesson"];
     $classOfLesson = $_POST["classOfLesson"];
     $teacherOfLesson = $_POST["teacherOfLesson"];
-    $lessonStartDate = $_POST["lessonStartDate"];
-    $lessonDuration = $_POST["lessonDuration"];
-    addNewlesson($pdo,$subjectOfLesson,$classOfLesson,$teacherOfLesson,$lessonStartDate,$lessonDuration);
+    $lessonStartDate = date("Y-m-d H:i:s", strtotime($_POST["lessonStartDate"]));
+    $lessonDurationInMin = intval($_POST["lessonDurationInMin"]);
+    $lessonEndDate = date("Y-m-d H:i:s", strtotime("+$lessonDurationInMin minutes", strtotime($lessonStartDate)));
+    addNewlesson($pdo,$subjectOfLesson,$classOfLesson,$teacherOfLesson,$lessonStartDate,$lessonEndDate);
     header("Refresh:0");
     exit();
 }

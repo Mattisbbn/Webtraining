@@ -1,5 +1,4 @@
 <div class="secondary-color rounded-3 p-3 position-absolute top-50 start-50 ms-5 translate-middle">
-
 <h2 class="text-center fw-bold">Appel</h2>
 
 <table>

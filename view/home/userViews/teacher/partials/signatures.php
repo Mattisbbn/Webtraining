@@ -27,9 +27,7 @@
                     </form>
                 </td>
             </tr>
-           
-      <?php endforeach; ?>
-       
+      <?php endforeach;?>
     </tbody>
 </table>
 <?php require_once("view/home/userViews/teacher/popups/signatures.php");?>

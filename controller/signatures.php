@@ -1,5 +1,5 @@
 <?php
-
+require_once("model/signatures.php");
 if(isset($_POST['start-call'])){
 $scheduleId = $_POST['start-call'];
 changeCallStatus($pdo,$scheduleId,"start");
