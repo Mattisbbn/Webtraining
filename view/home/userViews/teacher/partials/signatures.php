@@ -17,29 +17,27 @@
                 <td class="p-3"><?php echo($event['start_datetime']) ?></td>
                 <td class="p-3"><?php echo($event['lesson_duration']) ?> H</td>
                 <td class="p-3">
-                    <form method="post">
+                    <form method="get">
                         <button <?php if($event["call_status"] == !null){ echo("disabled");} ?>
-                            name="start-call" value="<?php echo($event['id'])?>" type="submit">Lancer l'appel</button>
-                    </form>
-                    <form method="post">
-                            <button value="<?php echo($event['id'])?>" name="cancel-call">Annuler l'appel</button>
-                            <button value="<?php echo($event['id'])?>" name="confirm-call">Valider l'appel</button>
+                            name="call" value="<?php echo($event['id'])?>" type="submit">Lancer l'appel</button>
                     </form>
                 </td>
             </tr>
       <?php endforeach;?>
     </tbody>
 </table>
-<?php require_once("view/home/userViews/teacher/popups/signatures.php");?>
-
-
 <?php
+
+if(isset($_GET["call"])){
+    require_once("view/home/userViews/teacher/popups/signatures.php");
+};
+
+
+
+
+
+
+
 require_once("controller/signatures.php");
-require_once("view/home/userViews/teacher/popups/signatures.php");
-
-
-
-
-
 
 ?>
