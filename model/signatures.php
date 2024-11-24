@@ -53,3 +53,20 @@ function changeCallStatus($pdo, $scheduleId,$action) {
     $stmt->bindParam(':callAction', $callAction);
     $stmt->execute();
 }
+
+
+
+
+function fetchUsersFromLesson($pdo, $scheduleId) {
+    $sql = "SELECT users.username 
+            FROM users 
+            INNER JOIN schedule ON users.class_id = schedule.class_id 
+            WHERE schedule.id = :scheduleId";
+    
+    $stmt = $pdo->prepare($sql); 
+    $stmt->bindParam(':scheduleId', $scheduleId, PDO::PARAM_INT);
+    $stmt->execute();
+    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    return $results; };
+
