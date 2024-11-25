@@ -1,5 +1,4 @@
 <?php
-//Récuperer page actuelle
 function getCurrentpage(){
     $url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
     $url = str_replace('/webtraining/', '', $url);
@@ -7,7 +6,6 @@ function getCurrentpage(){
     return $segments[0];
 }
 
-// Connection à la BDD
 require_once("config.php");
 
 $settings = [
@@ -23,8 +21,7 @@ function connectToDb($host, $db, $user, $pass,$settings ){
     return $pdo;
 }
 
-// A bouger 
-
+//A bouger
 function fetchAllDb($pdo, $table) {
     $sql = "SELECT * FROM $table";
     $stmt = $pdo->prepare($sql);

@@ -19,45 +19,24 @@
                 <td class="p-3">
                     <form action="?call=<?php echo $lesson["id"]?>" method="post">
                         <?php 
-                        
-                      
-                        
+
                         if($lesson["call_status"] == null){
                            echo "<button name='start-call' value='{$lesson["id"]}'>Déclencher l'appel</button>";
                         }elseif($lesson["call_status"] === "started"){
-                            echo "<button name='cancel-call' value='{$lesson["id"]}'>Annuler l'appel</button>";
+                            echo " <a href='?call={$lesson['id']}'>Voir l'appel</a>";
+                        }elseif($lesson["call_status"] === "finished"){
+                            echo("<button name='cancel-call' value='{$lesson["id"]}'>Annuler l'appel</button>");
                         }
-                        
-                        
                         ?>
-                      
+                       
                         <input type="hidden" name="action" value="start">
                     </form>
-                
                 </td>
             </tr>
       <?php endforeach;?>
     </tbody>
 </table>
 <?php
-
-
-
-if(isset($_POST['start-call'])){
-    $scheduleId = $_POST['start-call'];
-    changeCallStatus($pdo,$scheduleId,"start");
-    header("Refresh:0");
-    }
-
-
- if(isset($_POST['cancel-call'])){
-        $scheduleId = $_POST['cancel-call'];
-        changeCallStatus($pdo,$scheduleId,"cancel");
-        header("Location: ./");
-    }
-    
-
-
 if(isset($_GET["call"])){
     require_once("view/home/userViews/teacher/popups/signatures.php");
 };
@@ -65,3 +44,4 @@ if(isset($_GET["call"])){
 require_once("controller/signatures.php");
 
 ?>
+
