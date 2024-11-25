@@ -1,3 +1,5 @@
+<?php require_once("controller/signatures.php");?>
+
 <table class="mt-4 m-auto">
     <thead>
         <tr class="rounded-3">
@@ -36,12 +38,3 @@
       <?php endforeach;?>
     </tbody>
 </table>
-<?php
-if(isset($_GET["call"])){
-    require_once("view/home/userViews/teacher/popups/signatures.php");
-};
-
-require_once("controller/signatures.php");
-
-?>
-

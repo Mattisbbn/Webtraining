@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once("class/user.php");
 require_once("view/partials/head.php");
 require_once("controller/mainController.php");
 $page = getCurrentpage();

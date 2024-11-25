@@ -1,13 +1,13 @@
-<?php
-$call_id = $_GET["call"];
-?>
+
+
+
 
 <div class="white border rounded-3 p-3 position-absolute top-50 start-50 ms-5 translate-middle">
 
     <div class="d-flex justify-content-center">
         <h2 class="text-center fw-bold">Appel</h2>
         <form method="post">
-            <button name="close-call-popup"><h3>X</h3></button>
+            <button name="close-popup"><h3>X</h3></button>
         </form>
     </div>
     <table>
@@ -28,23 +28,7 @@ $call_id = $_GET["call"];
         </tbody>
     </table>
 
-
     <form method="post">
        <button name="validate-call" value="<?php echo($_GET["call"]) ?>">Valider l'appel</button>
     </form>
 </div>
-
-<!-- // cancel call : <button name='cancel-call' value='{$lesson["id"]}'>Annuler l'appel</button> -->
-
-
-
-<?php
-
-if(isset($_POST['validate-call'])){
-    $scheduleId = $_POST['validate-call'];
-    changeCallStatus($pdo,$scheduleId,"finish");
-    header("Location: ./");
-}
-
-
-

@@ -1,3 +1,18 @@
+
+
+<?php
+require_once("class/user.php");
+require_once("controller/logout.php");
+require_once("controller/mainController.php");
+$page = getCurrentpage();
+
+if (isset($_SESSION["currentUser"])) {
+    $currentUser = unserialize($_SESSION["currentUser"]);  
+}elseif($page !== "login"){
+    header('Location: login');
+}
+?>
+
 <aside class=" d-flex">
     <div class="d-flex flex-column ps-4 pe-4"> 
         <?php
@@ -18,11 +33,23 @@
             <h5 class="ms-2 mb-3 mt-4 fw-bold">Animateur</h5>
             <a href="#sign" class="p-2 mt-2 mb-2 rounded-3 navbuttons fw-500 active"><i class="uil uil-edit-alt"></i> Signatures</a>
             ';
-        } ;
-        
+        }elseif($userType === "student"){
+            echo'
+            <h5 class="ms-2 mb-3 mt-4 fw-bold">Élève</h5>
+            <a href="#calendar" class="p-2 mt-2 mb-2 rounded-3 navbuttons fw-500 active"><i class="uil uil-schedule"></i> Calendrier</a>
+            ';
+            
+        }
         
     ?>
 
        
+
+
+
+<div class="d-flex">
+    <p><?php echo($currentUser->getUsername()) ?></p>
+    <form method="post"><button name="log-out" type="submit"><i class="uil uil-signout"></i></button></form>
+    </div>
     </div>
 </aside>

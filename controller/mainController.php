@@ -29,5 +29,3 @@ function fetchAllDb($pdo, $table) {
     $results = $stmt->fetchAll();
     return $results;
 }
-
-

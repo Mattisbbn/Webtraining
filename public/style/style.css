@@ -109,11 +109,6 @@ input:focus {
   background-color: var(--secondary-color);
 }
 
-#sub_header {
-  background-color: var(--secondary-color);
-  color: white;
-}
-
 #panel_section p {
   color: white;
 }
