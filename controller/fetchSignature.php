@@ -1,12 +1,16 @@
 <?php 
+$data = file_get_contents('php://input');
+$data = json_decode($data, true);
+$data = $data['imageData'];
 
-	$content = file_get_contents('php://input');
-	$folder = "uploads";
-	$data = base64_decode($content);
-	$file = "uploads/signature" . uniqid() . '.png';
-	$success = file_put_contents($file, $data);
+function saveSignature($imageData){
+	$path = __DIR__ . '/../uploads/';
+	$imageData = str_replace('data:image/png;base64,', '', $imageData);
+	$imageData = base64_decode($imageData);
+	$file = $path . uniqid() . '.png';
+	return file_put_contents($file, $imageData);
+}
 
-	
+saveSignature($data)
+
 ?>
-
-

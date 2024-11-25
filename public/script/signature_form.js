@@ -38,13 +38,11 @@ signCanva.addEventListener("mousemove", function(event) {
     }
 });
 
-// Arrête de dessiner quand la souris est relâchée
 signCanva.addEventListener("mouseup", function() {
     isDrawing = false;  // Arrête de dessiner
     ctx.closePath();  // Facultatif : termine le chemin
 });
 
-// Arrête également si la souris sort du canvas
 signCanva.addEventListener("mouseleave", function() {
     isDrawing = false;  // Empêche le dessin lorsque la souris quitte le canvas
 });
@@ -54,18 +52,13 @@ function clearCanvas(){
     ctx.clearRect(0, 0, signCanva.width, signCanva.height); 
 }
 
-
-const responseContainer = document.querySelector("#responseContainer")
-
 function saveCanvas() {
-    const imageData = signCanva.toDataURL('image/png'); // Convertir le canvas en base64
+    const imageData = signCanva.toDataURL('image/png');
     fetch('controller/fetchSignature.php', {
         method: 'POST',
-        body: JSON.stringify({ imageData: imageData }),
+        body: JSON.stringify({ imageData }), 
         headers: {
             'Content-Type': 'application/json'
-        }
-    });
+        },
+    })
 }
-
-

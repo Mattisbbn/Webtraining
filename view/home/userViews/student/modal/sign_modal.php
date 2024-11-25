@@ -7,13 +7,10 @@
         </form>
     </div>
 
-
-
     <section id="sign_section">
     <canvas id="sign_canvas" class="rounded-4"></canvas>
     <div class="d-flex justify-content-center mt-2 ">
         
-   
     </div>
 </section>
 
@@ -33,8 +30,5 @@ if (isset($_POST["close-popup"])) {
 
 
 ?>
-
-<div id="responseContainer"></div>
-<?php require_once("controller/fetchSignature.php"); ?>
 
 <script src="public/script/signature_form.js"></script>
