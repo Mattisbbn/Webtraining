@@ -21,12 +21,12 @@ class fetchSignatureImage{
 		$this->fileName = $this->path. uniqid() . '.png';
 		file_put_contents($this->fileName, $formatedImage);
 	}
+
 }
-
-
 $imageSignature = new fetchSignatureImage;
-
 $imageSignature->saveSignature();
+
+
 
 // function addSignatureToDb($pdo,$user_id,$schedule_id,$path){
 // 	$sql = "INSERT INTO signature (user_id, schedule_id, file_name) VALUES (:user_id,:schedule_id,file_name)";

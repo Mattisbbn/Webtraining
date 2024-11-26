@@ -1,4 +1,37 @@
 <?php
+class userActions{
+
+    public function addNewUser($pdo,$email,$password,$username,$role){
+        $sql = "INSERT INTO `users` (`username`, `email`, `password`, `class_id`, `role`) VALUES (:username, :email, :password,NULL,:role)";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(':username', $username);
+        $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':password', $password);
+        $stmt->bindParam(':role', $role);
+        $stmt->execute();
+    }  
+
+
+    public function fetchUsers($pdo) {
+        $sql = "SELECT users.id, users.username, users.email, classes.name AS class_name, users.role 
+        FROM users LEFT JOIN classes ON users.class_id = classes.id"; 
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute();
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $results;
+    }
+}
+
+
+// function fetchUsers($pdo) {
+//     $sql = "SELECT users.id, users.username, users.email, classes.name AS class_name, users.role 
+//     FROM users LEFT JOIN classes ON users.class_id = classes.id"; 
+//     $stmt = $pdo->prepare($sql);
+//     $stmt->execute();
+//     $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+//     return $results;
+// }
+
 
 function addNewClass($pdo, $class) {
         $sql = "INSERT INTO `classes` (`id`, `name`) VALUES (NULL, :class)";
@@ -14,24 +47,8 @@ function addNewSubject($pdo, $subject) {
     $stmt->execute();
 }
 
-function addNewUser($pdo,$email,$password,$username,$role){
-    $sql = "INSERT INTO `users` (`id`, `username`, `email`, `password`, `class_id`, `role`) VALUES (NULL, :username, :email, :password,NULL,:role)";
-    $stmt = $pdo->prepare($sql);
-    $stmt->bindParam(':username', $username);
-    $stmt->bindParam(':email', $email);
-    $stmt->bindParam(':password', $password);
-    $stmt->bindParam(':role', $role);
-    $stmt->execute();
-}
 
-function fetchUsers($pdo) {
-    $sql = "SELECT users.id, users.username, users.email, classes.name AS class_name, users.role FROM users
-            LEFT JOIN classes ON users.class_id = classes.id"; 
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute();
-    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    return $results;
-}
+
 
 
 function deleteDbRow($pdo,$table,$rowId){
@@ -80,11 +97,11 @@ function  addNewlesson($pdo,$subjectOfLesson,$classOfLesson,$teacherOfLesson,$le
     $stmt->execute();
 }
 
-function fetchUsersByRole($pdo,$role){
-    $sql = "SELECT id,username,email,role FROM users WHERE role = :role "; 
-    $stmt = $pdo->prepare($sql);
-    $stmt->bindParam(':role', $role);
-    $stmt->execute();
-    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    return $results;
-}
+// function fetchUsersByRole($pdo,$role){
+//     $sql = "SELECT id,username,email,role FROM users WHERE role = :role "; 
+//     $stmt = $pdo->prepare($sql);
+//     $stmt->bindParam(':role', $role);
+//     $stmt->execute();
+//     $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+//     return $results;
+// }

@@ -1,12 +1,11 @@
 
-<?php require_once("model/calendar.php");
+<?php 
+require_once("model/calendar.php");
 require_once("model/fetchClass.php");
 require_once("class/user.php");
 
 $userId = $currentUser->getUserID();
 $UserClassID = fetchUserClass($pdo, $userId);
-
-
 
 ?>
 

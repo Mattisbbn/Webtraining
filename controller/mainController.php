@@ -1,12 +1,14 @@
 <?php
-function getCurrentpage(){
-    $url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-    $url = str_replace('/webtraining/', '', $url);
-    $segments = explode('/', $url);
-    return $segments[0];
-}
 
 require_once("config.php");
+class pageActions{
+    public function getCurrentpage(){
+        $url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+        $url = str_replace('/webtraining/', '', $url);
+        $segments = explode('/', $url);
+        return $segments[0];
+    }
+}
 
 $settings = [
     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
@@ -21,7 +23,6 @@ function connectToDb($host, $db, $user, $pass,$settings ){
     return $pdo;
 }
 
-//A bouger
 function fetchAllDb($pdo, $table) {
     $sql = "SELECT * FROM $table";
     $stmt = $pdo->prepare($sql);

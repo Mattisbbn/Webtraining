@@ -1,5 +1,11 @@
-<div class="white border rounded-3 p-3 position-absolute top-50 start-50 ms-5 translate-middle">
+<?php 
+$currentUser->getUserID();
+$schedule_id = $_GET["sign"];
 
+
+?>
+
+<div class="white border rounded-3 p-3 position-absolute top-50 start-50 ms-5 translate-middle">
     <div class="d-flex justify-content-center">
         <h2 class="text-center fw-bold">Signer</h2>
         <form method="post">

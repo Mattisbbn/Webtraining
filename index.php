@@ -3,8 +3,17 @@ session_start();
 require_once("class/user.php");
 require_once("view/partials/head.php");
 require_once("controller/mainController.php");
-$page = getCurrentpage();
-if($page !== "login"){
+
+$pageActions = new pageActions;
+$currentPage = $pageActions->getCurrentpage();
+
+if (isset($_SESSION["currentUser"]) && $currentPage != "login") {
+    $currentUser = unserialize($_SESSION["currentUser"]);  
+}elseif($currentPage != "login"){
+    header('Location: login');
+}
+
+if($currentPage !== "login"){
     require_once("view/partials/header.php");
 }
 ?>

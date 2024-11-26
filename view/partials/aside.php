@@ -4,8 +4,8 @@
 require_once("class/user.php");
 require_once("controller/logout.php");
 require_once("controller/mainController.php");
-$page = getCurrentpage();
-
+$pageActions = new pageActions;
+$page = $pageActions->getCurrentpage();
 if (isset($_SESSION["currentUser"])) {
     $currentUser = unserialize($_SESSION["currentUser"]);  
 }elseif($page !== "login"){

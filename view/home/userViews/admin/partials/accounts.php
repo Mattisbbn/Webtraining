@@ -1,3 +1,8 @@
+<?php
+$userActions = new UserActions;
+$users = $userActions->fetchUsers($pdo);
+?>
+
 <div class="tables_container">
         <table class="mt-4 m-auto tables">
             <thead class="primary-color">
@@ -11,7 +16,6 @@
             </thead>
             <tbody>
                 <?php
-                $users = fetchUsers($pdo);
                 foreach ($users as $user):
                 ?>
                     <tr class="secondary-color">
