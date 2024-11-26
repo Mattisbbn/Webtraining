@@ -60,5 +60,14 @@ function saveCanvas() {
         headers: {
             'Content-Type': 'application/json'
         },
+    }) .then(response => {
+        // Vérifie si la réponse est réussie (status 200)
+        if (!response.ok) {
+            throw new Error('Erreur HTTP : ' + response.status);
+        }
+        return response.text(); // Supposant que la réponse est en JSON
+    }).then(data => {
+        console.log('Réponse reçue :', data); 
+        // Traitez ici la réponse envoyée par fetchSignature.php
     })
 }

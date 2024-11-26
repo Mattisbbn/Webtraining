@@ -6,14 +6,11 @@
             <button name="close-popup"><h3>X</h3></button>
         </form>
     </div>
-
     <section id="sign_section">
-    <canvas id="sign_canvas" class="rounded-4"></canvas>
-    <div class="d-flex justify-content-center mt-2 ">
-        
+        <canvas id="sign_canvas" class="rounded-4"></canvas>
+        <div class="d-flex justify-content-center mt-2 ">
     </div>
 </section>
-
 
     <div class="d-flex justify-content-center">
         <button onclick="clearCanvas()">Effacer</button>
@@ -21,14 +18,5 @@
     </div>
 
 </div>
-
-
-<?php 
-if (isset($_POST["close-popup"])) {
-    header("Location: ./");
-}
-
-
-?>
 
 <script src="public/script/signature_form.js"></script>

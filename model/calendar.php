@@ -16,21 +16,8 @@ function fetchClassCalendar($pdo,$classID) {
     $stmt->execute();
     $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
     
-    // $events = [];
-    // foreach ($results as $row) {
-    //     $events[] = [
-    //         'title' =>  $row['name'],
-    //         'start' => $row['start_datetime'],
-    //         'end' => $row['end_datetime']
-    //     ];
-    // }
-    // return json_encode($events);
-
     return $results;
 }
-
-
-
 
 function fetchLessonsStudents($pdo,$scheduleClassId){
     $sql = "SELECT users.username FROM users WHERE users.class_id = :scheduleClassId";
