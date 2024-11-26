@@ -1,4 +1,6 @@
 <?php
+require_once("controller/database.php");
+
 class userActions{
 
     public function addNewUser($pdo,$email,$password,$username,$role){
@@ -11,7 +13,6 @@ class userActions{
         $stmt->execute();
     }  
 
-
     public function fetchUsers($pdo) {
         $sql = "SELECT users.id, users.username, users.email, classes.name AS class_name, users.role 
         FROM users LEFT JOIN classes ON users.class_id = classes.id"; 
@@ -21,17 +22,6 @@ class userActions{
         return $results;
     }
 }
-
-
-// function fetchUsers($pdo) {
-//     $sql = "SELECT users.id, users.username, users.email, classes.name AS class_name, users.role 
-//     FROM users LEFT JOIN classes ON users.class_id = classes.id"; 
-//     $stmt = $pdo->prepare($sql);
-//     $stmt->execute();
-//     $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-//     return $results;
-// }
-
 
 function addNewClass($pdo, $class) {
         $sql = "INSERT INTO `classes` (`id`, `name`) VALUES (NULL, :class)";
@@ -46,10 +36,6 @@ function addNewSubject($pdo, $subject) {
     $stmt->bindParam(':subject', $subject);
     $stmt->execute();
 }
-
-
-
-
 
 function deleteDbRow($pdo,$table,$rowId){
     $sql = "DELETE FROM $table WHERE id = $rowId";
@@ -85,7 +71,7 @@ function fetchLessons($pdo){
 return $results;
 }
 
-function  addNewlesson($pdo,$subjectOfLesson,$classOfLesson,$teacherOfLesson,$lessonStartDate,$lessonEndDate) {
+function addNewlesson($pdo,$subjectOfLesson,$classOfLesson,$teacherOfLesson,$lessonStartDate,$lessonEndDate) {
     $sql = "INSERT INTO schedule (`subject_id`,`class_id`,`teacher_id`,`start_datetime`,`end_datetime`)
             VALUES (:subjectOfLesson,:classOfLesson,:teacherOfLesson,:lessonStartDate,:lessonEndDate)";
     $stmt = $pdo->prepare($sql);
@@ -97,11 +83,11 @@ function  addNewlesson($pdo,$subjectOfLesson,$classOfLesson,$teacherOfLesson,$le
     $stmt->execute();
 }
 
-// function fetchUsersByRole($pdo,$role){
-//     $sql = "SELECT id,username,email,role FROM users WHERE role = :role "; 
-//     $stmt = $pdo->prepare($sql);
-//     $stmt->bindParam(':role', $role);
-//     $stmt->execute();
-//     $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-//     return $results;
-// }
+function fetchUsersByRole($pdo,$role){
+    $sql = "SELECT id,username,email,role FROM users WHERE role = :role "; 
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':role', $role);
+    $stmt->execute();
+    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $results;
+}

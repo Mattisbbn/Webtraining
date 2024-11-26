@@ -1,5 +1,5 @@
 <?php 
-require_once("controller/mainController.php");
+require_once("controller/database.php");
 require_once("class/user.php");
 
 

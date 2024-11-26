@@ -1,5 +1,4 @@
 <?php
-
 function fetchTeacherCalendar($pdo,$teacherID){
     $sql = "SELECT 
             schedule.id,
@@ -20,19 +19,8 @@ function fetchTeacherCalendar($pdo,$teacherID){
     $stmt->bindParam(':teacher', $teacherID);
     $stmt->execute();
     $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    
-    // $events = [];
-    // foreach ($results as $row) {
-    //     $events[] = [
-    //         'title' =>  $row['name'],
-    //         'start' => $row['start_datetime'],
-    //         'end' => $row['end_datetime']
-    //     ];
-    // }
-    // // return json_encode($events);
-    // return $events;
 
-return $results;
+    return $results;
 }
 
 

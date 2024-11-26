@@ -1,5 +1,5 @@
 <?php
-require_once("controller/mainController.php");
+require_once("controller/database.php");
 
 function fetchClassCalendar($pdo,$classID) {
     $sql = "SELECT 
