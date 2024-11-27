@@ -29,7 +29,7 @@ $users = $userActions->fetchUsers($pdo);
                                         }   ?> class="third-color rounded-3 border-0 m-1 p-2" name="editClass" onchange="this.form.submit();">
 
                                     <?php
-                                    $classes = fetchAllDb($pdo, "classes");
+                                    $classes = $database->fetchAllTable("classes"); 
                                     if ($user["class_name"] == null) {
                                         echo "<option selected value='null'>Sélectionner une classe</option>";
                                     } else {

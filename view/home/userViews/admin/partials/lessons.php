@@ -49,7 +49,6 @@
     <form class=" d-none pannelDiv flex-column" method="post">
         <select class="secondary-color rounded-3 border-0 m-1 p-2" name="subjectOfLesson">
             <?php
-            $subjects = fetchAllDb($pdo, "subject");
             foreach ($subjects as $subject) {
                 echo "<option value='{$subject['id']}'>{$subject["name"]}</option>";
             }
@@ -59,8 +58,7 @@
 
         <select class="secondary-color rounded-3 border-0 m-1 p-2" name="classOfLesson">
             <?php
-            $classes = fetchAllDb($pdo, "classes");
-            foreach ($classes as $class) {
+            foreach ($classes as $class) { // Déja fetch dans classes.php
                 echo "<option value='{$class['id']}'>{$class["name"]}</option>";
             }
             ?>
@@ -68,9 +66,7 @@
 
         <select class="secondary-color rounded-3 border-0 m-1 p-2" name="teacherOfLesson">
             <?php
-            
             $teachers = fetchUsersByRole($pdo, "teacher");
-         
             foreach ($teachers as $teacher) {
                 echo "<option value='{$teacher['id']}'>{$teacher["username"]}</option>";
             }

@@ -16,6 +16,24 @@ class database{
         $pdo = new PDO('mysql:host=' . $this->host . '; port=3306; dbname=' . $this->databaseName, $this->databaseUser, $this->databasePassword,$this->settings);
         return $pdo;
     } 
+
+    public function fetchAllTable($table){
+        $pdo = $this->connect();
+        $sql = "SELECT * FROM $table";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute();
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $results;
+    }
 }
 $database = new database;
 $pdo = $database->connect();
+
+
+// function fetchAllDb($pdo, $table) {
+//     $sql = "SELECT * FROM $table";
+//     $stmt = $pdo->prepare($sql);
+//     $stmt->execute();
+//     $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+//     return $results;
+// }

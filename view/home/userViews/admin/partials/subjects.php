@@ -9,7 +9,7 @@
         </thead>
         <tbody>
             <?php
-            $subjects = fetchAllDb($pdo, "subject");
+            $subjects = $database->fetchAllTable("subject") ;
             foreach ($subjects as $subject):
             ?>
                 <tr class="secondary-color">

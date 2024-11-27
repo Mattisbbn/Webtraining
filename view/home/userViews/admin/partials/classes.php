@@ -8,7 +8,7 @@
             </thead>
             <tbody>
                 <?php
-                 $classes = fetchAllDb($pdo, "classes");
+            
                 foreach ($classes as $class):
                 ?>
                     <tr class="secondary-color">
