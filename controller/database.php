@@ -1,5 +1,5 @@
 <?php
-require_once("config.php");
+require_once(__DIR__ . "/../config.php");
 class database{
 
     private $host = DB_HOST;
@@ -25,15 +25,13 @@ class database{
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $results;
     }
+
+    public function deleteDbRow($table,$rowId){
+        $pdo = $this->connect();
+        $sql = "DELETE FROM $table WHERE id = $rowId";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute();
+    }
 }
 $database = new database;
 $pdo = $database->connect();
-
-
-// function fetchAllDb($pdo, $table) {
-//     $sql = "SELECT * FROM $table";
-//     $stmt = $pdo->prepare($sql);
-//     $stmt->execute();
-//     $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-//     return $results;
-// }

@@ -52,11 +52,21 @@ function clearCanvas(){
     ctx.clearRect(0, 0, signCanva.width, signCanva.height); 
 }
 
+
+
+
+
+const userId = document.querySelector("#user_id").value
+const scheduleId = document.querySelector("#schedule_id").value
 function saveCanvas() {
     const imageData = signCanva.toDataURL('image/png');
     fetch('controller/fetchSignature.php', {
         method: 'POST',
-        body: JSON.stringify({ imageData }), 
+        body: JSON.stringify({ 
+            imageData : imageData ,
+            user_id : userId,
+            schedule_id : scheduleId
+        }), 
         headers: {
             'Content-Type': 'application/json'
         },

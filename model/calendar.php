@@ -1,6 +1,13 @@
 <?php
 require_once("controller/database.php");
 
+class calendarModel{
+    
+
+
+
+
+}
 function fetchClassCalendar($pdo,$classID) {
     $sql = "SELECT 
             schedule.id,

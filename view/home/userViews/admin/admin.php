@@ -1,6 +1,9 @@
 <?php 
 require_once("controller/mainController.php");
 require_once("controller/admin.php"); 
+
+$lessonsActions = new lessonsActions;
+$userActions = new UserActions($pdo);
 ?>
 
 <section class="d-flex">

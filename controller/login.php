@@ -28,17 +28,13 @@ class LoginController{
     public function logUser(){
         $LoginModel = new LoginModel($this->pdo,$this->user_type,$this->email);
         $user = $LoginModel->fetchUser();
-        
+
         if($user){ 
             $hashedPassword = $user["password"];
             if(password_verify($this->password, $hashedPassword)){
-                $currentUser = new user();
-            $currentUser->setuserID($user["id"]);
-            $currentUser->setEmail($user["email"]);
-            $currentUser->setUsername($user["username"]);
-            $currentUser->setUserType($this->user_type); 
-            $_SESSION['currentUser'] = serialize($currentUser) ;
-            header('Location: ./');
+                $currentUser = new user($user["id"],$user["email"],($user["username"]),$this->user_type);
+                $_SESSION['currentUser'] = serialize($currentUser) ;
+                header('Location: ./');
             exit;
             }else{
                 echo" Mot de passe incorrect.";

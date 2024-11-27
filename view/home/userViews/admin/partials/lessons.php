@@ -12,7 +12,7 @@
     </thead>
     <tbody>
         <?php
-        $shedules = fetchLessons($pdo);
+        $shedules = $lessonsActions->fetchLessons($pdo);
         foreach ($shedules as $shedule):
         ?>
             <tr class="secondary-color">
@@ -66,7 +66,7 @@
 
         <select class="secondary-color rounded-3 border-0 m-1 p-2" name="teacherOfLesson">
             <?php
-            $teachers = fetchUsersByRole($pdo, "teacher");
+            $teachers = $userActions->fetchUsersByRole($pdo,"teacher");
             foreach ($teachers as $teacher) {
                 echo "<option value='{$teacher['id']}'>{$teacher["username"]}</option>";
             }

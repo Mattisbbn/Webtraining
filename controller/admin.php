@@ -1,9 +1,14 @@
 <?php
 require_once("model/admin.php");
 
-$userActions = new UserActions;
+
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+
+    $userActions = new UserActions($pdo);
+    $classActions = new classActions;
+    $subjectActions = new subjectsActions;
+    $lessonsActions = new lessonsActions;
 
     if(isset($_POST['userName']) && isset($_POST['userEmail']) && isset($_POST['userPassword']) && isset($_POST['userRole'])) {
         $hashedPassword = password_hash($_POST['userPassword'], PASSWORD_DEFAULT);
@@ -11,31 +16,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
     }
 
     if (isset($_POST["classIdToDelete"])) {
-        deleteDbRow($pdo, "classes", $_POST["classIdToDelete"]);
+        $database->deleteDbRow("classes", $_POST["classIdToDelete"]);
     }
 
     if (isset($_POST["className"])) {
-        addNewClass($pdo, $_POST["className"]);
+        $classActions->addNewClass($pdo, $_POST["className"]);
     }
 
     if (isset($_POST["subjectIdToDelete"])) {
-        deleteDbRow($pdo, "subject", $_POST["subjectIdToDelete"]);
+        $database->deleteDbRow("subject", $_POST["subjectIdToDelete"]);
     }
 
     if (isset($_POST["subjectName"])) {
-        addNewSubject($pdo, $_POST["subjectName"]);
+        $subjectActions->addNewSubject($pdo, $_POST["subjectName"]);
     }
 
     if(isset($_POST["UserIdToDelete"])){
         $rowId = $_POST["UserIdToDelete"];
-        deleteDbRow($pdo,"users",$rowId);
+        $database->deleteDbRow("users",$rowId);
     }
 
     if (isset($_POST["editClass"])) {
         $class_id = $_POST["editClass"];
         $user_id = $_POST["user_id"];
         if ($class_id) {
-            changeClass($pdo, $user_id, $class_id);
+            $classActions->changeClass($pdo, $user_id, $class_id);
         }
     }
 
@@ -46,12 +51,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         $lessonStartDate = date("Y-m-d H:i:s", strtotime($_POST["lessonStartDate"]));
         $lessonDurationInMin = intval($_POST["lessonDurationInMin"]);
         $lessonEndDate = date("Y-m-d H:i:s", strtotime("+$lessonDurationInMin minutes", strtotime($lessonStartDate)));
-        addNewlesson($pdo,$subjectOfLesson,$classOfLesson,$teacherOfLesson,$lessonStartDate,$lessonEndDate);
+        $lessonsActions->addNewlesson($pdo,$subjectOfLesson,$classOfLesson,$teacherOfLesson,$lessonStartDate,$lessonEndDate);
     }
 
     if(isset($_POST["eventToDelete"])){
         $rowId = $_POST["eventToDelete"];
-        deleteDbRow($pdo,"schedule",$rowId);
+        $database->deleteDbRow("schedule",$rowId);
     }
     header("Refresh:0");
 }

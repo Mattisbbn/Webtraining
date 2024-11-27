@@ -1,39 +1,46 @@
 <?php 
-class fetchSignatureImage{
+require_once(__DIR__ ."/database.php");
+class signatureController{
 	private $imageData;
-	private $path =  __DIR__ . '/../uploads/';
-	private $fileName;
+	private $path;
+	private $fileLocation;
+	private $user_id;
+	private $schedule_id;
+	private $pdo;
 
-	public function __construct(){
-		$this->imageData = file_get_contents('php://input');
+	public function __construct($pdo){
+		$this->pdo = $pdo;
+		$this->path = realpath(__DIR__ . '/../uploads') . '/';
+		$this->imageData = json_decode(file_get_contents('php://input'), true);
+		$this->fileLocation = $this->path. uniqid() . '.png';
+		$this->user_id = $this->imageData["user_id"];
+		$this->schedule_id = $this->imageData["schedule_id"];
+		
 	}
 
 	private function formatSignatureData(){
-		$this->imageData = json_decode($this->imageData, true);
 		$this->imageData = $this->imageData['imageData'];
 		$this->imageData = str_replace('data:image/png;base64,', '', $this->imageData);
 		$this->imageData = base64_decode($this->imageData);
 		return $this->imageData;
 	}
 
-	public function saveSignature(){
+	public function saveSignature(){	
 		$formatedImage = $this->formatSignatureData();
-		$this->fileName = $this->path. uniqid() . '.png';
-		file_put_contents($this->fileName, $formatedImage);
+		file_put_contents($this->fileLocation, $formatedImage);
 	}
 
+	public function addSignatureToDB(){
+		$sql = "INSERT INTO signature (user_id, schedule_id, file_name) VALUES (:user_id,:schedule_id,:file_name)";
+		$stmt = $this->pdo->prepare($sql);
+		$stmt->bindParam(':user_id', $this->user_id);
+		$stmt->bindParam(':schedule_id', $this->schedule_id);
+		$stmt->bindParam(':file_name', $this->fileLocation);
+		$stmt->execute();
+	}
 }
-$imageSignature = new fetchSignatureImage;
-$imageSignature->saveSignature();
-
-
-
-// function addSignatureToDb($pdo,$user_id,$schedule_id,$path){
-// 	$sql = "INSERT INTO signature (user_id, schedule_id, file_name) VALUES (:user_id,:schedule_id,file_name)";
-// 	$stmt = $pdo->prepare($sql);
-//     $stmt->bindParam(':user_id', $user_id);
-//     $stmt->bindParam(':schedule_id', $schedule_id);
-//     $stmt->bindParam(':file_name', $path);
-//     $stmt->execute();
-// };
+$signatureController = new signatureController($pdo);
+$signatureController->saveSignature();
+$signatureController->addSignatureToDB();
 ?>
+

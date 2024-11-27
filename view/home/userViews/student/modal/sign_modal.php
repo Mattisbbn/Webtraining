@@ -1,9 +1,12 @@
 <?php 
-$currentUser->getUserID();
+$user_id = $currentUser->getUserID();
 $schedule_id = $_GET["sign"];
-
-
 ?>
+
+
+<input id="user_id" value="<?php echo($user_id) ?>" type="hidden">
+<input id="schedule_id" value="<?php echo($schedule_id) ?>" type="hidden">
+
 
 <div class="white border rounded-3 p-3 position-absolute top-50 start-50 ms-5 translate-middle">
     <div class="d-flex justify-content-center">
