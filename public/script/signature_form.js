@@ -1,18 +1,15 @@
-// Canva
 window.onload = updateCanvasSize
 window.addEventListener('resize', updateCanvasSize);
 function updateCanvasSize() {
     const width = signCanva.clientWidth;
     const height = signCanva.clientHeight;
-    
     signCanva.width = width;
     signCanva.height = height;
 }
 
-
 const signCanva = document.querySelector("#sign_canvas");
 const ctx = signCanva.getContext('2d');
-let isDrawing = false;  // Pour suivre si le dessin est en cours
+let isDrawing = false;  
 
 function getMousepostion(event) {
     const rect = signCanva.getBoundingClientRect();
@@ -47,14 +44,15 @@ signCanva.addEventListener("mouseleave", function() {
     isDrawing = false;  // Empêche le dessin lorsque la souris quitte le canvas
 });
 
+const clearCanvasButton = document.querySelector("#erase_button")
+clearCanvasButton.addEventListener("click",clearCanvas)
 
 function clearCanvas(){
     ctx.clearRect(0, 0, signCanva.width, signCanva.height); 
 }
 
-
-
-
+const saveCanvasButton = document.querySelector("#save_button")
+saveCanvasButton.addEventListener("click",saveCanvas)
 
 const userId = document.querySelector("#user_id").value
 const scheduleId = document.querySelector("#schedule_id").value

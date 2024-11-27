@@ -1,6 +1,7 @@
 <?php 
 require_once(__DIR__ ."/database.php");
 class signatureController{
+
 	private $imageData;
 	private $path;
 	private $fileLocation;
@@ -25,12 +26,7 @@ class signatureController{
 		return $this->imageData;
 	}
 
-	public function saveSignature(){	
-		$formatedImage = $this->formatSignatureData();
-		file_put_contents($this->fileLocation, $formatedImage);
-	}
-
-	public function addSignatureToDB(){
+	private function addSignatureToDB(){
 		$sql = "INSERT INTO signature (user_id, schedule_id, file_name) VALUES (:user_id,:schedule_id,:file_name)";
 		$stmt = $this->pdo->prepare($sql);
 		$stmt->bindParam(':user_id', $this->user_id);
@@ -38,9 +34,14 @@ class signatureController{
 		$stmt->bindParam(':file_name', $this->fileLocation);
 		$stmt->execute();
 	}
+
+	public function saveSignature(){	
+		$formatedImage = $this->formatSignatureData();
+		file_put_contents($this->fileLocation, $formatedImage);
+		$this->addSignatureToDB();
+	}
+
 }
 $signatureController = new signatureController($pdo);
 $signatureController->saveSignature();
-$signatureController->addSignatureToDB();
 ?>
-

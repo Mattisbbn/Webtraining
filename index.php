@@ -9,7 +9,10 @@ $currentPage = $pageActions->getCurrentpage();
 
 if (isset($_SESSION["currentUser"]) && $currentPage != "login") {
     $currentUser = unserialize($_SESSION["currentUser"]);  
-}elseif($currentPage != "login"){
+    if(empty($currentUser)){
+        header('Location: login');
+    }
+}elseif($currentPage !== "login"){
     header('Location: login');
 }
 
