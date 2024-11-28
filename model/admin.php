@@ -9,14 +9,34 @@ class userActions{
         $this->pdo = $pdo;
     }
 
-    public function addNewUser($email,$password,$username,$role){
-        $sql = "INSERT INTO `users` (`username`, `email`, `password`, `class_id`, `role`) VALUES (:username, :email, :password,NULL,:role)";
+    private function checkEmailAvailability($email){
+        $sql = "SELECT users.email FROM users WHERE users.email = :email";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->bindParam(':username', $username);
         $stmt->bindParam(':email', $email);
-        $stmt->bindParam(':password', $password);
-        $stmt->bindParam(':role', $role);
         $stmt->execute();
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        if($results){
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+    public function addNewUser($email,$password,$username,$role){
+
+        if($this->checkEmailAvailability($email)){
+            $sql = "INSERT INTO `users` (`username`, `email`, `password`, `class_id`, `role`) VALUES (:username, :email, :password,NULL,:role)";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->bindParam(':username', $username);
+            $stmt->bindParam(':email', $email);
+            $stmt->bindParam(':password', $password);
+            $stmt->bindParam(':role', $role);
+            $stmt->execute();
+        }else{
+            echo("Un compte existe déjà avec cette email.");
+        }
+
     }  
 
     public function fetchUsers() {
@@ -62,6 +82,7 @@ class classActions{
 }
 
 class subjectsActions{
+
     public function addNewSubject($pdo, $subject) {
         $sql = "INSERT INTO `subject` (`id`, `name`) VALUES (NULL, :subject)";
         $stmt = $pdo->prepare($sql);
@@ -69,30 +90,34 @@ class subjectsActions{
         $stmt->execute();
     }
 
-
 }
 
 class lessonsActions { 
-    public function fetchLessons($pdo){
 
+    private $pdo;
+
+    public function __construct($pdo){
+        $this->pdo = $pdo;
+    }
+
+    public function fetchLessons(){
         $sql = "SELECT schedule.id, subject.name, classes.name as class_name, users.username as teacher_name, schedule.start_datetime, schedule.end_datetime, TIMESTAMPDIFF(HOUR, schedule.start_datetime, schedule.end_datetime) as lesson_duration
         FROM schedule
             LEFT JOIN subject on subject.id  = schedule.subject_id
             LEFT JOIN classes on classes.id  = schedule.class_id
-            LEFT JOIN users on users.id = schedule.teacher_id
-        ";
-        $stmt = $pdo->prepare($sql);
+            LEFT JOIN users on users.id = schedule.teacher_id";
+
+        $stmt = $this->pdo->prepare($sql);
         $stmt->execute();
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
     return $results;
-
     }
 
-    public function addNewlesson($pdo,$subjectOfLesson,$classOfLesson,$teacherOfLesson,$lessonStartDate,$lessonEndDate) {
+    public function addNewLesson($subjectOfLesson,$classOfLesson,$teacherOfLesson,$lessonStartDate,$lessonEndDate) {
 
         $sql = "INSERT INTO schedule (`subject_id`,`class_id`,`teacher_id`,`start_datetime`,`end_datetime`)
                 VALUES (:subjectOfLesson,:classOfLesson,:teacherOfLesson,:lessonStartDate,:lessonEndDate)";
-        $stmt = $pdo->prepare($sql);
+        $stmt = $this->pdo->prepare($sql);
         $stmt->bindParam(':subjectOfLesson', $subjectOfLesson);
         $stmt->bindParam(':classOfLesson', $classOfLesson);
         $stmt->bindParam(':teacherOfLesson', $teacherOfLesson);

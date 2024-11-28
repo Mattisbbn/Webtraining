@@ -2,7 +2,7 @@
 require_once("controller/mainController.php");
 require_once("controller/admin.php"); 
 
-$lessonsActions = new lessonsActions;
+$lessonsActions = new lessonsActions($pdo);
 $userActions = new UserActions($pdo);
 ?>
 

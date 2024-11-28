@@ -1,18 +1,15 @@
 <?php
 require_once("model/admin.php");
-
-
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 
     $userActions = new UserActions($pdo);
     $classActions = new classActions;
     $subjectActions = new subjectsActions;
-    $lessonsActions = new lessonsActions;
+    $lessonsActions = new lessonsActions($pdo);
 
     if(isset($_POST['userName']) && isset($_POST['userEmail']) && isset($_POST['userPassword']) && isset($_POST['userRole'])) {
         $hashedPassword = password_hash($_POST['userPassword'], PASSWORD_DEFAULT);
-        $userActions->addNewUser($pdo,$_POST['userEmail'],$hashedPassword,$_POST['userName'],$_POST['userRole']);
+        $userActions->addNewUser($_POST['userEmail'],$hashedPassword,$_POST['userName'],$_POST['userRole']);
     }
 
     if (isset($_POST["classIdToDelete"])) {
@@ -51,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         $lessonStartDate = date("Y-m-d H:i:s", strtotime($_POST["lessonStartDate"]));
         $lessonDurationInMin = intval($_POST["lessonDurationInMin"]);
         $lessonEndDate = date("Y-m-d H:i:s", strtotime("+$lessonDurationInMin minutes", strtotime($lessonStartDate)));
-        $lessonsActions->addNewlesson($pdo,$subjectOfLesson,$classOfLesson,$teacherOfLesson,$lessonStartDate,$lessonEndDate);
+        $lessonsActions->addNewLesson($subjectOfLesson,$classOfLesson,$teacherOfLesson,$lessonStartDate,$lessonEndDate);
     }
 
     if(isset($_POST["eventToDelete"])){

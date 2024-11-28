@@ -12,7 +12,7 @@
     </thead>
     <tbody>
         <?php
-        $shedules = $lessonsActions->fetchLessons($pdo);
+        $shedules = $lessonsActions->fetchLessons();
         foreach ($shedules as $shedule):
         ?>
             <tr class="secondary-color">
@@ -58,7 +58,7 @@
 
         <select class="secondary-color rounded-3 border-0 m-1 p-2" name="classOfLesson">
             <?php
-            foreach ($classes as $class) { // Déja fetch dans classes.php
+            foreach ($classes as $class) {
                 echo "<option value='{$class['id']}'>{$class["name"]}</option>";
             }
             ?>
