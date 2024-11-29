@@ -42,6 +42,7 @@ class signatureController{
 		$formatedImage = $this->formatSignatureData();
 		file_put_contents($this->fileLocation, $formatedImage);
 		$this->addSignatureToDB();
+		header("Location: ./");
 	}
 }
 $signatureController = new signatureController($pdo);

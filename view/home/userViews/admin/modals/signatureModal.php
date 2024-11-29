@@ -1,4 +1,5 @@
-<?php    $signatureId = $_GET['viewSignature'];
+<?php    
+$signatureId = $_GET['viewSignature'];
 $signatureFileName = $signaturesActions->fetchSignatureFromid($signatureId)
 ?>
 

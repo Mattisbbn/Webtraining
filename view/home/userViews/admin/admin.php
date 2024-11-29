@@ -4,7 +4,7 @@ require_once("controller/admin.php");
 
 $lessonsActions = new lessonsActions($pdo);
 $userActions = new userActions($pdo);
-$signaturesActions = new SignaturesAction($pdo);
+$signaturesActions = new signaturesAction($pdo);
 ?>
 
 <section class="d-flex">

@@ -14,7 +14,7 @@ $schedule_id = $_GET["sign"];
         </form>
     </div>
     <section id="sign_section">
-        <canvas id="sign_canvas" class="rounded-4"></canvas>
+        <canvas width="500" height="300" id="sign_canvas" class="rounded-4"></canvas>
         <div class="d-flex justify-content-center mt-2 ">
     </div>
 </section>

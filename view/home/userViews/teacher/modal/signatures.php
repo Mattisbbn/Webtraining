@@ -1,7 +1,3 @@
-
-
-
-
 <div class="white border rounded-3 p-3 position-absolute top-50 start-50 ms-5 translate-middle">
 
     <div class="d-flex justify-content-center">
@@ -19,7 +15,7 @@
         </thead>
         <tbody>
             <tr>
-                <?php $students = fetchUsersFromLesson($pdo, $call_id);
+                <?php $students = $signaturesModel->fetchUsersFromLesson($call_id);
                 foreach ($students as $student): ?>
                     <td class="p-3"><?php echo ($student["username"]); ?></td>
                     <td class="p-3">action</td>

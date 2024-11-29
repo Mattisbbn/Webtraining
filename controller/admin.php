@@ -59,6 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
     header("Refresh:0");
 }
 
+
 if (isset($_POST["close-popup"])) {
     header("Location: ./");
 }

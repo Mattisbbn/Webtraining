@@ -1,8 +1,11 @@
 <?php 
 require_once("model/signatures.php");
 require_once("model/calendar.php");
+require_once("model/teacher.php");
 $userId = $currentUser->getUserID();
-$teacherCalendar = fetchTeacherCalendar($pdo,$userId);
+$teacherModel = new teacherModel($pdo);
+$teacherCalendar = $teacherModel->fetchTeacherCalendar($userId);
+$signaturesModel = new signaturesModel($pdo);
 ?>
 <section class="d-flex">
     <?php require_once("view/partials/aside.php") ?> 
