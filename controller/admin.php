@@ -2,9 +2,9 @@
 require_once("model/admin.php");
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 
-    $userActions = new UserActions($pdo);
-    $classActions = new classActions;
-    $subjectActions = new subjectsActions;
+    $userActions = new userActions($pdo);
+    $classActions = new classActions($pdo);
+    $subjectActions = new subjectsActions($pdo);
     $lessonsActions = new lessonsActions($pdo);
 
     if(isset($_POST['userName']) && isset($_POST['userEmail']) && isset($_POST['userPassword']) && isset($_POST['userRole'])) {
@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
     }
 
     if (isset($_POST["className"])) {
-        $classActions->addNewClass($pdo, $_POST["className"]);
+        $classActions->addNewClass($_POST["className"]);
     }
 
     if (isset($_POST["subjectIdToDelete"])) {
@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
     }
 
     if (isset($_POST["subjectName"])) {
-        $subjectActions->addNewSubject($pdo, $_POST["subjectName"]);
+        $subjectActions->addNewSubject($_POST["subjectName"]);
     }
 
     if(isset($_POST["UserIdToDelete"])){
@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         $class_id = $_POST["editClass"];
         $user_id = $_POST["user_id"];
         if ($class_id) {
-            $classActions->changeClass($pdo, $user_id, $class_id);
+            $classActions->changeClass($user_id, $class_id);
         }
     }
 
@@ -55,5 +55,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         $rowId = $_POST["eventToDelete"];
         $database->deleteDbRow("schedule",$rowId);
     }
+  
     header("Refresh:0");
+}
+
+if (isset($_POST["close-popup"])) {
+    header("Location: ./");
 }

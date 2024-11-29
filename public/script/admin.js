@@ -63,7 +63,8 @@ const hashlist = [
   "#accounts",
   "#classes",
   "#subjects",
-  "#lessons"
+  "#lessons",
+  "#signatures"
 ]
 
 hashlist.forEach(hashname=>{

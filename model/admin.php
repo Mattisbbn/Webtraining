@@ -1,15 +1,14 @@
 <?php
 require_once("controller/database.php");
-
 class userActions{
-    private $pdo;
+    private object $pdo;
 
     public function __construct($pdo)
     {
         $this->pdo = $pdo;
     }
 
-    private function checkEmailAvailability($email){
+    private function checkEmailAvailability(string $email){
         $sql = "SELECT users.email FROM users WHERE users.email = :email";
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindParam(':email', $email);
@@ -23,7 +22,7 @@ class userActions{
         }
     }
 
-    public function addNewUser($email,$password,$username,$role){
+    public function addNewUser(string $email,string $password,string $username,string $role){
 
         if($this->checkEmailAvailability($email)){
             $sql = "INSERT INTO `users` (`username`, `email`, `password`, `class_id`, `role`) VALUES (:username, :email, :password,NULL,:role)";
@@ -57,22 +56,29 @@ class userActions{
         return $results;
     }
 }
-
 class classActions{
-    public function addNewClass($pdo, $class){
+
+    private object $pdo;
+
+    public function __construct($pdo)
+    {
+        $this->pdo = $pdo;
+    }
+
+    public function addNewClass(string $class){
         $sql = "INSERT INTO `classes` (`id`, `name`) VALUES (NULL, :class)";
-        $stmt = $pdo->prepare($sql);
+        $stmt = $this->pdo->prepare($sql);
         $stmt->bindParam(':class', $class);
         $stmt->execute();
     }
 
-    public function changeClass($pdo,$user_id,$class_id){
+    public function changeClass(int $user_id,int $class_id){
         if ($class_id == "null") {
             $sql = "UPDATE `users` SET `class_id` = NULL WHERE `id` = :userId"; 
         }else{
             $sql = "UPDATE `users` SET `class_id` = :userClass WHERE `id` = :userId"; 
         }
-        $stmt = $pdo->prepare($sql);
+        $stmt = $this->pdo->prepare($sql);
         $stmt->bindParam(':userId',$user_id);
         if ($class_id != "null") {
             $stmt->bindParam(':userClass', $class_id);
@@ -80,18 +86,23 @@ class classActions{
         $stmt->execute();
     }
 }
-
 class subjectsActions{
 
-    public function addNewSubject($pdo, $subject) {
+    private $pdo;
+
+    public function __construct($pdo)
+    {
+        $this->pdo = $pdo;
+    }
+
+    public function addNewSubject($subject) {
         $sql = "INSERT INTO `subject` (`id`, `name`) VALUES (NULL, :subject)";
-        $stmt = $pdo->prepare($sql);
+        $stmt = $this->pdo->prepare($sql);
         $stmt->bindParam(':subject', $subject);
         $stmt->execute();
     }
 
 }
-
 class lessonsActions { 
 
     private $pdo;
@@ -127,3 +138,30 @@ class lessonsActions {
         
     }
 }
+class SignaturesAction{
+    private object $pdo;
+
+    function __construct($pdo)
+    {
+        $this->pdo = $pdo;
+    }
+
+    public function fetchSignatures(){
+        $sql = "SELECT signatures.id, signatures.user_id, signatures.file_name,users.username FROM signatures
+                LEFT JOIN users on users.id = signatures.user_id";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute();
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $results;
+    }
+
+    function fetchSignatureFromid(int $signatureId){
+        $sql ="SELECT signatures.file_name FROM signatures WHERE signatures.id = :signatureId";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':signatureId', $signatureId);
+        $stmt->execute();
+        $results = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $results;
+    }
+}
+

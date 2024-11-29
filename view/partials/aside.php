@@ -26,7 +26,7 @@ if (isset($_SESSION["currentUser"])) {
         <a href="#classes"class="p-2 mt-2 mb-2 rounded-3 navbuttons fw-500 "><i class="uil uil-graduation-cap"></i> Classes</a>
         <a href="#subjects"class="p-2 mt-2 mb-2 rounded-3 navbuttons fw-500 "><i class="uil uil-layer-group"></i> Matières</a>
         <a href="#lessons"class="p-2 mt-2 mb-2 rounded-3 navbuttons fw-500 "><i class="uil uil-book-open"></i> Cours</a>
-        <a href="#"class="p-2 mt-2 mb-2 rounded-3 navbuttons fw-500 "><i class="uil uil-edit-alt"></i> Signatures</a>
+        <a href="#signatures"class="p-2 mt-2 mb-2 rounded-3 navbuttons fw-500 "><i class="uil uil-edit-alt"></i> Signatures</a>
         ';
         }elseif($userType === "teacher"){
             echo'

@@ -37,7 +37,7 @@
         </div>
 
 
-        <form class=" d-none pannelDiv flex-column  " method="post">
+        <form class=" d-none pannelDiv flex-column" method="post">
             <input name="subjectName" placeholder="Nom de la classe" class="secondary-color m-1 p-2 rounded-3" type="text" required>
 
             <div class="d-flex">
