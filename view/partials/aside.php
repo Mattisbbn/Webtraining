@@ -2,7 +2,6 @@
 
 <?php
 require_once("class/user.php");
-require_once("controller/logout.php");
 require_once("controller/mainController.php");
 $pageActions = new pageActions;
 $page = $pageActions->getCurrentpage();
@@ -21,7 +20,7 @@ if (isset($_SESSION["currentUser"])) {
         
         
         if($userType === "admin"){      
-   echo'<h5 class="ms-2 mb-3 mt-4 fw-bold">Admin</h5>
+        echo'<h5 class="ms-2 mb-3 mt-4 fw-bold">Admin</h5>
         <a href="#accounts" class="p-2 mt-2 mb-2 rounded-3 navbuttons fw-500 active"><i class="uil uil-user"></i> Comptes</a>
         <a href="#classes"class="p-2 mt-2 mb-2 rounded-3 navbuttons fw-500 "><i class="uil uil-graduation-cap"></i> Classes</a>
         <a href="#subjects"class="p-2 mt-2 mb-2 rounded-3 navbuttons fw-500 "><i class="uil uil-layer-group"></i> Matières</a>
@@ -43,13 +42,12 @@ if (isset($_SESSION["currentUser"])) {
         
     ?>
 
-       
-
-
-
-<div class="d-flex">
+    <form class="d-flex p-2 secondary-color rounded-3 mt-2 mb-2" method="post">
     <p><?php echo($currentUser->getUsername()) ?></p>
-    <form method="post"><button name="log-out" type="submit"><i class="uil uil-signout"></i></button></form>
+        <button name="logout" type="submit"><i class="uil uil-signout"></i></button>
+    </form>
     </div>
-    </div>
+
+
+
 </aside>

@@ -1,7 +1,7 @@
 <?php 
 require_once("controller/student.php");
 require_once("controller/database.php");
-$calendarModel = new studentModel($pdo);
+$studentModel = new studentModel($pdo);
 
 
 ?>

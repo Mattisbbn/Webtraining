@@ -16,9 +16,6 @@ class signaturesModel{
         $stmt->execute();
     }
 
-
-
-
     public function fetchUsersFromLesson($scheduleId){
         $sql = "SELECT users.username 
                 FROM users 
@@ -30,9 +27,28 @@ class signaturesModel{
         $stmt->execute();
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        return $results;}
+        return $results;
+    }
+
+    public function startCall($scheduleId,$classId){
+        
+        $this->createSignatures($scheduleId,$classId);
+
+    }
 
 
+    private function createSignatures($scheduleId,$classId){
+
+        $sql = "INSERT INTO signatures (user_id,schedule_id) 
+        SELECT users.id, :schedule_id
+        FROM users
+        WHERE class_id = :class_id";
+
+        $stmt = $this->pdo->prepare($sql); 
+        $stmt->bindParam(':class_id', $classId, PDO::PARAM_INT);
+        $stmt->bindParam(':schedule_id', $scheduleId, PDO::PARAM_INT);
+        $stmt->execute();
+    }
 
 }
 

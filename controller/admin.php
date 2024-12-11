@@ -1,6 +1,6 @@
 <?php
 require_once("model/admin.php");
-if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && !isset($_POST['fetchSignatures'])){
 
     $userActions = new userActions($pdo);
     $classActions = new classActions($pdo);
@@ -56,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         $database->deleteDbRow("schedule",$rowId);
     }
   
-    header("Refresh:0");
+    // header("Refresh:0");
 }
 
 

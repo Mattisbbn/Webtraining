@@ -25,4 +25,12 @@ class studentModel{
     
         return $results;
         }
+
+
+
+
+        public function fetchSignatureStatus($studentId,$scheduleId){
+
+
+        }
     }

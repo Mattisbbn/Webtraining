@@ -146,15 +146,17 @@ class SignaturesAction{
         $this->pdo = $pdo;
     }
 
-    public function fetchSignatures(){
-        $sql = "SELECT signatures.id, signatures.user_id, signatures.file_name,users.username FROM signatures
-                LEFT JOIN users on users.id = signatures.user_id";
+    public function fetchSignatures($class) {
+        $sql = "SELECT signatures.id, signatures.user_id, signatures.file_name, users.username 
+                FROM signatures
+                LEFT JOIN users ON users.id = signatures.user_id
+                WHERE users.class_id = :classId";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute();
+        $stmt->execute(['classId' => $class]);
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    return $results;
+        return $results;
     }
-
+    
     function fetchSignatureFromid(int $signatureId){
         $sql ="SELECT signatures.file_name FROM signatures WHERE signatures.id = :signatureId";
         $stmt = $this->pdo->prepare($sql);

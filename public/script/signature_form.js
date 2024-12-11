@@ -75,5 +75,6 @@ function saveCanvas() {
         return response.text(); // Supposant que la réponse est en JSON
     }).then(data => {
         window.location.replace("./#calendar");
+        // 
     })
 }

@@ -18,7 +18,7 @@ $UserClassID = fetchUserClass($pdo, $userId);
         </thead>
         <tbody>
             <?php 
-            $lessons = $calendarModel->fetchCalendar($UserClassID);
+            $lessons = $studentModel->fetchCalendar($UserClassID);
             foreach($lessons as $lesson): ?> 
             <tr>
                 <td><?php echo($lesson["name"]) ?></td>
@@ -26,7 +26,15 @@ $UserClassID = fetchUserClass($pdo, $userId);
                 <td><?php echo($lesson["lesson_duration"]) . " H" ?></td>
                 <td>    
                     <form>
-                        <button name="sign" <?php if($lesson["call_status"] !== "started"){echo "disabled";}?> value="<?php echo($lesson["id"])?>">Signer</button>
+                        <button name="sign" 
+                        <?php
+                        
+                        if($lesson["call_status"] !== "started"){
+                            echo "disabled";}?> value="<?php echo($lesson["id"])
+                        
+                        
+                        ?>">Signer</button>
+
                     </form>
                 </td>
             </tr>
