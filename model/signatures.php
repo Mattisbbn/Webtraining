@@ -17,7 +17,7 @@ class signaturesModel{
     }
 
     public function fetchUsersFromLesson($scheduleId){
-        $sql = "SELECT users.username 
+        $sql = "SELECT users.username, users.id
                 FROM users 
                 INNER JOIN schedule ON users.class_id = schedule.class_id 
                 WHERE schedule.id = :scheduleId";
@@ -53,6 +53,22 @@ class signaturesModel{
         $stmt->bindParam(':class_id', $classId, PDO::PARAM_INT);
         $stmt->bindParam(':schedule_id', $scheduleId, PDO::PARAM_INT);
         $stmt->execute();
+    }
+
+
+    public function checkSignatures($studentId, $scheduleId){
+        $sql = "SELECT signatures.file_name FROM signatures WHERE signatures.user_id = :studentId AND signatures.schedule_id = :scheduleId";
+        $stmt = $this->pdo->prepare($sql); 
+        $stmt->bindParam(':scheduleId', $scheduleId, PDO::PARAM_INT);
+        $stmt->bindParam(':studentId', $studentId, PDO::PARAM_INT);
+        $stmt->execute();
+        $results = $stmt->fetchColumn();
+
+        if($results){
+            return true;
+        }else{
+            return false;
+        }
     }
 
 }

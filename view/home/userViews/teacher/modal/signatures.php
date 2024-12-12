@@ -10,16 +10,22 @@
         <thead>
             <tr class="rounded-3">
                 <th class="p-3">Prénom</th>
-                <th class="p-3">Action</th>
+                <th class="p-3">Status</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <?php $students = $signaturesModel->fetchUsersFromLesson($call_id);
+                <?php 
+                $scheduleId =  $_GET['call'];
+              
+                
+                $students = $signaturesModel->fetchUsersFromLesson($call_id);
                 foreach ($students as $student): ?>
-                    <td class="p-3"><?php echo ($student["username"]); ?></td>
-                    <td class="p-3">action</td>
+                    <td class="p-3"><?php echo $student["username"]; ?></td>
+                    <td class="p-3"><?php var_dump($signaturesModel->checkSignatures($student["id"],$scheduleId)); ?></td>
                 <?php endforeach; ?>
+
+              
             </tr>
         </tbody>
     </table>

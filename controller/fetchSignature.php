@@ -40,7 +40,7 @@ class signatureController{
 		$stmt->bindParam(':file_name', $fileName);
 		$stmt->execute();
 	}
-	// INSERT INTO signatures (user_id, schedule_id, file_name) VALUES (:user_id,:schedule_id,:file_name)
+
 	public function saveSignature(){	
 		$formatedImage = $this->formatSignatureData();
 		file_put_contents($this->fileLocation, $formatedImage);
