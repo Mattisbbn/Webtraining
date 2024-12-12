@@ -30,14 +30,17 @@ class signatureController{
 
 	private function addSignatureToDB(){
 		$fileName = "uploads/". $this->fileName;
-		$sql = "INSERT INTO signatures (user_id, schedule_id, file_name) VALUES (:user_id,:schedule_id,:file_name)";
+		$sql = "
+		UPDATE signatures 
+		SET file_name = :file_name 
+		WHERE schedule_id = :schedule_id AND user_id = :user_id;";
 		$stmt = $this->pdo->prepare($sql);
 		$stmt->bindParam(':user_id', $this->user_id);
 		$stmt->bindParam(':schedule_id', $this->schedule_id);
 		$stmt->bindParam(':file_name', $fileName);
 		$stmt->execute();
 	}
-
+	// INSERT INTO signatures (user_id, schedule_id, file_name) VALUES (:user_id,:schedule_id,:file_name)
 	public function saveSignature(){	
 		$formatedImage = $this->formatSignatureData();
 		file_put_contents($this->fileLocation, $formatedImage);

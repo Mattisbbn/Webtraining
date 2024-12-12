@@ -31,11 +31,16 @@ class signaturesModel{
     }
 
     public function startCall($scheduleId,$classId){
-        
         $this->createSignatures($scheduleId,$classId);
-
+        $this->changeClassStatus($scheduleId);
     }
 
+    private function changeClassStatus(int $scheduleId){
+        $sql = 'UPDATE `schedule` SET `call_status` = "started" WHERE `id` = :scheduleID';
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':scheduleID', $scheduleId);
+        $stmt->execute();
+    }
 
     private function createSignatures($scheduleId,$classId){
 
