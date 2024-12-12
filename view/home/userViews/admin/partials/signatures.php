@@ -7,6 +7,7 @@
             echo("<option value='{$class['id']}'>{$class['name']}</option>");
         }
         ?>
+        
     </select>
 </form>
 <table class="m-auto">
@@ -21,7 +22,7 @@
         <?php 
         if(isset($_POST['fetchSignatures'])){
             $signatureId = $_POST['fetchSignatures'];
-            $signatures =   $signaturesActions->fetchSignatures($signatureId);
+            $signatures = $signaturesActions->fetchSignatures($signatureId);
         }else{
             $signatures = $signaturesActions->fetchSignatures(59);
         }

@@ -16,21 +16,26 @@
         <tbody>
             <tr>
                 <?php 
+
                 $scheduleId =  $_GET['call'];
-              
-                
                 $students = $signaturesModel->fetchUsersFromLesson($call_id);
+
                 foreach ($students as $student): ?>
                     <td class="p-3"><?php echo $student["username"]; ?></td>
-                    <td class="p-3"><?php var_dump($signaturesModel->checkSignatures($student["id"],$scheduleId)); ?></td>
-                <?php endforeach; ?>
+                    <td class="p-3"><?php 
+                    
+                    if($signaturesModel->checkSignatures($student["id"],$scheduleId)){
+                        echo("Signé");
+                    }else{
+                        echo("Non signé");
+                    }?></td>
 
-              
+                <?php endforeach;?>
             </tr>
         </tbody>
     </table>
 
     <form method="post">
-       <button name="validate-call" value="<?php echo($_GET["call"]) ?>">Valider l'appel</button>
+       <button name="validate-call" value="<?php echo($_GET["call"])?>">Valider l'appel</button>
     </form>
 </div>
