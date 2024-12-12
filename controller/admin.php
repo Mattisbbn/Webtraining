@@ -56,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !isset($_POST['fetchSignatures'])){
         $database->deleteDbRow("schedule",$rowId);
     }
   
-    // header("Refresh:0");
+    header("Refresh:0");
 }
 
 

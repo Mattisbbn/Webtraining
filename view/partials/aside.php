@@ -3,13 +3,6 @@
 <?php
 require_once("class/user.php");
 require_once("controller/mainController.php");
-$pageActions = new pageActions;
-$page = $pageActions->getCurrentpage();
-if (isset($_SESSION["currentUser"])) {
-    $currentUser = unserialize($_SESSION["currentUser"]);  
-}elseif($page !== "login"){
-    header('Location: login');
-}
 ?>
 
 <aside class=" d-flex">

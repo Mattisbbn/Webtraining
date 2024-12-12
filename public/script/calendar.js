@@ -21,7 +21,6 @@ document.addEventListener('DOMContentLoaded', function() {
         views: {
             timeGrid: {
                 duration: { days: 3 }, 
-                 
             },
       
         },

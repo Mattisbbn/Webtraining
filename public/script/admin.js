@@ -74,21 +74,3 @@ hashlist.forEach(hashname=>{
     activateButton(hashIndex)
   }
 })
-
-
-
-
-
-
-// Signatures 
-
-
-// const fetchSignaturesForm = document.querySelector('.fetchSignaturesForm');
-
-
-
-
-// fetchSignaturesForm.addEventListener("submit", function(event){
-//   event.preventDefault();
-
-// })
