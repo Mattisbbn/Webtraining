@@ -41,7 +41,19 @@ require_once "model/recovery.php";
 
     if(isset($_POST['emailToRecover'])){
         $emailToRecover = $_POST['emailToRecover'];
-        $recoveryController = new recoveryController;
-        $recoveryController->sendRecoveryPassword($emailToRecover);
+        // if($recoveryModel->addRecoveryToDb($emailToRecover)){
+        //     $recoveryController = new recoveryController;
+        //     $recoveryController->sendRecoveryPassword($emailToRecover);
+        // }else{
+        //     echo("L'email n'a pas été envoyé");
+        // };
+
+       
+        var_dump($recoveryModel->addRecoveryToDb($emailToRecover));
+
+
+      
+       
+       
     }
 ?>
