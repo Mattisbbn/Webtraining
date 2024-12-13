@@ -8,7 +8,7 @@ require_once("config.php");
 require_once "model/recovery.php";
 
     class recoveryController{
-        public function sendRecoveryPassword($email){
+        public function sendRecoveryPassword($email,$token){
             $mail = new PHPMailer(true);
     
             try {
@@ -27,7 +27,7 @@ require_once "model/recovery.php";
             
                 $mail->isHTML(true);
                 $mail->Subject = 'Récupération mot de passe';
-                $mail->Body    = 'Veuillez cliquer sur ce lien pour redéfinir votre mot de passe';
+                $mail->Body = 'Veuillez <a href="localhost/webtraining/changepassword?token=' . $token . '">cliquer sur ce lien</a> pour redéfinir votre mot de passe';
                 $mail->AltBody = 'Récupération mot de passe';
             
                 $mail->send();
@@ -36,13 +36,20 @@ require_once "model/recovery.php";
                 echo "Le message n'a pas pu être envoyé. Erreur: {$mail->ErrorInfo}";
             }
         }
+
+
+        // private function getRecoveryToken($email)
+
     }
 
     if(isset($_POST['emailToRecover'])){
         $emailToRecover = $_POST['emailToRecover'];
+
         if($recoveryModel->addRecoveryToDb($emailToRecover)){
+            $token = $recoveryModel->getToken();
             $recoveryController = new recoveryController;
-            $recoveryController->sendRecoveryPassword($emailToRecover);
+            $recoveryController->sendRecoveryPassword($emailToRecover,$token);
         };
     }
 ?>
+

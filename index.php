@@ -7,7 +7,7 @@ require_once("controller/mainController.php");
 $pageActions = new pageActions;
 $currentPage = $pageActions->getCurrentpage();
 
-if (isset($_SESSION["currentUser"]) && $currentPage != "login" && $currentPage != "recovery") {
+if (isset($_SESSION["currentUser"]) && $currentPage != "login" && $currentPage != "recovery" && $currentPage != "changepassword") {
 
     $currentUser = unserialize($_SESSION["currentUser"]);
 
@@ -15,11 +15,11 @@ if (isset($_SESSION["currentUser"]) && $currentPage != "login" && $currentPage !
         header('Location: login');
     }
 
-}elseif($currentPage !== "login"  && $currentPage != "recovery"){
+}elseif($currentPage !== "login"  && $currentPage != "recovery" && $currentPage != "changepassword"){
     header('Location: login');
 }
 
-if($currentPage !== "login" && $currentPage !== "recovery"){
+if($currentPage !== "login" && $currentPage !== "recovery" && $currentPage != "changepassword"){
     require_once("view/partials/header.php");
 }
 

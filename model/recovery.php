@@ -4,14 +4,21 @@ require_once("controller/database.php");
 class recoveryModel{
 
     private object $pdo;
+    private string $token;
 
     public function __construct($pdo){
         $this->pdo = $pdo;
     }
 
+    private function setToken($token){
+        $this->token = $token;
+    }
+
+    public function getToken(){
+        return $this->token;
+    }
+
     public function addRecoveryToDb($email){
-
-
         if($this->accountExist($email)){
 
             if(!$this->checkRecoveryAvailiability($email)){
@@ -26,9 +33,9 @@ class recoveryModel{
                 $stmt->bindParam(':start_datetime', $dateTime);
                 $stmt->bindParam(':token', $token);
                 $stmt->execute();
+                $this->setToken($token);
                 return true;
             }
-
         }else{
             echo("Il n'y a pas de compte avec cette email");
         }

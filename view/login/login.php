@@ -32,7 +32,8 @@
         <label class="mb-1 ms-1" for="password_input">
           <p>Mot de passe</p>
         </label>
-        <input class="rounded-4 p-3 mb-4 transparent-color" name="password" id="password_input" type="password" placeholder="Mot de passe" required />
+        <input class="rounded-4 p-3  transparent-color" name="password" id="password_input" type="password" placeholder="Mot de passe" required />
+        <a class="mb-4 ms-1" href="recovery">Mot de passe oublié ?</a>
         <button class="rounded-4 p-3 fw-bold text-white primary-color" id="submit_login" type="submit">
           <h4 class="mb-0">Se connecter</h4>
         </button>
