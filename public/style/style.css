@@ -193,7 +193,7 @@ table tr:last-child td:last-child {
   box-shadow: #212529 1px 1px;
 }
 
-#recovery-email-input{
+.recovery_inputs{
   border: 2px solid var(--secondary-color);
   color: gray;
 }

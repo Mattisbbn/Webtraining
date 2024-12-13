@@ -4,7 +4,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 require 'vendor/autoload.php';
-require_once("config.php");
+require_once "config.php";
 require_once "model/recovery.php";
 
     class recoveryController{
@@ -36,19 +36,17 @@ require_once "model/recovery.php";
                 echo "Le message n'a pas pu être envoyé. Erreur: {$mail->ErrorInfo}";
             }
         }
-
-
-        // private function getRecoveryToken($email)
-
     }
 
     if(isset($_POST['emailToRecover'])){
         $emailToRecover = $_POST['emailToRecover'];
 
         if($recoveryModel->addRecoveryToDb($emailToRecover)){
+
             $token = $recoveryModel->getToken();
             $recoveryController = new recoveryController;
             $recoveryController->sendRecoveryPassword($emailToRecover,$token);
+            
         };
     }
 ?>

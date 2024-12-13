@@ -18,6 +18,18 @@ class recoveryModel{
         return $this->token;
     }
 
+
+    private function getUserIdWithEmail($email){
+        $sql = "SELECT users.id FROM users WHERE users.email = :email";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':email', $email);
+        $stmt->execute();
+        $result = $stmt->fetchColumn();
+
+        return $result;
+    }
+
+
     public function addRecoveryToDb($email){
         if($this->accountExist($email)){
 
@@ -25,11 +37,16 @@ class recoveryModel{
                 echo("Il y a déja une tentative de récupération de mot de passe en cours. <br> Veuillez vérifier dans vos spams en cas de non-réception du mail");
                 return false;
             }else{
+
+                $userId = $this->getUserIdWithEmail($email);
                 $token = bin2hex(random_bytes(32));
                 $dateTime = date('Y-m-d H:i:s');
-                $sql = "INSERT INTO recovery (email, start_datetime, token) VALUES (:email, :start_datetime, :token)";
+
+
+                $sql = "INSERT INTO recovery (email,user_id, start_datetime, token) VALUES (:email,:id , :start_datetime, :token)";
                 $stmt = $this->pdo->prepare($sql);
                 $stmt->bindParam(':email', $email);
+                $stmt->bindParam(':id', $userId);
                 $stmt->bindParam(':start_datetime', $dateTime);
                 $stmt->bindParam(':token', $token);
                 $stmt->execute();
