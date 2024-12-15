@@ -1,5 +1,5 @@
 <?php
-class changePasswordModel{
+class changePassword{
 
     private object $pdo;
 
@@ -12,11 +12,30 @@ class changePasswordModel{
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindParam(':token', $token);
         $stmt->execute();
-        $result = $stmt->fetchColumn();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
         return $result;
     }
 
-    // public function changePasswordByToken(){
+    public function changePasswordByEmail($email,$hashedPassword,$token){
+        $sql = "UPDATE users SET password = :password WHERE email = :email";
+      
+        try{
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->bindParam(':password', $hashedPassword);
+            $stmt->bindParam(':email', $email);
+            $stmt->execute();
+            $this->changeRecoveryStatus($token);
+            echo("Le mot de passe à été changé avec succés");
+        } catch(Exception $e){
+            echo("Le mot de passe n'a pas été changé <br>");
+            echo($e->getMessage());
+        }
+    }
 
-    // }
+    private function changeRecoveryStatus($token){
+        $sql = "UPDATE recovery SET status = 'finished' WHERE token = :token";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':token', $token);
+        $stmt->execute();
+    }
 }

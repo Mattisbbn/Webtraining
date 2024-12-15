@@ -1,4 +1,14 @@
 <form class="vh-100 d-flex justify-content-center align-items-center flex-column" method="post">
-    <input placeholder="Nouveau mot de passe" class="recovery_inputs rounded-3 p-2 text-center" type="password" autocomplete="new-password">
+    <input name="new-password" placeholder="Nouveau mot de passe" class="recovery_inputs rounded-3 p-2 text-center" type="password" autocomplete="new-password">
     <button class="p-2 mt-2 rounded-3 secondary-color text-white" type="submit">Confirmer</button>
 </form>
+
+<?php
+
+if(isset($_POST["new-password"])){
+    $hashedPassword = password_hash($_POST["new-password"], PASSWORD_DEFAULT);
+    $email = $tokenAccount['email'];
+    $changePasswordModel->changePasswordByEmail($email,$hashedPassword,$token);
+  
+  
+}
