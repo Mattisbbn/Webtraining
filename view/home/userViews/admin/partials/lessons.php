@@ -87,9 +87,5 @@
             <button class=" w-50 secondary-color closePannelButton m-1 p-2 rounded-3"><i id="closeClass" class="uil uil-times color-white"></i></button>
             <button class=" w-50 secondary-color m-1 p-2 rounded-3" type="submit"><i class="uil uil-check"></i></button>
         </div>
-
     </form>
 </div>
-
-
-

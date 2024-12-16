@@ -1,15 +1,10 @@
-
 <form method="post">
     <select class="third-color rounded-3 border-0 m-1 p-2 fetchSignaturesForm" name="fetchSignatures" onchange="this.form.submit();">
-        <option value='all'>Toutes les matieres</option>
-
-        <?php foreach($classes as $class){
-            echo("<option value='{$class['id']}'>{$class['name']}</option>");
-        }
-        ?>
-        
+        <option value='all'>Toutes les classes</option>
+        <?php foreach($classes as $class){echo("<option value='{$class['id']}'>{$class['name']}</option>");}?>
     </select>
 </form>
+
 <table class="m-auto">
     <thead>
         <tr>
@@ -20,15 +15,15 @@
 
     <tbody>
         <?php 
+
         if(isset($_POST['fetchSignatures'])){
             $signatureId = $_POST['fetchSignatures'];
             $signatures = $signaturesActions->fetchSignatures($signatureId);
         }else{
             $signatures = $signaturesActions->fetchSignatures(59);
         }
-     
-        foreach($signatures as $signature):
-        ?>
+
+        foreach($signatures as $signature): ?>
         <tr class="border-bottom">
             <td class="p-1" ><?php echo($signature["username"]); ?></td>
             <td class="p-1">
@@ -37,16 +32,11 @@
                 </form>
             </td>
         </tr>
-
         <?php  endforeach;?>
     </tbody>
-
-
-
 </table>
 <?php 
 if(isset($_GET['viewSignature'])){
     require_once("view/home/userViews/admin/modals/signatureModal.php");
 }
 ?>
-

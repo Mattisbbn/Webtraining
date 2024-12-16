@@ -1,14 +1,11 @@
 <?php
 require_once("model/signatures.php");
-require_once("model/user.php");
 $signaturesModel = new signaturesModel($pdo);
 
 if (isset($_POST['start-call'])) {
     $scheduleId = $_POST['start-call'];
     $scheduleClassId = $_POST["call-class-id"];
-
     $signaturesModel->startCall($scheduleId,$scheduleClassId);
-
     header("Refresh:0");
 }
 

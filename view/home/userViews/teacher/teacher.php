@@ -4,7 +4,7 @@ require_once("model/calendar.php");
 require_once("model/teacher.php");
 $userId = $currentUser->getUserID();
 $teacherModel = new teacherModel($pdo);
-$teacherCalendar = $teacherModel->fetchTeacherCalendar($userId);
+
 $signaturesModel = new signaturesModel($pdo);
 ?>
 <section class="d-flex">

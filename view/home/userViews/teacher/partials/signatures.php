@@ -12,12 +12,16 @@
     </thead>
 
     <tbody>
-        <?php foreach($teacherCalendar as $lesson):  ?>
+        
+        <?php
+        $teacherCalendar = $teacherModel->fetchTeacherCalendar($userId);
+        
+        foreach($teacherCalendar as $lesson):  ?>
             <tr>
                 <td class="p-3"><?php echo($lesson['name']) ?></td>
                 <td class="p-3"><?php echo($lesson['class_name']) ?></td>
                 <td class="p-3"><?php echo($lesson['start_datetime']) ?></td>
-                <td class="p-3"><?php echo($lesson['lesson_duration']) ?> H</td>
+                <td class="p-3"><?php echo($lesson['lesson_duration']) /60 ?> H</td>
                 <td class="p-3">
                     <form action="?call=<?php echo $lesson["id"]?>" method="post">
                         <?php 
