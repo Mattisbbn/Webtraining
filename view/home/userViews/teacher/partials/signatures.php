@@ -1,4 +1,7 @@
-<?php require_once("controller/signatures.php");?>
+<?php require_once("controller/signatures.php");
+
+
+?>
 
 <table class="mt-4 m-auto">
     <thead>
@@ -47,3 +50,10 @@
     </tbody>
 </table>
 
+<?php 
+
+
+if(isset($_GET["call"])){
+    $call_id = $_GET["call"];
+    require_once("view/home/userViews/teacher/modal/signatures.php");
+};

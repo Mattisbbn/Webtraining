@@ -72,7 +72,7 @@ function saveCanvas() {
         if (!response.ok) {
             throw new Error('Erreur HTTP : ' + response.status);
         }
-        return response.text(); // Supposant que la réponse est en JSON
+        return response.text();
     }).then(data => {
         window.location.replace("./#calendar");
         // 
