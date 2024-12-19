@@ -32,13 +32,14 @@
                         if($lesson["call_status"] == null){
                            echo "<button name='start-call' value='{$lesson["id"]}'>Déclencher l'appel</button>";
                            echo "<input type='hidden' name='call-class-id' value='{$lesson["class_id"]}'>";
+                           $call_status = null;
 
                         }elseif($lesson["call_status"] === "started"){
                             echo " <a href='?call={$lesson['id']}'>Voir l'appel</a>";
+                            $call_status = "started";
                         
                         }elseif($lesson["call_status"] === "finished"){
-                            echo("<button name='cancel-call' value='{$lesson["id"]}'>Annuler l'appel</button>");
-                          
+                            echo("<p>L'appel est fini</p>");
                         }
                         ?>
                        
@@ -51,7 +52,6 @@
 </table>
 
 <?php 
-
 
 if(isset($_GET["call"])){
     $call_id = $_GET["call"];

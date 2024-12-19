@@ -7,14 +7,6 @@ class signaturesModel{
     {
         $this->pdo = $pdo;
     }
-    
-    // public function changeCallStatus(int $scheduleId,$callAction){
-    //     $sql = 'UPDATE `schedule` SET `call_status` = :callAction WHERE `id` = :scheduleID';
-    //     $stmt = $this->pdo->prepare($sql);
-    //     $stmt->bindParam(':scheduleID', $scheduleId);
-    //     $stmt->bindParam(':callAction', $callAction);
-    //     $stmt->execute();
-    // }
 
     public function fetchUsersFromLesson($scheduleId){
         $sql = "SELECT users.username, users.id
@@ -30,61 +22,47 @@ class signaturesModel{
         return $results;
     }
 
-    // public function startCall($scheduleId,$classId){
-    //     $this->createSignatures($scheduleId,$classId);
-    //     $this->changeClassStatus($scheduleId);
-    // }
+    public function startCall(int $scheduleId,array $presentsStudents){
+       $this->createSignatures($scheduleId,$presentsStudents);
+       $this->setCallStatus($scheduleId,"started");
+    }
 
-    // private function changeClassStatus(int $scheduleId){
-    //     $sql = 'UPDATE `schedule` SET `call_status` = "started" WHERE `id` = :scheduleID';
-    //     $stmt = $this->pdo->prepare($sql);
-    //     $stmt->bindParam(':scheduleID', $scheduleId);
-    //     $stmt->execute();
-    // }
+    public function endCall(int $scheduleId){
+        $this->setCallStatus($scheduleId, "finished");
+    }
 
-    // private function createSignatures($scheduleId,$classId){
+    private function createSignatures(int $scheduleId,array $presentsStudents){
+        $sql = "INSERT INTO signatures (user_id,schedule_id) VALUES (:userId , :scheduleId)";
+        $stmt = $this->pdo->prepare($sql);
 
-    //     $sql = "INSERT INTO signatures (user_id,schedule_id) 
-    //     SELECT users.id, :schedule_id
-    //     FROM users
-    //     WHERE class_id = :class_id";
+        foreach($presentsStudents as $studentId){
+            $stmt->bindParam(':scheduleId', $scheduleId);
+            $stmt->bindParam(':userId', $studentId);
+            $stmt->execute();
+        }
+    }
 
-    //     $stmt = $this->pdo->prepare($sql); 
-    //     $stmt->bindParam(':class_id', $classId, PDO::PARAM_INT);
-    //     $stmt->bindParam(':schedule_id', $scheduleId, PDO::PARAM_INT);
-    //     $stmt->execute();
-    // }
+    private function setCallStatus(int $scheduleId, string $status){
+        $sql = 'UPDATE `schedule` SET `call_status` = :status WHERE `id` = :scheduleID';
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':scheduleID', $scheduleId);
+        $stmt->bindParam(':status', $status);
+        $stmt->execute();
+    }
 
+    public function checkSignatures($studentId, $scheduleId){
+        $sql = "SELECT signatures.file_name FROM signatures WHERE signatures.user_id = :studentId AND signatures.schedule_id = :scheduleId";
+        $stmt = $this->pdo->prepare($sql); 
+        $stmt->bindParam(':scheduleId', $scheduleId, PDO::PARAM_INT);
+        $stmt->bindParam(':studentId', $studentId, PDO::PARAM_INT);
+        $stmt->execute();
+        $results = $stmt->fetchColumn();
 
-    // public function checkSignatures($studentId, $scheduleId){
-    //     $sql = "SELECT signatures.file_name FROM signatures WHERE signatures.user_id = :studentId AND signatures.schedule_id = :scheduleId";
-    //     $stmt = $this->pdo->prepare($sql); 
-    //     $stmt->bindParam(':scheduleId', $scheduleId, PDO::PARAM_INT);
-    //     $stmt->bindParam(':studentId', $studentId, PDO::PARAM_INT);
-    //     $stmt->execute();
-    //     $results = $stmt->fetchColumn();
+        if($results){
+            return "Signé";
+        }else{
+            return "Pas signé";
+        }
+    }
 
-    //     if($results){
-    //         return true;
-    //     }else{
-    //         return false;
-    //     }
-    // }
-
-    // public function startCall($studentIdList){
-    //     $studentIdList = [12,32,23,24];
-
-
-
-
-
-    // }
-
-
-
-    // private function createSignatures(int $scheduleId,array $studentIdList){
-
-    // }
 }
-
-
