@@ -22,7 +22,7 @@
                                     <i class='uil uil-trash-alt'></i>
                                 </button>
                             </form>
-                            <i class='uil uil-file-edit-alt'></i>
+                            
                         </div>
                     </td>
                 </tr>

@@ -2,16 +2,6 @@
 require_once("model/signatures.php");
 $signaturesModel = new signaturesModel($pdo);
 
-// if (isset($_POST['start-call'])) {
-//     header("Refresh:0");
-// }
-
-// if (isset($_POST['cancel-call'])) {
-//     $scheduleId = $_POST['cancel-call'];
-//     $signaturesModel->changeCallStatus($scheduleId, null);
-//     header("Location: ./");
-// }
-
 if (isset($_POST['end-call'])) {
     $scheduleId = $_POST['end-call'];
     $signaturesModel->endCall($scheduleId);

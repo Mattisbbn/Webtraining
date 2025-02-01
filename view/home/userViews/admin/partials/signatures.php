@@ -18,9 +18,9 @@
 
         if(isset($_POST['fetchSignatures'])){
             $signatureId = $_POST['fetchSignatures'];
-            $signatures = $signaturesActions->fetchSignatures($signatureId);
+            $signatures = $signaturesActions->fetchSignaturesByClass($signatureId);
         }else{
-            $signatures = $signaturesActions->fetchSignatures(59);
+            $signatures = $signaturesActions->fetchSignatures();
         }
 
         foreach($signatures as $signature): ?>

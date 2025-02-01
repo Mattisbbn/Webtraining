@@ -24,15 +24,15 @@
     </div>
     <form method="post">
       <div class="d-flex flex-column mt-4" id="login_container">
-        <label class="mb-1 ms-1" for="email_input">
+        <label class="mb-1 ms-1 for="email_input">
           <p>Email</p>
         </label>
-        <input class="rounded-4 p-3 mb-1 transparent-color" name="email" id="email_input" type="email" placeholder="Email" required />
+        <input class="rounded-4 p-3 mb-1 transparent-color" autocomplete="current-email" name="email" id="email_input" type="email" placeholder="Email" required />
 
         <label class="mb-1 ms-1" for="password_input">
           <p>Mot de passe</p>
         </label>
-        <input class="rounded-4 p-3  transparent-color" name="password" id="password_input" type="password" placeholder="Mot de passe" required />
+        <input class="rounded-4 p-3  transparent-color" autocomplete="current-password" name="password" id="password_input" type="password" placeholder="Mot de passe" required />
         <a class="mb-4 ms-1" href="recovery">Mot de passe oublié ?</a>
         <button class="rounded-4 p-3 fw-bold text-white primary-color" id="submit_login" type="submit">
           <h4 class="mb-0">Se connecter</h4>

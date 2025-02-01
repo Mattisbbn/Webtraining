@@ -29,7 +29,7 @@
                                 <i class='uil uil-trash-alt'></i>
                             </button>
                         </form>
-                        <i class='uil uil-file-edit-alt'></i>
+                        
                     </div>
                 </td>
             </tr>
@@ -72,7 +72,7 @@
             }
             ?>
         </select>
-        <input class="secondary-color rounded-3 border-0 m-1 p-2" type="datetime-local" name="lessonStartDate">
+        <input class="secondary-color rounded-3 border-0 m-1 p-2" step="1800" type="datetime-local" name="lessonStartDate">
         <select class="secondary-color  rounded-3 border-0 m-1 p-2" name="lessonDurationInMin">
             <?php 
             for ($minutes = 30; $minutes <= 270; $minutes += 30) {
